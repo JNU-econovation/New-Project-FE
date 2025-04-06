@@ -1,4 +1,4 @@
-import { clsx } from "clsx";
+import { cn } from "@/utils/cn";
 
 interface TxtProps {
   children: React.ReactNode;
@@ -44,7 +44,7 @@ export default function Text({
   fontWeight = "font-normal",
 }: TxtProps) {
   return (
-    <span className={clsx(color, fontSize, fontWeight, className)}>
+    <span className={cn(color, fontSize, fontWeight, className)}>
       {children}
     </span>
   );
