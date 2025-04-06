@@ -36,7 +36,7 @@ type WeightType =
   | "font-extrabold"
   | "font-black";
 
-export default function Txt({
+export default function Text({
   children,
   className,
   color = "text-black",

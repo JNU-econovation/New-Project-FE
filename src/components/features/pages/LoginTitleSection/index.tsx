@@ -4,7 +4,7 @@ import Star from "@/Star.svg";
 import Login_Logo from "@/Login_Logo.svg";
 
 import Image from "next/image";
-import Txt from "@/components/common/shared/ui/Txt";
+import Text from "@/components/common/shared/ui/Text";
 
 export default function LoginTitleSection() {
   return (
@@ -15,12 +15,12 @@ export default function LoginTitleSection() {
     >
       <Flex flexDirection="flex-row" alignItems="items-end">
         <Flex flexDirection="flex-col">
-          <Txt fontWeight="font-bold" className="text-[30px]">
+          <Text fontWeight="font-bold" className="text-[30px]">
             그럼,
-          </Txt>
-          <Txt fontWeight="font-bold" className="text-[30px]">
+          </Text>
+          <Text fontWeight="font-bold" className="text-[30px]">
             모험을 시작해볼까요?
-          </Txt>
+          </Text>
         </Flex>
         <Image src={Star} alt="별" />
       </Flex>
