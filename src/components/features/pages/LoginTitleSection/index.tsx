@@ -8,11 +8,7 @@ import Text from "@/components/common/shared/ui/Text";
 
 export default function LoginTitleSection() {
   return (
-    <Flex
-      flexDirection="flex-col"
-      alignItems="items-center"
-      className="gap-[50px]"
-    >
+    <Flex flexDirection="flex-col" alignItems="items-center" gap={50}>
       <Flex flexDirection="flex-row" alignItems="items-end">
         <Flex flexDirection="flex-col">
           <Text fontWeight="font-bold" className="text-[30px]">
