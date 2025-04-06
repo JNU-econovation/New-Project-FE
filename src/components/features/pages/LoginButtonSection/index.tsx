@@ -12,7 +12,7 @@ export default function LoginButtonSection() {
       justifyContent="justify-normal"
       className="gap-[15px] w-full"
     >
-      <button className="h-[57px] bg-yellow rounded-lg">
+      <button className="h-[57px] bg-kakao-yellow rounded-lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
