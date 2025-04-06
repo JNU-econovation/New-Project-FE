@@ -6,6 +6,7 @@ interface FlexProps {
   flexDirection: FlexDirectionType;
   justifyContent?: JustifyContentType;
   alignItems?: AlignItemsType;
+  gap?: number;
 }
 
 type FlexDirectionType =
@@ -35,6 +36,7 @@ export default function Flex({
   alignItems = "items-stretch",
   flexDirection,
   justifyContent = "justify-start",
+  gap,
   className,
 }: FlexProps) {
   return (
@@ -44,6 +46,7 @@ export default function Flex({
         flexDirection,
         justifyContent,
         alignItems,
+        `gap-[${gap}px]`,
         className
       )}
     >
