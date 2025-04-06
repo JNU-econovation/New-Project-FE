@@ -3,7 +3,7 @@ import Kakao_Logo from "@/Kakao_Logo.svg";
 
 import Apple_Logo from "@/Apple_Logo.svg";
 import Image from "next/image";
-import Txt from "@/components/common/shared/ui/Txt";
+import Text from "@/components/common/shared/ui/Text";
 
 export default function LoginButtonSection() {
   return (
@@ -20,9 +20,9 @@ export default function LoginButtonSection() {
           className="gap-[10px]"
         >
           <Image src={Kakao_Logo} alt="카카오 로고" />
-          <Txt fontWeight="font-semibold" fontSize="text-sm">
+          <Text fontWeight="font-semibold" fontSize="text-sm">
             카카오톡으로 3초만에 시작하기
-          </Txt>
+          </Text>
         </Flex>
       </button>
       <button className="h-[57px] bg-black rounded-lg">
@@ -33,9 +33,13 @@ export default function LoginButtonSection() {
           className="gap-[10px]"
         >
           <Image src={Apple_Logo} alt="애플 로고" />
-          <Txt color="text-white" fontSize="text-sm" fontWeight="font-semibold">
+          <Text
+            color="text-white"
+            fontSize="text-sm"
+            fontWeight="font-semibold"
+          >
             Apple로 계속하기
-          </Txt>
+          </Text>
         </Flex>
       </button>
     </Flex>
