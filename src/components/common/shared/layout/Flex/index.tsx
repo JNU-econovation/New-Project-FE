@@ -40,11 +40,11 @@ export default function Flex({
   return (
     <div
       className={cn(
+        "flex",
         flexDirection,
         justifyContent,
         alignItems,
-        className,
-        "flex"
+        className
       )}
     >
       {children}
