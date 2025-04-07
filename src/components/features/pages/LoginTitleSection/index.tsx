@@ -16,10 +16,10 @@ export default function LoginTitleSection() {
         maxWidth="max-w-fit"
       >
         <Flex flexDirection="flex-col" maxWidth="max-w-fit">
-          <Text fontWeight="font-bold" className="text-[30px] w-fit">
+          <Text fontWeight="font-bold" className="text-3xl w-fit">
             그럼,
           </Text>
-          <Text fontWeight="font-bold" className="text-[30px] w-fit">
+          <Text fontWeight="font-bold" className="text-3xl w-fit">
             모험을 시작해볼까요?
           </Text>
         </Flex>
