@@ -10,15 +10,14 @@ export default function LoginButtonSection() {
     <Flex
       flexDirection="flex-col"
       justifyContent="justify-normal"
-      className="w-full"
-      gap={15}
+      gap="gap-3.5"
     >
       <button className="h-[57px] bg-kakao-yellow rounded-lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
           justifyContent="justify-center"
-          gap={10}
+          gap="gap-2.5"
         >
           <Image src={Kakao_Logo} alt="카카오 로고" />
           <Text fontWeight="font-semibold" fontSize="text-sm">
@@ -31,7 +30,7 @@ export default function LoginButtonSection() {
           flexDirection="flex-row"
           alignItems="items-center"
           justifyContent="justify-center"
-          gap={10}
+          gap="gap-2.5"
         >
           <Image src={Apple_Logo} alt="애플 로고" />
           <Text

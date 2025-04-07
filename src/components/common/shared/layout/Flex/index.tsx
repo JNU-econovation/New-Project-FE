@@ -2,11 +2,11 @@ import { cn } from "@/utils/cn";
 
 interface FlexProps {
   children: React.ReactNode;
-  className?: string;
   flexDirection: FlexDirectionType;
   justifyContent?: JustifyContentType;
   alignItems?: AlignItemsType;
-  gap?: number;
+  maxWidth?: string;
+  gap?: string;
 }
 
 type FlexDirectionType =
@@ -36,18 +36,19 @@ export default function Flex({
   alignItems = "items-stretch",
   flexDirection,
   justifyContent = "justify-start",
+  maxWidth,
   gap,
-  className,
 }: FlexProps) {
   return (
     <div
       className={cn(
         "flex",
+        "w-full",
+        maxWidth,
+        gap,
         flexDirection,
         justifyContent,
-        alignItems,
-        `gap-[${gap}px]`,
-        className
+        alignItems
       )}
     >
       {children}
