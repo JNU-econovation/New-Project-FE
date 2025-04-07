@@ -12,7 +12,7 @@ export default function LoginButtonSection() {
       justifyContent="justify-normal"
       gap="gap-3.5"
     >
-      <button className="h-[57px] bg-kakao-yellow rounded-lg">
+      <button className="pb-4 pt-4 bg-kakao-yellow rounded-lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
@@ -25,7 +25,7 @@ export default function LoginButtonSection() {
           </Text>
         </Flex>
       </button>
-      <button className="h-[57px] bg-black rounded-lg">
+      <button className="pb-4 pt-4 bg-black rounded-lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
