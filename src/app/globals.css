@@ -5,3 +5,5 @@
   --color-sub-gray: #dadada;
   --color-kakao-yellow: #fae64d;
 }
+
+@source inline("gap-{{0..12..1},14,{16..64..4},{72..96..8}}");

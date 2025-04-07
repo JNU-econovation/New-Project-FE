@@ -8,11 +8,11 @@ import Text from "@/components/common/shared/ui/Text";
 
 export default function LoginTitleSection() {
   return (
-    <Flex flexDirection="flex-col" alignItems="items-center" gap="gap-12">
+    <Flex flexDirection="flex-col" alignItems="items-center" gap={12}>
       <Flex
         flexDirection="flex-row"
         alignItems="items-end"
-        gap="gap-2.5"
+        gap={3}
         maxWidth="max-w-fit"
       >
         <Flex flexDirection="flex-col" maxWidth="max-w-fit">

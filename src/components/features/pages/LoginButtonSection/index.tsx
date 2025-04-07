@@ -7,17 +7,13 @@ import Text from "@/components/common/shared/ui/Text";
 
 export default function LoginButtonSection() {
   return (
-    <Flex
-      flexDirection="flex-col"
-      justifyContent="justify-normal"
-      gap="gap-3.5"
-    >
+    <Flex flexDirection="flex-col" justifyContent="justify-normal" gap={4}>
       <button className="pb-4 pt-4 bg-kakao-yellow rounded-lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
           justifyContent="justify-center"
-          gap="gap-2.5"
+          gap={3}
         >
           <Image src={Kakao_Logo} alt="카카오 로고" />
           <Text fontWeight="font-semibold" fontSize="text-sm">
@@ -30,7 +26,7 @@ export default function LoginButtonSection() {
           flexDirection="flex-row"
           alignItems="items-center"
           justifyContent="justify-center"
-          gap="gap-2.5"
+          gap={3}
         >
           <Image src={Apple_Logo} alt="애플 로고" />
           <Text

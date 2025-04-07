@@ -6,7 +6,7 @@ interface FlexProps {
   justifyContent?: JustifyContentType;
   alignItems?: AlignItemsType;
   maxWidth?: string;
-  gap?: string;
+  gap?: number;
 }
 
 type FlexDirectionType =
@@ -45,7 +45,7 @@ export default function Flex({
         "flex",
         "w-full",
         maxWidth,
-        gap,
+        gap ? `gap-${gap}` : "",
         flexDirection,
         justifyContent,
         alignItems
