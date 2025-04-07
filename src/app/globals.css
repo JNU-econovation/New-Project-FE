@@ -3,7 +3,10 @@
 @theme {
   --color-main-green: #2b7552;
   --color-sub-gray: #dadada;
-  --color-kakao-yellow: #fae64d;
+  --color-yellow: #fae64d;
+  --color-input-gray: #f7f7f7;
+  --color-error-message: #ff0000;
 }
 
+@source inline("mt-{{0..12..1},14,{16..64..4},{72..96..8}}");
 @source inline("gap-{{0..12..1},14,{16..64..4},{72..96..8}}");
