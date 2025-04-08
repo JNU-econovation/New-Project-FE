@@ -1,4 +1,3 @@
-import Flex from "@/components/common/shared/layout/Flex";
 import Spacing from "@/components/common/shared/layout/Spacing";
 import Button from "@/components/common/shared/ui/Button";
 import Input from "@/components/common/shared/ui/Input";
@@ -17,21 +16,19 @@ export default function EmailAuthSection() {
         <Text fontWeight="font-bold">이메일</Text>
         <Spacing size={1} />
         <div className="relative">
-          <Flex flexDirection="flex-row" alignItems="items-center">
-            <Input
-              type="email"
-              placeholder="이메일"
-              color="primary"
-              size="primary"
-            />
-            <div className="absolute right-5">
-              <Button color="white" size="sm">
-                <Text fontWeight="font-semibold" className="font-semibold">
-                  인증 요청
-                </Text>
-              </Button>
-            </div>
-          </Flex>
+          <Input
+            type="email"
+            placeholder="이메일"
+            color="primary"
+            size="primary"
+          />
+          <div className="absolute right-5 top-3">
+            <Button color="white" size="sm">
+              <Text fontWeight="font-semibold" className="font-semibold">
+                인증 요청
+              </Text>
+            </Button>
+          </div>
         </div>
       </>
 
@@ -49,15 +46,13 @@ export default function EmailAuthSection() {
         <Text fontWeight="font-bold">인증번호</Text>
         <Spacing size={1} />
         <div className="relative">
-          <Flex flexDirection="flex-row" alignItems="items-center">
-            <Input
-              type="number"
-              placeholder="인증번호"
-              color="primary"
-              size="primary"
-            />
-            <span className="absolute right-7">04:59</span>
-          </Flex>
+          <Input
+            type="number"
+            placeholder="인증번호"
+            color="primary"
+            size="primary"
+          />
+          <span className="absolute right-7 top-4">04:59</span>
         </div>
       </>
 
