@@ -6,14 +6,14 @@ import Text from "@/components/common/shared/ui/Text";
 
 export default function EmailAuthSection() {
   return (
-    <div>
+    <>
       <Text fontSize="text-3xl" fontWeight="font-bold">
         메일 인증
       </Text>
 
       <Spacing size={8} />
 
-      <div>
+      <>
         <Text fontWeight="font-bold">이메일</Text>
         <Spacing size={1} />
         <div className="relative">
@@ -33,7 +33,7 @@ export default function EmailAuthSection() {
             </div>
           </Flex>
         </div>
-      </div>
+      </>
 
       <Text
         fontSize="text-sm"
@@ -45,7 +45,7 @@ export default function EmailAuthSection() {
 
       <Spacing size={6} />
 
-      <div>
+      <>
         <Text fontWeight="font-bold">인증번호</Text>
         <Spacing size={1} />
         <div className="relative">
@@ -59,13 +59,13 @@ export default function EmailAuthSection() {
             <span className="absolute right-7">04:59</span>
           </Flex>
         </div>
-      </div>
+      </>
 
       <Spacing size={8} />
 
       <Button color="black" size="lg">
         확인하기
       </Button>
-    </div>
+    </>
   );
 }
