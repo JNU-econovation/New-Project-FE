@@ -1,14 +1,17 @@
-import Flex from "@/components/common/shared/layout/Flex";
-import Kakao_Logo from "@/Kakao_Logo.svg";
-
-import Apple_Logo from "@/Apple_Logo.svg";
 import Image from "next/image";
+
+import Kakao_Logo from "@/Kakao_Logo.svg";
+import Apple_Logo from "@/Apple_Logo.svg";
+
+import Flex from "@/components/common/shared/layout/Flex";
 import Text from "@/components/common/shared/ui/Text";
+import Button from "@/components/common/shared/ui/Button";
+import Spacing from "@/components/common/shared/layout/Spacing";
 
 export default function LoginButtonSection() {
   return (
-    <Flex flexDirection="flex-col" justifyContent="justify-normal" gap={4}>
-      <button className="pb-4 pt-4 bg-kakao-yellow rounded-lg">
+    <>
+      <Button color="kakaoYellow" size="lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
@@ -20,8 +23,9 @@ export default function LoginButtonSection() {
             카카오톡으로 3초만에 시작하기
           </Text>
         </Flex>
-      </button>
-      <button className="pb-4 pt-4 bg-black rounded-lg">
+      </Button>
+      <Spacing size={4} />
+      <Button color="black" size="lg">
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
@@ -37,7 +41,7 @@ export default function LoginButtonSection() {
             Apple로 계속하기
           </Text>
         </Flex>
-      </button>
-    </Flex>
+      </Button>
+    </>
   );
 }
