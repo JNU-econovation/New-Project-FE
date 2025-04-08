@@ -6,7 +6,7 @@ export const ButtonVariants = cva(`rounded-lg`, {
   variants: {
     color: {
       green: "bg-main-green text-white",
-      yellow: "bg-yellow text-black",
+      kakaoYellow: "bg-kakao-yellow text-black",
       black: "bg-black text-white",
       white: "bg-white text-black",
     },
