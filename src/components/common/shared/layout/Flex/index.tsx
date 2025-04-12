@@ -7,7 +7,7 @@ interface FlexProps {
   alignItems?: AlignItemsType;
   maxWidth?: string;
   gap?: number;
-  className?: string;
+  height?: number | "h-full" | "h-screen" | "h-min" | "h-max" | "h-fit";
 }
 
 type FlexDirectionType =
@@ -39,8 +39,14 @@ export default function Flex({
   justifyContent = "justify-start",
   maxWidth,
   gap,
-  className,
+  height,
 }: FlexProps) {
+  let heightClass;
+
+  if (height) {
+    heightClass = typeof height === "number" ? `h-${height}` : height;
+  }
+
   return (
     <div
       className={cn(
@@ -48,10 +54,10 @@ export default function Flex({
         "w-full",
         maxWidth,
         gap ? `gap-${gap}` : "",
+        heightClass,
         flexDirection,
         justifyContent,
-        alignItems,
-        className
+        alignItems
       )}
     >
       {children}
