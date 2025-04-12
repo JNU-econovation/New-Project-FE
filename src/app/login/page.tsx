@@ -1,6 +1,6 @@
 import Flex from "@/components/common/shared/layout/Flex";
-import LoginButtonSection from "@/components/features/pages/LoginButtonSection";
-import LoginTitleSection from "@/components/features/pages/LoginTitleSection";
+import LoginButtonSection from "@/components/features/pages/login/LoginButtonSection";
+import LoginTitleSection from "@/components/features/pages/login/LoginTitleSection";
 
 export default function LoginPage() {
   return (
