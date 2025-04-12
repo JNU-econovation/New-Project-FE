@@ -1,7 +1,12 @@
+"use client";
+
 import Flex from "@/components/common/shared/layout/Flex";
 import Spinner from "@/components/common/shared/ui/Spinner";
+import { useSaveToken } from "@/hooks/social-login-loading";
 
 export default function SpinnerSection() {
+  useSaveToken();
+
   return (
     <section className="h-screen">
       <Flex
