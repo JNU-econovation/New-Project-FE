@@ -7,6 +7,7 @@ interface FlexProps {
   alignItems?: AlignItemsType;
   maxWidth?: string;
   gap?: number;
+  className?: string;
 }
 
 type FlexDirectionType =
@@ -38,6 +39,7 @@ export default function Flex({
   justifyContent = "justify-start",
   maxWidth,
   gap,
+  className,
 }: FlexProps) {
   return (
     <div
@@ -48,7 +50,8 @@ export default function Flex({
         gap ? `gap-${gap}` : "",
         flexDirection,
         justifyContent,
-        alignItems
+        alignItems,
+        className
       )}
     >
       {children}
