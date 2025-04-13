@@ -1,5 +1,6 @@
 "use client";
 
+import ROUTE from "@/constants/route";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -22,7 +23,7 @@ export const useSaveToken = () => {
         localStorageAccessToken === accessToken &&
         localStorageRefreshToken === refreshToken
       ) {
-        router.push("/");
+        router.push(ROUTE.MAIN);
       }
     }
   }, [accessToken, refreshToken, router]);
