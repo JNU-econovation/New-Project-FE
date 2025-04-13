@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Providers from "@/components/common/entities/Providers";
+import TanstackQueryProvider from "@/components/common/entities/TanstackQueryProvider";
 
 export const metadata: Metadata = {
   title: "산악구조",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Providers>{children}</Providers>
+        <TanstackQueryProvider>{children}</TanstackQueryProvider>
       </body>
     </html>
   );
