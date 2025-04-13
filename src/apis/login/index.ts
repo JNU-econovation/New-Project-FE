@@ -1,4 +1,4 @@
-import { https } from "@/apis/https";
+import { https } from "@/apis/instances";
 
 // Todo: 카카오 로그인 API 경로 변경
 
