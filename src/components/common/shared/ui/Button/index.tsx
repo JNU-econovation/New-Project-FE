@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/utils/cn";
@@ -22,7 +23,9 @@ export const ButtonVariants = cva(`rounded-lg`, {
   },
 });
 
-interface ButtonProps extends VariantProps<typeof ButtonVariants> {
+interface ButtonProps
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "size">,
+    VariantProps<typeof ButtonVariants> {
   className?: string;
   children?: React.ReactNode;
 }
