@@ -1,3 +1,4 @@
+import { InputHTMLAttributes } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/utils/cn";
@@ -17,29 +18,27 @@ export const InputVariants = cva(`rounded-lg`, {
   },
 });
 
-interface InputProps extends VariantProps<typeof InputVariants> {
-  children?: React.ReactNode;
+interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "color" | "size">,
+    VariantProps<typeof InputVariants> {
   type: string;
   placeholder: string;
   className?: string;
 }
 
 export function Input({
-  children,
-  type = "text",
-  placeholder = "test",
+  type,
+  placeholder,
   className,
-  color,
   size,
+  color,
 }: InputProps) {
   return (
     <input
-      className={cn(InputVariants({ color, size, className }))}
+      className={cn(InputVariants({ className, size, color }))}
       type={type}
       placeholder={placeholder}
-    >
-      {children}
-    </input>
+    />
   );
 }
 
