@@ -1,11 +1,11 @@
 import { postKakaoLogin } from "@/apis/login";
-import { MutateOptions, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const useKakaoLogin = () => {
-  const { postKakaoLogin } = useKakaoLoginMutate();
+  const { mutate } = useKakaoLoginMutate();
 
   const onKakaoLogin = () => {
-    postKakaoLogin({
+    mutate(undefined, {
       onError: () => {
         alert("카카오 로그인에 실패했습니다.");
       },
@@ -17,20 +17,10 @@ const useKakaoLogin = () => {
 };
 
 const useKakaoLoginMutate = () => {
-  const { mutate } = useMutation({
+  return useMutation({
     mutationKey: ["kakaoLogin"],
     mutationFn: postKakaoLogin,
   });
-
-  return {
-    postKakaoLogin: (
-      mutateOption?: MutateOptions<void, Error, void, unknown>
-    ) => {
-      mutate(undefined, {
-        ...mutateOption,
-      });
-    },
-  };
 };
 
 export default useKakaoLogin;
