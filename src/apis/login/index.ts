@@ -1,7 +1,3 @@
-import { axiosInstance } from "@/apis/instances";
+import postKakaoLogin from "@/apis/login/postKakaoLogin";
 
-// Todo: 카카오 로그인 API 경로 변경
-
-export const postKakaoLogin = async () => {
-  await axiosInstance.post("auth/users/signup", {});
-};
+export { postKakaoLogin };
