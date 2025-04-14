@@ -1,3 +1,3 @@
-import https from "@/apis/instances/https";
+import axiosInstance from "@/apis/instances/axiosInstance";
 
-export { https };
+export { axiosInstance };
