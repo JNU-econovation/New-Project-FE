@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const https = axios.create({
+const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-https.interceptors.request.use((config) => {
+axiosInstance.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
@@ -18,7 +18,7 @@ https.interceptors.request.use((config) => {
   return config;
 });
 
-https.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -35,4 +35,4 @@ https.interceptors.response.use(
   }
 );
 
-export default https;
+export default axiosInstance;
