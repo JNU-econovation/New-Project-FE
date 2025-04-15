@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 
-interface TxtProps {
+interface TextProps {
   children: React.ReactNode;
   className?: string;
   color?: ColorType;
@@ -12,7 +12,8 @@ type ColorType =
   | "text-main-green"
   | "text-sub-gray"
   | "text-white"
-  | "text-black";
+  | "text-black"
+  | "text-error-message";
 
 type SizeType =
   | "text-xs"
@@ -42,7 +43,7 @@ export default function Text({
   color = "text-black",
   fontSize = "text-base",
   fontWeight = "font-normal",
-}: TxtProps) {
+}: TextProps) {
   return (
     <span className={cn(color, fontSize, fontWeight, className)}>
       {children}
