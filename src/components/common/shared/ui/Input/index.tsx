@@ -21,8 +21,6 @@ export const InputVariants = cva(`rounded-lg`, {
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "color" | "size">,
     VariantProps<typeof InputVariants> {
-  type: string;
-  placeholder: string;
   className?: string;
 }
 
