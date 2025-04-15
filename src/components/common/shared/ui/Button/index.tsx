@@ -12,9 +12,7 @@ export const ButtonVariants = cva(`rounded-lg`, {
       white: "bg-white text-black",
     },
     size: {
-      lg: "w-full p-4",
-      md: "p-2",
-      sm: "p-1",
+      lg: "px-4 py-2",
     },
   },
   defaultVariants: {
