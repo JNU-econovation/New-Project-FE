@@ -5,7 +5,7 @@ import TextField from "@/components/common/shared/ui/TextField";
 
 export default function EmailAuthSection() {
   return (
-    <>
+    <div className="mx-4 mt-24">
       <Text fontSize="text-3xl" fontWeight="font-bold">
         메일 인증
       </Text>
@@ -39,6 +39,6 @@ export default function EmailAuthSection() {
           확인하기
         </Text>
       </Button>
-    </>
+    </div>
   );
 }
