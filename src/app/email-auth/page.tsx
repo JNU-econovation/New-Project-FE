@@ -3,7 +3,9 @@ import EmailAuthSection from "@/components/features/pages/EmailAuth/EmailAuthSec
 export default function EmailAuthPage() {
   return (
     <>
-      <EmailAuthSection />
+      <div className="px-4 pt-24">
+        <EmailAuthSection />
+      </div>
     </>
   );
 }
