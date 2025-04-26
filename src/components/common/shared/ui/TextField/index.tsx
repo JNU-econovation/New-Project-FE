@@ -1,29 +1,33 @@
+import { JSX } from "react";
+
 import Spacing from "../../layout/Spacing";
 import Input from "../Input";
 import Text from "../Text";
 
 interface TextFieldProps {
-  children?: React.ReactNode;
   label: string;
   type: string;
   placeholder: string;
+  right?: JSX.Element;
 }
 
 export default function TextField({
-  children,
   label,
   type,
   placeholder,
+  right,
 }: TextFieldProps) {
   return (
     <>
-      <Spacing size={8} />
-
       <Text fontWeight="font-bold">{label}</Text>
       <Spacing size={1} />
       <div className="relative">
         <Input type={type} placeholder={placeholder} />
-        {children}
+        {right && (
+          <div className="absolute right-5 top-1/2 -translate-y-1/2">
+            {right}
+          </div>
+        )}
       </div>
     </>
   );
