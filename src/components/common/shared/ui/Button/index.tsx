@@ -15,7 +15,7 @@ export const ButtonVariants = cva(`rounded-lg`, {
       lg: "px-4 py-2",
     },
     fullWidth: {
-      true: "w-full",
+      true: "w-full p-4",
       false: "",
     },
   },
