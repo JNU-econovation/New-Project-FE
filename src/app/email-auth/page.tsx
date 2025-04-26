@@ -1,4 +1,4 @@
-import EmailAuthSection from "@/components/features/pages/EmailAuth/EmailAuthSection";
+import EmailAuthSection from "@/components/features/pages/EmailAuthSection";
 
 export default function EmailAuthPage() {
   return (
