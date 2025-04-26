@@ -5,9 +5,11 @@ import LoginTitleSection from "@/components/features/pages/LoginTitleSection";
 export default function LoginPage() {
   return (
     <>
-      <LoginTitleSection />
-      <Spacing size={16} />
-      <LoginButtonSection />
+      <div className="px-4 pt-24">
+        <LoginTitleSection />
+        <Spacing size={16} />
+        <LoginButtonSection />
+      </div>
     </>
   );
 }
