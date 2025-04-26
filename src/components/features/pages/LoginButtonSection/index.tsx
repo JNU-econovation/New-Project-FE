@@ -11,7 +11,7 @@ import Spacing from "@/components/common/shared/layout/Spacing";
 export default function LoginButtonSection() {
   return (
     <>
-      <Button color="kakaoYellow" size="lg">
+      <Button color="kakaoYellow" size="lg" fullWidth={true}>
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
@@ -24,8 +24,10 @@ export default function LoginButtonSection() {
           </Text>
         </Flex>
       </Button>
+
       <Spacing size={4} />
-      <Button color="black" size="lg">
+
+      <Button color="black" size="lg" fullWidth={true}>
         <Flex
           flexDirection="flex-row"
           alignItems="items-center"
