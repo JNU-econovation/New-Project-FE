@@ -12,13 +12,16 @@ export default function EmailAuthSection() {
 
       <Spacing size={8} />
 
-      <TextField label="이메일" type="email" placeholder="이메일">
-        <div className="absolute right-5 top-2">
+      <TextField
+        label="이메일"
+        type="email"
+        placeholder="이메일"
+        right={
           <Button color="white">
             <Text fontWeight="font-semibold">인증 요청</Text>
           </Button>
-        </div>
-      </TextField>
+        }
+      />
 
       <Text
         fontSize="text-sm"
@@ -30,9 +33,12 @@ export default function EmailAuthSection() {
 
       <Spacing size={8} />
 
-      <TextField label="인증번호" type="number" placeholder="인증번호">
-        <span className="absolute right-7 top-4">04:59</span>
-      </TextField>
+      <TextField
+        label="인증번호"
+        type="number"
+        placeholder="인증번호"
+        right={<span>04:59</span>}
+      />
 
       <Spacing size={8} />
 
