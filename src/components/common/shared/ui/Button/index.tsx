@@ -14,10 +14,15 @@ export const ButtonVariants = cva(`rounded-lg`, {
     size: {
       lg: "px-4 py-2",
     },
+    fullWidth: {
+      true: "w-full",
+      false: "",
+    },
   },
   defaultVariants: {
     color: "green",
     size: "lg",
+    fullWidth: false,
   },
 });
 
@@ -28,9 +33,17 @@ interface ButtonProps
   children?: React.ReactNode;
 }
 
-export function Button({ className, children, color, size }: ButtonProps) {
+export function Button({
+  className,
+  children,
+  color,
+  size,
+  fullWidth,
+}: ButtonProps) {
   return (
-    <button className={cn(ButtonVariants({ color, size, className }))}>
+    <button
+      className={cn(ButtonVariants({ color, size, className, fullWidth }))}
+    >
       {children}
     </button>
   );
