@@ -1,6 +1,6 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
-import LoginButtonSection from "@/components/features/pages/LoginButtonSection";
-import LoginTitleSection from "@/components/features/pages/LoginTitleSection";
+import Spacing from "@shared/layout/Spacing";
+import LoginButtonSection from "@pages/LoginButtonSection";
+import LoginTitleSection from "@pages/LoginTitleSection";
 
 export default function LoginPage() {
   return (

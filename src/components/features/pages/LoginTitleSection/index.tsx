@@ -1,10 +1,10 @@
-import Flex from "@/components/common/shared/layout/Flex";
+import Image from "next/image";
 
 import Star from "@/Star.svg";
 import Login_Logo from "@/Login_Logo.svg";
 
-import Image from "next/image";
-import Text from "@/components/common/shared/ui/Text";
+import Flex from "@shared/layout/Flex";
+import Text from "@shared/ui/Text";
 
 export default function LoginTitleSection() {
   return (

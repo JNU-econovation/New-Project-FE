@@ -1,7 +1,7 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
-import Button from "@/components/common/shared/ui/Button";
-import Text from "@/components/common/shared/ui/Text";
-import TextField from "@/components/common/shared/ui/TextField";
+import Spacing from "@shared/layout/Spacing";
+import Button from "@shared/ui/Button";
+import Text from "@shared/ui/Text";
+import TextField from "@shared/ui/TextField";
 
 export default function EmailAuthSection() {
   return (

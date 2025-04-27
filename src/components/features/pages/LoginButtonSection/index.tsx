@@ -3,10 +3,10 @@ import Image from "next/image";
 import Kakao_Logo from "@/Kakao_Logo.svg";
 import Apple_Logo from "@/Apple_Logo.svg";
 
-import Flex from "@/components/common/shared/layout/Flex";
-import Text from "@/components/common/shared/ui/Text";
-import Button from "@/components/common/shared/ui/Button";
-import Spacing from "@/components/common/shared/layout/Spacing";
+import Flex from "@shared/layout/Flex";
+import Text from "@shared/ui/Text";
+import Button from "@shared/ui/Button";
+import Spacing from "@shared/layout/Spacing";
 
 export default function LoginButtonSection() {
   return (

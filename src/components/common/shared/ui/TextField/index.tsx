@@ -1,8 +1,8 @@
 import { JSX } from "react";
 
-import Spacing from "@/components/common/shared/layout/Spacing";
-import Input from "@/components/common/shared/ui/Input";
-import Text from "@/components/common/shared/ui/Text";
+import Spacing from "@shared/layout/Spacing";
+import Input from "@shared/ui/Input";
+import Text from "@shared/ui/Text";
 
 interface TextFieldProps {
   label: string;
