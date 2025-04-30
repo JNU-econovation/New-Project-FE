@@ -1,4 +1,4 @@
-import { postKakaoLogin } from "@/apis/login";
+import postKakaoLogin, { KAKAO_LOGIN_URI } from "@/apis/login/postKakaoLogin";
 import { useMutation } from "@tanstack/react-query";
 
 const useKakaoLogin = () => {
@@ -18,7 +18,7 @@ const useKakaoLogin = () => {
 
 const useKakaoLoginMutate = () => {
   return useMutation({
-    mutationKey: ["kakaoLogin"],
+    mutationKey: [KAKAO_LOGIN_URI],
     mutationFn: postKakaoLogin,
   });
 };
