@@ -1,3 +1,3 @@
-import axiosInstance from "@/apis/instances/axiosInstance";
+import instance from "@/apis/instances/instance";
 
-export { axiosInstance };
+export { instance };

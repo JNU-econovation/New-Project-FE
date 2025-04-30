@@ -1,13 +1,13 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+const instance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-axiosInstance.interceptors.request.use((config) => {
+instance.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-axiosInstance.interceptors.response.use(
+instance.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -35,4 +35,4 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export default axiosInstance;
+export default instance;
