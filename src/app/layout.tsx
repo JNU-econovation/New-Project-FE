@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   title: "산악구조",
   description: "New Project",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
