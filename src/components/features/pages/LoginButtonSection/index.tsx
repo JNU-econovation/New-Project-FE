@@ -1,6 +1,6 @@
 import Spacing from "@shared/layout/Spacing";
-import AppleLoginButton from "../../widgets/AppleLoginButton";
-import KakaoLoginButton from "../../widgets/KakaoLoginButton";
+import AppleLoginButton from "@/components/features/widgets/AppleLoginButton";
+import KakaoLoginButton from "@/components/features/widgets/KakaoLoginButton";
 
 export default function LoginButtonSection() {
   return (
