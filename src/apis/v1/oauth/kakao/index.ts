@@ -1,4 +1,4 @@
-import { instance } from "@/apis/instances";
+import { instance } from "@/apis/_instances";
 
 export const KAKAO_LOGIN_URI = `v1/oauth/kakao`;
 
