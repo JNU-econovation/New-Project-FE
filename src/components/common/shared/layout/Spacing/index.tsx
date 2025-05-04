@@ -1,7 +1,8 @@
+import { SizeNumberType } from "@/type/css/height";
 import { cn } from "@/utils/cn";
 
 interface SpacingProps {
-  size: number;
+  size: SizeNumberType;
 }
 
 export default function Spacing({ size }: SpacingProps) {
