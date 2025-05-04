@@ -1,3 +1,4 @@
+import { HeightType } from "@/type/css/height";
 import { cn } from "@/utils/cn";
 
 interface FlexProps {
@@ -7,7 +8,7 @@ interface FlexProps {
   alignItems?: AlignItemsType;
   maxWidth?: string;
   gap?: number;
-  height?: number | "h-full" | "h-screen" | "h-min" | "h-max" | "h-fit";
+  height?: HeightType;
 }
 
 type FlexDirectionType =
@@ -41,12 +42,6 @@ export default function Flex({
   gap,
   height,
 }: FlexProps) {
-  let heightClass;
-
-  if (height) {
-    heightClass = typeof height === "number" ? `h-${height}` : height;
-  }
-
   return (
     <div
       className={cn(
@@ -54,7 +49,7 @@ export default function Flex({
         "w-full",
         maxWidth,
         gap ? `gap-${gap}` : "",
-        heightClass,
+        height ? `h-${height}` : "",
         flexDirection,
         justifyContent,
         alignItems
