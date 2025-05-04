@@ -1,4 +1,4 @@
-export type HeightType =
+export type SizeNumberType =
   | 0
   | 0.5
   | 1
@@ -33,9 +33,12 @@ export type HeightType =
   | 72
   | 80
   | 88
-  | 96
+  | 96;
+
+export type SizeType =
   | "full"
   | "screen"
   | "min"
   | "max"
-  | "fit";
+  | "fit "
+  | SizeNumberType;
