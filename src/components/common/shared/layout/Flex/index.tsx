@@ -1,4 +1,4 @@
-import { HeightType } from "@/type/css/height";
+import { SizeType } from "@/type/css/height";
 import { cn } from "@/utils/cn";
 
 interface FlexProps {
@@ -8,7 +8,7 @@ interface FlexProps {
   alignItems?: AlignItemsType;
   maxWidth?: string;
   gap?: number;
-  height?: HeightType;
+  height?: SizeType;
 }
 
 type FlexDirectionType =
