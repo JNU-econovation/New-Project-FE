@@ -13,7 +13,7 @@ export default function SpinnerSection() {
         flexDirection="flex-row"
         justifyContent="justify-center"
         alignItems="items-center"
-        height="h-full"
+        height="full"
       >
         <Spinner size={"md"} />
       </Flex>
