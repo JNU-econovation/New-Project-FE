@@ -74,14 +74,13 @@ const Bridge = ({ onRequest }: BridgeProps) => {
   }, [onRequest]);
 
   useEffect(() => {
-    const webviewReady = (syn: Flag, ack: Flag) => {
-      postMessage({ name: "webview-handshake", flag: { syn, ack } });
+    const postHandShakeMessage = (syn: Flag, ack: Flag) => {
       postMessage({ name: "webview-handshake", flag: { syn, ack } });
     };
-    webviewReady(1, 0);
+    postHandShakeMessage(1, 0);
 
     const timeoutId = setTimeout(() => {
-      webviewReady(1, 0);
+      postHandShakeMessage(1, 0);
     }, TIMEOUT);
 
     const handleMessage = (event: MessageEvent) => {
@@ -94,7 +93,7 @@ const Bridge = ({ onRequest }: BridgeProps) => {
           typeof event.data === "string" ? JSON.parse(event.data) : event.data;
 
         if (name === "webview-handshake" && syn === 1 && ack === 1) {
-          webviewReady(0, 1);
+          postHandShakeMessage(0, 1);
 
           if (timeoutId) clearTimeout(timeoutId);
 
