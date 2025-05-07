@@ -39,9 +39,11 @@ export function Button({
   color,
   size,
   fullWidth,
+  ...props
 }: ButtonProps) {
   return (
     <button
+      {...props}
       className={cn(ButtonVariants({ color, size, className, fullWidth }))}
     >
       {children}

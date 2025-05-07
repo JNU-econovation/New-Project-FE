@@ -1,3 +1,4 @@
+import { SizeNumberType, SizeType } from "@/type/css/height";
 import { cn } from "@/utils/cn";
 
 interface FlexProps {
@@ -6,7 +7,8 @@ interface FlexProps {
   justifyContent?: JustifyContentType;
   alignItems?: AlignItemsType;
   maxWidth?: string;
-  gap?: number;
+  gap?: SizeNumberType;
+  height?: SizeType;
 }
 
 type FlexDirectionType =
@@ -38,6 +40,7 @@ export default function Flex({
   justifyContent = "justify-start",
   maxWidth,
   gap,
+  height,
 }: FlexProps) {
   return (
     <div
@@ -46,6 +49,7 @@ export default function Flex({
         "w-full",
         maxWidth,
         gap ? `gap-${gap}` : "",
+        height ? `h-${height}` : "",
         flexDirection,
         justifyContent,
         alignItems
