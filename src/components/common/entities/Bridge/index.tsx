@@ -50,7 +50,7 @@ function postMessage<Data>(
   document.ReactNativeWebView?.postMessage(JSON.stringify(message));
 }
 
-const Bridge = ({ onRequest }: BridgeProps) => {
+export default function Bridge({ onRequest }: BridgeProps) {
   useEffect(() => {
     const handleMessage = ({ data }: MessageEvent) => {
       try {
@@ -108,6 +108,4 @@ const Bridge = ({ onRequest }: BridgeProps) => {
   }, []);
 
   return null;
-};
-
-export default Bridge;
+}
