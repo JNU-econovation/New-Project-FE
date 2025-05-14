@@ -1,16 +1,24 @@
-# base
-FROM node:20-alpine AS base
-RUN npm install -g pnpm
+# Build Stage
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# builder
-FROM base AS builder
-COPY . .
-RUN pnpm install
+RUN npm install -g pnpm
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install --frozen-lockfile
+
+COPY tsconfig.json next.config.ts ./
+COPY public ./public
+COPY src ./src
+
 RUN pnpm build
 
-# runner
-FROM base AS runner
-COPY --from=builder /app ./
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/static ./.next/static
+
 EXPOSE 3000
-CMD ["pnpm", "start"]
+CMD ["node", "server.js"]
