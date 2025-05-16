@@ -3,9 +3,11 @@
 import Flex from "@/components/common/shared/layout/Flex";
 import Spinner from "@/components/common/shared/ui/Spinner";
 import useSaveToken from "@/hooks/social-login-loading/useSaveToken";
+import useSendToken from "@/hooks/useSendToken";
 
-export default function SpinnerSection() {
+export default function TokenProcessingSection() {
   useSaveToken();
+  useSendToken();
 
   return (
     <section className="h-screen">

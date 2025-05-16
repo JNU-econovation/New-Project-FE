@@ -1,6 +1,11 @@
-// import SpinnerSection from "@/components/features/pages/social-login-loading/SpinnerSection";
+import Spinner from "@/components/common/shared/ui/Spinner";
+import TokenProcessingSection from "@/components/features/pages/social-login-loading/TokenProcessingSection";
 import { Suspense } from "react";
 
 export default function SocialLoginLoadingPage() {
-  return <Suspense>{/* <SpinnerSection /> */}</Suspense>;
+  return (
+    <Suspense fallback={<Spinner size={"md"} />}>
+      <TokenProcessingSection />
+    </Suspense>
+  );
 }
