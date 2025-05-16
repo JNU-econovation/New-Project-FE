@@ -1,9 +1,9 @@
 "use client";
 
-import {
+import type {
   MessageEventRequestData,
   MessageEventResponseData,
-} from "@/components/common/entities/Bridge";
+} from "@/type/bridge";
 import { useEffect } from "react";
 
 type EventHandler = (event: MessageEvent) => void;
