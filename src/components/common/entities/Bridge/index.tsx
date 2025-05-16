@@ -1,6 +1,6 @@
 "use client";
 
-import {
+import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/type/bridge";
