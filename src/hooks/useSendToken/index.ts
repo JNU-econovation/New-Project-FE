@@ -6,23 +6,22 @@ const useSendToken = () => {
   const searchParams = useSearchParams();
   const { request } = useBridge();
 
-  const accessToken = searchParams.get("access_token");
-  const refreshToken = searchParams.get("refresh_token");
+  const accessToken = searchParams.get("accessToken");
+  const refreshToken = searchParams.get("refreshToken");
 
   useEffect(() => {
-    if (!accessToken && !refreshToken) {
-      request({
-        requestMessage: {
-          name: "put-token",
-          method: "POST",
-          body: {
-            accessToken,
-            refreshToken,
-          },
+    if (!accessToken && !refreshToken) return;
+
+    request({
+      requestMessage: {
+        name: "put-token",
+        method: "POST",
+        body: {
+          accessToken,
+          refreshToken,
         },
-        responseCallback: () => {},
-      });
-    }
+      },
+    });
   }, [accessToken, refreshToken, request]);
 };
 
