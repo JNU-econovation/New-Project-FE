@@ -1,12 +1,12 @@
 "use client";
 
-import Flex from "@/components/common/shared/layout/Flex";
-import Spinner from "@/components/common/shared/ui/Spinner";
-import useSaveToken from "@/hooks/social-login-loading/useSaveToken";
-import useSendToken from "@/hooks/useSendToken";
+import Flex from "@shared/layout/Flex";
+import Spinner from "@shared/ui/Spinner";
+import useSaveAuthToken from "@hooks/feature/useSaveAuthToken";
+import useSendToken from "@hooks/common/useSendToken";
 
 export default function TokenProcessingSection() {
-  useSaveToken();
+  useSaveAuthToken();
   useSendToken();
 
   return (
