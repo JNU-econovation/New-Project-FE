@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-const useSaveToken = () => {
+const useSaveAuthToken = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -16,4 +16,4 @@ const useSaveToken = () => {
   }, [accessToken, refreshToken, router]);
 };
 
-export default useSaveToken;
+export default useSaveAuthToken;
