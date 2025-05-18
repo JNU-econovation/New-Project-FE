@@ -5,7 +5,7 @@ import { useKakaoLoginMutate } from "@/hooks/query/login/useKakaoLoginMutate";
 import {
   MessageEventRequestData,
   MessageEventResponseData,
-} from "@/type/bridge";
+} from "@/types/bridge";
 
 export default function LoginBridge() {
   const { mutate: kakaoLogin } = useKakaoLoginMutate();
