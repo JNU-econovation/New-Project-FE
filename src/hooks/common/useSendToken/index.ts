@@ -1,4 +1,4 @@
-import { useBridge } from "@hooks/useBridge";
+import { useBridge } from "@/hooks/common/useBridge";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
