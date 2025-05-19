@@ -1,7 +1,7 @@
 "use client";
 
-import Bridge from "@/components/common/entities/Bridge";
-import { useKakaoLoginMutate } from "@/hooks/query/login/useKakaoLoginMutate";
+import Bridge from "@entities/Bridge";
+import { useKakaoLoginMutate } from "@hooks/query/login/useKakaoLoginMutate";
 import {
   MessageEventRequestData,
   MessageEventResponseData,
