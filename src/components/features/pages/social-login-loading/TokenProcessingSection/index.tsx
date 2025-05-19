@@ -3,7 +3,7 @@
 import Flex from "@shared/layout/Flex";
 import Spinner from "@shared/ui/Spinner";
 import useSaveAuthToken from "@hooks/feature/useSaveAuthToken";
-import useSendToken from "@hooks/common/useSendToken";
+import useSendToken from "@hooks/useSendToken";
 
 export default function TokenProcessingSection() {
   useSaveAuthToken();

@@ -1,6 +1,3 @@
-"use client";
-
-import ROUTE from "@/constants/route";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -15,16 +12,6 @@ const useSaveAuthToken = () => {
     if (accessToken && refreshToken) {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
-
-      const localStorageAccessToken = localStorage.getItem("accessToken");
-      const localStorageRefreshToken = localStorage.getItem("refreshToken");
-
-      if (
-        localStorageAccessToken === accessToken &&
-        localStorageRefreshToken === refreshToken
-      ) {
-        router.push(ROUTE.MAIN);
-      }
     }
   }, [accessToken, refreshToken, router]);
 };
