@@ -1,7 +1,7 @@
-import Flex from "@/components/common/shared/layout/Flex";
-import MountainGridSection from "@/components/features/pages/course/MountainGridSection";
-import MountainSearchBarSection from "@/components/features/pages/course/MountainSearchBarSection";
-import MountainSearchTitleSection from "@/components/features/pages/course/MountainSearchTitleSection";
+import MountainGridSection from "@pages/course/MountainGridSection";
+import MountainSearchBarSection from "@pages/course/MountainSearchBarSection";
+import MountainSearchTitleSection from "@pages/course/MountainSearchTitleSection";
+import Flex from "@shared/layout/Flex";
 import Spacing from "@shared/layout/Spacing";
 
 export default function CoursePage() {
