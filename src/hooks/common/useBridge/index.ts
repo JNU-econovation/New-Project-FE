@@ -1,8 +1,8 @@
 "use client";
 
 import type {
-  MessageEventResponseData,
   MessageEventRequestData,
+  MessageEventResponseData,
 } from "@/types/bridge";
 import { useEffect } from "react";
 
