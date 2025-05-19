@@ -25,17 +25,20 @@ export default function MountainSearchBarSection() {
     setCurrentSearchTexts(prevSearchTexts);
   }, []);
 
-  const postNavigateMessage = useCallback(() => {
-    request({
-      requestMessage: {
-        method: "POST",
-        name: "request-navigate",
-        body: {
-          params: searchText,
+  const postNavigateMessage = useCallback(
+    (mountainName: string) => {
+      request({
+        requestMessage: {
+          method: "POST",
+          name: "request-navigate",
+          body: {
+            mountainName,
+          },
         },
-      },
-    });
-  }, [request, searchText]);
+      });
+    },
+    [request]
+  );
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +56,7 @@ export default function MountainSearchBarSection() {
     ]);
     localStorage.setItem("currenMountainSearchList", newCurrentSearchTexts);
 
-    postNavigateMessage();
+    postNavigateMessage(searchText);
   }, [currentSearchTexts, postNavigateMessage, searchText]);
 
   const handleDeleteAll = useCallback(() => {
@@ -63,9 +66,12 @@ export default function MountainSearchBarSection() {
     setCurrentSearchTexts([]);
   }, []);
 
-  const handleClickTag = useCallback(() => {
-    postNavigateMessage();
-  }, [postNavigateMessage]);
+  const handleClickTag = useCallback(
+    (mountainName: string) => {
+      postNavigateMessage(mountainName);
+    },
+    [postNavigateMessage]
+  );
 
   const handleClickCancel = useCallback(
     (text: string) => {
@@ -122,7 +128,7 @@ export default function MountainSearchBarSection() {
               <TagItemWithCancel
                 key={index}
                 text={text}
-                onClickTag={handleClickTag}
+                onClickTag={() => handleClickTag(text)}
                 onClickCancel={() => {
                   handleClickCancel(text);
                 }}
