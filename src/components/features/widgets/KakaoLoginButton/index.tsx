@@ -1,10 +1,10 @@
 "use client";
 
-import Flex from "@/components/common/shared/layout/Flex";
-import Text from "@/components/common/shared/ui/Text";
+import Flex from "@shared/layout/Flex";
+import Text from "@shared/ui/Text";
 import Image from "next/image";
 import Kakao_Logo from "@/icons/Kakao_Logo.svg";
-import Button from "@/components/common/shared/ui/Button";
+import Button from "@shared/ui/Button";
 import useKakaoLogin from "@/hooks/login/useKakaoLogin";
 
 export default function KakaoLoginButton() {
