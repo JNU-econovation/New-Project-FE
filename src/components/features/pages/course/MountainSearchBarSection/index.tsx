@@ -84,7 +84,7 @@ export default function MountainSearchBarSection() {
   return (
     <>
       {isFocused ? (
-        <div className="absolute top-0 right-0 w-full h-full z-20 bg-white transition-all flex flex-col px-6">
+        <div className="absolute top-0 right-0 w-full h-full z-20 bg-white flex flex-col px-6">
           <Spacing size={16} />
           <div>
             <span onClick={() => setIsFocused(false)}>&larr;</span>
