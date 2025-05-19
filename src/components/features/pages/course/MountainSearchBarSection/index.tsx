@@ -1,10 +1,9 @@
 "use client";
 
-import Search from "@/icons/Search.svg";
 import { useBridge } from "@hooks/common/useBridge";
 import Spacing from "@shared/layout/Spacing";
+import SearchInput from "@shared/ui/SearchInput";
 import TagItemWithCancel from "@shared/ui/TagItemWithCancel";
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function MountainSearchBarSection() {
@@ -96,24 +95,14 @@ export default function MountainSearchBarSection() {
             <span onClick={() => setIsFocused(false)}>&larr;</span>
           </div>
           <Spacing size={8} />
-          <div className="relative">
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder="산 이름을 입력해주세요"
-              className="rounded-full text-lg p-4 shadow z-30 w-full"
-              autoFocus
-              onFocus={() => setIsFocused(true)}
-              onChange={handleInputChange}
-              value={searchText}
-            />
-            <button
-              onClick={handleSearch}
-              className="absolute top-1/2 right-4 -translate-y-1/2"
-            >
-              <Image src={Search} alt="산 검색" />
-            </button>
-          </div>
+          <SearchInput
+            inputRef={inputRef}
+            placeholder="산 이름을 입력해주세요"
+            onFocus={() => setIsFocused(true)}
+            onChange={handleInputChange}
+            value={searchText}
+            handleSearch={handleSearch}
+          />
 
           <Spacing size={8} />
           <div className="flex justify-between">
@@ -137,20 +126,11 @@ export default function MountainSearchBarSection() {
           </div>
         </div>
       ) : (
-        <div className="relative">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="산 이름을 입력해주세요"
-            className="rounded-full text-lg p-4 shadow z-30 w-full"
-            onFocus={() => setIsFocused(true)}
-          />
-          <Image
-            src={Search}
-            alt="search"
-            className="absolute top-1/2 right-4 -translate-y-1/2"
-          />
-        </div>
+        <SearchInput
+          inputRef={inputRef}
+          placeholder="산 이름을 입력해주세요"
+          onFocus={() => setIsFocused(true)}
+        />
       )}
     </>
   );
