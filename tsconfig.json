@@ -33,6 +33,9 @@
       "@pages/*": [
         "./src/components/features/pages/*"
       ],
+      "@widgets/*": [
+        "./src/components/features/widgets/*"
+      ],
       "@api/*": [
         "./src/api/*"
       ],
