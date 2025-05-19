@@ -1,9 +1,9 @@
 "use client";
 
-import Spacing from "@/components/common/shared/layout/Spacing";
-import TagItemWithCancel from "@/components/common/shared/ui/TagItemWithCancel";
 import Search from "@/icons/Search.svg";
 import { useBridge } from "@hooks/common/useBridge";
+import Spacing from "@shared/layout/Spacing";
+import TagItemWithCancel from "@shared/ui/TagItemWithCancel";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -83,24 +83,7 @@ export default function MountainSearchBarSection() {
 
   return (
     <>
-      {!isFocused && (
-        <div className="relative">
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder="산 이름을 입력해주세요"
-            className="rounded-full text-lg p-4 shadow z-30 w-full"
-            onFocus={() => setIsFocused(true)}
-          />
-          <Image
-            src={Search}
-            alt="search"
-            className="absolute top-1/2 right-4 -translate-y-1/2"
-          />
-        </div>
-      )}
-
-      {isFocused && (
+      {isFocused ? (
         <div className="absolute top-0 right-0 w-full h-full z-20 bg-white transition-all flex flex-col px-6">
           <Spacing size={16} />
           <div>
@@ -139,15 +122,28 @@ export default function MountainSearchBarSection() {
               <TagItemWithCancel
                 key={index}
                 text={text}
-                onClickTag={() => {
-                  handleClickTag();
-                }}
+                onClickTag={handleClickTag}
                 onClickCancel={() => {
                   handleClickCancel(text);
                 }}
               />
             ))}
           </div>
+        </div>
+      ) : (
+        <div className="relative">
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="산 이름을 입력해주세요"
+            className="rounded-full text-lg p-4 shadow z-30 w-full"
+            onFocus={() => setIsFocused(true)}
+          />
+          <Image
+            src={Search}
+            alt="search"
+            className="absolute top-1/2 right-4 -translate-y-1/2"
+          />
         </div>
       )}
     </>
