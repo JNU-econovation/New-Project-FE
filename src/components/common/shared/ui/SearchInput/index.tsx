@@ -2,7 +2,7 @@ import Search from "@/icons/Search.svg";
 import Image from "next/image";
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  inputRef: React.RefObject<HTMLInputElement | null>;
+  inputRef?: React.RefObject<HTMLInputElement | null>;
   handleSearch?: () => void;
 }
 
