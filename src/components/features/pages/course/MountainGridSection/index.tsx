@@ -1,27 +1,11 @@
 "use client";
 
-import { useBridge } from "@/hooks/common/useBridge";
+import useRouteMountainCourseBridge from "@/hooks/bridge/useRouteMountainCourseBridge";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
-import { useCallback } from "react";
 
 export default function MountainGridSection() {
-  const { request } = useBridge();
-
-  const postNavigateMessage = useCallback(
-    (mountainName: string) => {
-      request({
-        requestMessage: {
-          method: "POST",
-          name: "request-navigate",
-          body: {
-            mountainName,
-          },
-        },
-      });
-    },
-    [request]
-  );
+  const routeToCoursePage = useRouteMountainCourseBridge();
 
   return (
     <section className="flex grow gap-4">
@@ -29,11 +13,11 @@ export default function MountainGridSection() {
         <button
           className="h-72 rounded-2xl flex items-center justify-center relative overflow-hidden"
           style={{
-            backgroundImage: `url('/images/mudeungsan.jpg')`,
+            backgroundImage: `url('/images/mudeungsan.jpg')`, //TODO: 하드 코딩 없애기 -> 정적 이미지 주소를 관리하는 방법 고안 필요
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
-          onClick={() => postNavigateMessage("무등산")}
+          onClick={() => routeToCoursePage("무등산")}
         >
           <div className="absolute top-0 right-0 bg-black opacity-40 w-full h-full" />
           <div className="absolute top-6 right-4">

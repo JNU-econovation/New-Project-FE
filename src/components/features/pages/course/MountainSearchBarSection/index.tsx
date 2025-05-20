@@ -1,9 +1,11 @@
 "use client";
 
+import Left_Chevron from "@/icons/Left_Chevron.svg";
 import { useBridge } from "@hooks/common/useBridge";
 import Spacing from "@shared/layout/Spacing";
 import SearchInput from "@shared/ui/SearchInput";
 import TagItemWithCancel from "@shared/ui/TagItemWithCancel";
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function MountainSearchBarSection() {
@@ -91,9 +93,11 @@ export default function MountainSearchBarSection() {
       {isFocused ? (
         <div className="absolute top-0 right-0 w-full h-full z-20 bg-white flex flex-col px-6">
           <Spacing size={16} />
-          <div>
-            <span onClick={() => setIsFocused(false)}>&larr;</span>
-          </div>
+
+          <button onClick={() => setIsFocused(false)}>
+            <Image src={Left_Chevron} alt="뒤로 가기" />
+          </button>
+
           <Spacing size={8} />
           <SearchInput
             inputRef={inputRef}
@@ -102,6 +106,7 @@ export default function MountainSearchBarSection() {
             onChange={handleInputChange}
             value={searchText}
             handleSearch={handleSearch}
+            autoFocus
           />
 
           <Spacing size={8} />
