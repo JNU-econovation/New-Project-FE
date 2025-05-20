@@ -2,17 +2,21 @@ import CourseSearchBarSection from "@pages/course/CourseSearchNarSection";
 import CourseTabSection from "@pages/course/CourseTabBarSection";
 import Spacing from "@shared/layout/Spacing";
 import BackButton from "@/components/features/widgets/BackButton";
+import Flex from "@/components/common/shared/layout/Flex";
 
 export default function MountainCoursePage() {
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
-      <div className="px-6 pt-12 flex flex-col">
-        <BackButton />
-        <Spacing size={8} />
-        <CourseSearchBarSection />
-        <Spacing size={4} />
-      </div>
+    // <div className="flex flex-col h-screen overflow-hidden">
+    <Flex flexDirection="flex-col" height={"screen"}>
+      <Flex flexDirection="flex-col">
+        <div className="px-6 pt-12">
+          <BackButton />
+          <Spacing size={8} />
+          <CourseSearchBarSection />
+          <Spacing size={4} />
+        </div>
+      </Flex>
       <CourseTabSection />
-    </div>
+    </Flex>
   );
 }
