@@ -8,36 +8,55 @@ import { useEffect } from "react";
 
 type EventHandler = (event: MessageEvent) => void;
 
-interface RequestProps<T> {
-  requestMessage: MessageEventRequestData;
-  responseCallback?: (resMessage: MessageEventResponseData<T>) => void;
+interface RequestProps<ReqBody = unknown, ResBody = unknown> {
+  requestMessage: MessageEventRequestData<ReqBody>;
+  responseCallback?: (resMessage: MessageEventResponseData<ResBody>) => void;
 }
 
-const eventHandlers: EventHandler[] = [];
+// key : bridge name
+// value : event handler
+const RcvBuffer: {
+  [name: string]: EventHandler;
+}[] = [];
 
 export const useBridge = () => {
   useEffect(() => {
     return () => {
-      eventHandlers.forEach((handler) => {
+      RcvBuffer.map((item) => Object.values(item)[0]).forEach((handler) => {
         window.removeEventListener("message", handler);
       });
-      eventHandlers.length = 0;
+      RcvBuffer.length = 0;
     };
   }, []);
 
-  const request = <T>({
+  const request = <ReqBody = unknown, ResBody = unknown>({
     requestMessage,
     responseCallback,
-  }: RequestProps<T>) => {
+  }: RequestProps<ReqBody, ResBody>) => {
+    if (typeof window === "undefined") return;
+
     window.ReactNativeWebView?.postMessage(JSON.stringify(requestMessage));
+    document.ReactNativeWebView?.postMessage(JSON.stringify(requestMessage));
 
     const handler = (event: MessageEvent) => {
-      if (event.data.name !== requestMessage.name) return;
-      if (!responseCallback) return;
-      responseCallback(event.data);
+      const rsvMessage = JSON.parse(
+        event.data
+      ) as MessageEventResponseData<ResBody>;
+      RcvBuffer.map((item) => Object.keys(item)[0]).forEach((name, index) => {
+        if (name === rsvMessage.name) {
+          window.removeEventListener("message", RcvBuffer[index][name]);
+          RcvBuffer.splice(index, 1);
+
+          if (!responseCallback) return;
+          responseCallback(rsvMessage);
+        }
+      });
     };
 
-    eventHandlers.push(handler);
+    // eventHandlers.push(handler);
+    RcvBuffer.push({
+      [requestMessage.name]: handler,
+    });
 
     window.addEventListener("message", handler);
   };
