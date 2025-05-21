@@ -6,7 +6,6 @@ import Flex from "@/components/common/shared/layout/Flex";
 
 export default function MountainCoursePage() {
   return (
-    // <div className="flex flex-col h-screen overflow-hidden">
     <Flex flexDirection="flex-col" height={"screen"}>
       <Flex flexDirection="flex-col">
         <div className="px-6 pt-12">
