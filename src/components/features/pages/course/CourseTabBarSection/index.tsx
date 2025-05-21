@@ -1,12 +1,13 @@
 "use client";
 
-import Clock from "@/icons/Clock.svg";
-import Position_Pointer from "@/icons/Position_Pointer.svg";
 import Spacing from "@/components/common/shared/layout/Spacing";
 import ROUTE from "@/constants/route";
+import useRouteCourseDetail from "@/hooks/bridge/useRouteCourseDetail";
+import Clock from "@/icons/Clock.svg";
+import Position_Pointer from "@/icons/Position_Pointer.svg";
 import { cn } from "@/utils/cn";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 const tabTitleList = [
   { title: "내 맞춤형", sort: "my" },
@@ -20,6 +21,7 @@ export default function CourseTabSection() {
   const { mountainName } = useParams<{ mountainName: string }>();
   const searchParams = useSearchParams();
   const sortBy = searchParams.get("sort");
+  const routeCourseDetail = useRouteCourseDetail();
 
   // TODO: 서버에서 데이터 받아오기
   const courseList = new Array(10).fill(0);
@@ -57,7 +59,11 @@ export default function CourseTabSection() {
             className="flex gap-4 justify-between bg-white rounded-lg p-3"
             key={index} //TODO: key 수정 필요
           >
-            <div className="flex flex-col justify-between grow">
+            <div
+              className="flex flex-col justify-between grow"
+              onClick={routeCourseDetail}
+              typeof="button"
+            >
               <span className="text-lg font-semibold">
                 증심사 - 중머리재 - 원효분소
               </span>
