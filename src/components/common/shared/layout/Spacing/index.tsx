@@ -10,7 +10,7 @@ export default memo(function Spacing({ size }: SpacingProps) {
   return (
     <div
       style={{
-        marginTop: `${size * 0.25}rem`,
+        height: `${size * 0.25}rem`,
       }}
     />
   );
