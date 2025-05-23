@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/utils/cn";
 
-export const ButtonVariants = cva(`rounded-lg`, {
+export const ButtonVariants = cva(`rounded-xl font-bold text-lg`, {
   variants: {
     color: {
       green: "bg-main-green text-white",
@@ -15,7 +15,7 @@ export const ButtonVariants = cva(`rounded-lg`, {
       lg: "px-4 py-2",
     },
     fullWidth: {
-      true: "w-full p-4",
+      true: "w-full p-3",
       false: "",
     },
   },
