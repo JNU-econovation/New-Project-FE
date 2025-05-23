@@ -42,6 +42,19 @@ NaverMapProps) => {
     (lat: number, lng: number) => {
       const mapOptions = {
         center: new naver.maps.LatLng(lat, lng),
+        logoControl: false,
+        logoControlOptions: {
+          position: naver.maps.Position.LEFT_TOP,
+        },
+        scaleControl: false,
+        scaleControlOptions: {
+          position: naver.maps.Position.BOTTOM_LEFT,
+        },
+        mapDataControl: false,
+        mapDataControlOptions: {
+          position: naver.maps.Position.BOTTOM_LEFT,
+        },
+
         // zoom,
       };
 
