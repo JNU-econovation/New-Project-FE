@@ -9,8 +9,8 @@ const MapWithCurrentPositionMark = dynamic(
 
 export default function CourseDetailMapSection() {
   return (
-    <div className="absolute top-0 left-0 w-full h-full -z-50">
-      <MapWithCurrentPositionMark />;
+    <div className="absolute top-0 left-0 w-full h-full">
+      <MapWithCurrentPositionMark />
     </div>
   );
 }
