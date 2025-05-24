@@ -4,7 +4,7 @@ import MapHeaderTag from "@/components/common/shared/ui/MapHeaderTag";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-export default function MapTagHeaderSection() {
+export default function MapTadHeaderSection() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const selectedTagId = searchParams.get("tag") || "base";
@@ -30,7 +30,8 @@ export default function MapTagHeaderSection() {
           text={text}
           isSelected={id === selectedTagId}
           onClickHandler={() => {
-            router.replace(`/map/course-detail?tag=${id}`);
+            //TODO: 상수 데이터 따로 빼기
+            router.replace(`/map?tag=${id}`);
           }}
         />
       ))}
