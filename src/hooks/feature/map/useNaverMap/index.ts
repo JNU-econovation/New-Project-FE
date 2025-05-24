@@ -44,7 +44,7 @@ NaverMapProps) => {
         center: new naver.maps.LatLng(lat, lng),
         logoControl: false,
         logoControlOptions: {
-          position: naver.maps.Position.LEFT_TOP,
+          position: naver.maps.Position.RIGHT_TOP,
         },
         scaleControl: false,
         scaleControlOptions: {
