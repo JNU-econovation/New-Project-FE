@@ -2,7 +2,6 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import Spacing from "@shared/layout/Spacing";
 import { PropsWithChildren, useEffect, useRef, useState } from "react";
 
 const MIN_CONTENT_HEIGHT = 0; // 최소 컨텐츠 높이
@@ -161,14 +160,11 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
     <div
       ref={bottomSheet}
       className={cn(
-        "rounded-2xl bg-white overflow-hidden transition-all transform-gpu shadow-lg",
-        {
-          "border border-gray-300": debug,
-        }
+        "rounded-2xl bg-white overflow-hidden transition-all transform-gpu shadow-md"
       )}
     >
       <button
-        className="w-full flex items-center justify-center pt-2 pb-6 select-none h-fit cursor-grab active:cursor-grabbing"
+        className="w-full flex items-center justify-center pt-3 pb-6 select-none h-fit"
         onMouseDown={(e) => {
           e.preventDefault();
           setIsPressed(true);
@@ -182,7 +178,7 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
           setCurrentY(e.touches[0].clientY);
         }}
       >
-        <div className="w-16 h-2 bg-gray-300 rounded-2xl" />
+        <div className="w-16 h-2 bg-main-green rounded-2xl" />
       </button>
 
       {debug && (
@@ -198,20 +194,16 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
         </div>
       )}
 
-      <Spacing size={4} />
-
       <div
         ref={bottomSheetContent}
-        className="overflow-y-auto px-4"
+        className="px-4"
         style={{
           height: isReady ? `${contentHeight}px` : "auto",
-          transition: isPressed ? "none" : "height 0.3s ease-out",
+          transition: isPressed ? "none" : "height 0.25s ease-out",
         }}
       >
         {children}
       </div>
-
-      <Spacing size={2} />
     </div>
   );
 }
