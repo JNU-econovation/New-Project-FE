@@ -1,10 +1,10 @@
-import CourseDetailMapTagHeaderSection from "@pages/map/CourseDetailMapTagHeaderSection";
-import TravelStartButton from "@widgets/TravelStartButton";
 import CourseDetailBottomSheetSection from "@pages/map/CourseDetailBottomSheetSection";
 import CourseDetailMapSection from "@pages/map/CourseDetailMapSection";
+import CourseDetailMapTagHeaderSection from "@pages/map/CourseDetailMapTagHeaderSection";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import BackButton from "@widgets/BackButton";
+import TravelStartButton from "@widgets/TravelStartButton";
 
 export default function CourseDetailPage() {
   return (
@@ -15,7 +15,7 @@ export default function CourseDetailPage() {
         <Spacing size={3} />
         <CourseDetailMapTagHeaderSection />
       </div>
-      <PositionBottom bottom={72}>
+      <PositionBottom bottom={88}>
         <div className="px-6">
           <CourseDetailBottomSheetSection />
         </div>
@@ -26,7 +26,6 @@ export default function CourseDetailPage() {
           <TravelStartButton />
         </div>
       </PositionBottom>
-      {/* </div> */}
       <CourseDetailMapSection />
     </div>
   );
