@@ -1,0 +1,101 @@
+"use client";
+
+import { cn } from "@/utils/cn";
+import { ReactNode, useEffect, useRef, useState } from "react";
+
+interface CarouselProps {
+  items: ReactNode[];
+}
+
+export default function Carousel({ items }: CarouselProps) {
+  const [prevX, setPrevX] = useState(0);
+  const [x, setX] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.getElementById(`page-${currentIndex}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start",
+    });
+  }, [currentIndex, items.length]);
+
+  return (
+    <div>
+      <div
+        ref={ref}
+        className="flex max-w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 transition-all"
+        onTouchStart={(e) => {
+          setPrevX(e.currentTarget.scrollLeft);
+        }}
+        onScroll={(e) => {
+          if (e.currentTarget.scrollLeft <= 0) setX(0);
+          setX(e.currentTarget.scrollLeft);
+        }}
+        onTouchEnd={(e) => {
+          if (x <= 0) {
+            setCurrentIndex(0);
+            e.currentTarget.scrollLeft = prevX;
+            return;
+          }
+          if (currentIndex >= items.length - 1 && x > prevX) {
+            // no swipe
+            setCurrentIndex(items.length - 1);
+            e.currentTarget.scrollLeft = prevX;
+            return;
+          }
+          if (x > prevX) {
+            //right swipe
+            const nextIndex =
+              currentIndex >= items.length ? currentIndex : currentIndex + 1;
+            document.getElementById(`page-${nextIndex}`)?.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "start",
+            });
+            setCurrentIndex(nextIndex);
+          }
+          if (x < prevX) {
+            //left swipe
+            const nextIndex = currentIndex <= 0 ? 0 : currentIndex - 1;
+            document.getElementById(`page-${nextIndex}`)?.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "start",
+            });
+            setCurrentIndex(nextIndex);
+          } else {
+            // no swipe
+            document.getElementById(`page-${currentIndex}`)?.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "start",
+            });
+          }
+        }}
+      >
+        {items.map((component, index) => (
+          <div
+            key={index * 123 + 10}
+            id={`page-${index}`}
+            className="flex-shrink-0 w-full snap-center"
+          >
+            {component}
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center justify-center gap-2 mt-4">
+        {items.map((_, index) => (
+          <div
+            className={cn("w-2 h-2 rounded-full", {
+              "bg-main-green": currentIndex === index,
+              "bg-gray-20": currentIndex !== index,
+            })}
+            key={index}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
