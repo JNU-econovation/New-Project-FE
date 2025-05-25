@@ -5,7 +5,7 @@ import { Position } from "@/hooks/bridge/useGetCurrentPositionBridge";
 import useLogBridge from "@/hooks/bridge/useLogBridge";
 import { useNaverMap } from "@/hooks/feature/map/useNaverMap";
 import { useSetMarker } from "@/hooks/feature/map/useSetMarker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const defaultPosition = { latitude: 35.9789064, longitude: 126.9079232 };
 
@@ -23,7 +23,9 @@ export default function MapWithCurrentPositionMark() {
     setCurrentPosition({ latitude, longitude });
   };
 
-  getCurrentPosition(onResponse);
+  useEffect(() => {
+    getCurrentPosition(onResponse);
+  }, [getCurrentPosition]);
 
   const { mapId, map } = useNaverMap(currentPosition);
   const logBridge = useLogBridge();
