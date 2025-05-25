@@ -1,12 +1,10 @@
 "use client";
 
 import Spacing from "@/components/common/shared/layout/Spacing";
+import CourseMetaDataUi from "@/components/common/shared/ui/CourseMetaDataUi";
 import ROUTE from "@/constants/route";
 import useRouteCourseDetail from "@/hooks/bridge/useRouteCourseDetail";
-import Clock from "@/icons/Clock.svg";
-import Position_Pointer from "@/icons/Position_Pointer.svg";
 import { cn } from "@/utils/cn";
-import Image from "next/image";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 const tabTitleList = [
@@ -67,19 +65,7 @@ export default function CourseTabSection() {
               <span className="text-lg font-semibold">
                 증심사 - 중머리재 - 원효분소
               </span>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-1">
-                  <Image src={Position_Pointer} alt="거리" />
-                  <span className="text-gray-20 text-sm">{"41"}km</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Image src={Clock} alt="소요시간" />
-                  <span className="text-gray-20 text-sm">{"4"}시간</span>
-                </div>
-                <div className="rounded-xl border-gray-200 border px-4 text-yellow-500 text-sm">
-                  보통
-                </div>
-              </div>
+              <CourseMetaDataUi time={4} distance={41} difficulty="normal" />
             </div>
             <div className="w-24 h-24 bg-slate-100 rounded-xl" />
           </li>
