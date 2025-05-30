@@ -1,0 +1,36 @@
+import Spacing from "@/components/common/shared/layout/Spacing";
+import Text from "@/components/common/shared/ui/Text";
+import ROUTE from "@/constants/route";
+import Link from "next/link";
+
+export default function EnvironmentSection() {
+  return (
+    <div className="border-b border-gray-30">
+      <Spacing size={4} />
+      <Text fontSize="text-xl" color="text-main-green">
+        환경
+      </Text>
+      <Spacing size={2} />
+      <Link
+        href={ROUTE.NOTIFICATION_SETTINGS}
+        className="flex items-center justify-between h-10"
+      >
+        <Text fontSize="text-xl" fontWeight="font-medium">
+          알림 설정
+        </Text>
+        <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
+          {">"}
+        </Text>
+      </Link>
+      <Spacing size={2} />
+      <div className="flex items-center justify-between h-10">
+        <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
+          버전 정보
+        </Text>
+        <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
+          {"2.0.0"}
+        </Text>
+      </div>
+    </div>
+  );
+}
