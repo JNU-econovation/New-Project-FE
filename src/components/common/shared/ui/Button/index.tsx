@@ -10,6 +10,7 @@ export const ButtonVariants = cva(`rounded-xl font-bold text-lg`, {
       kakaoYellow: "bg-kakao-yellow text-black",
       black: "bg-black text-white",
       white: "bg-white text-black",
+      gray: "bg-gray-200 text-black",
     },
     size: {
       lg: "px-4 py-2",
