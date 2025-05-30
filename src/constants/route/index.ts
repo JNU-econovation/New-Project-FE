@@ -18,6 +18,7 @@ const ROUTE = {
   INQUIRY: "/my-page/inquiry",
   INQUIRY_HISTORY: "/my-page/inquiry-history",
   CHECK_TERMS: "/my-page/check-terms",
+  NOTIFICATION_SETTINGS: "/my-page/notification-settings",
 };
 
 export default ROUTE;
