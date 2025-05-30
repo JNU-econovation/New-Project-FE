@@ -14,6 +14,10 @@ const ROUTE = {
   MY_INFO: "/my-page/my-info",
   HIKING_LOG: "/my-page/hiking-log",
   COURSE_BOOKMARK: "/my-page/course-bookmark",
+  FAQ: "/my-page/faq",
+  INQUIRY: "/my-page/inquiry",
+  INQUIRY_HISTORY: "/my-page/inquiry-history",
+  CHECK_TERMS: "/my-page/check-terms",
 };
 
 export default ROUTE;
