@@ -19,6 +19,7 @@ const ROUTE = {
   INQUIRY_HISTORY: "/my-page/inquiry-history",
   CHECK_TERMS: "/my-page/check-terms",
   NOTIFICATION_SETTINGS: "/my-page/notification-settings",
+  CHANGE_PASSWORD: "/my-page/change-password",
 };
 
 export default ROUTE;
