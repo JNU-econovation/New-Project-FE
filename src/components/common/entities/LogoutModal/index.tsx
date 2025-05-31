@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef } from "react";
+import { useRef } from "react";
 
 import ModalPortal from "@/components/common/entities/ModalPortal";
 import useOutsideClick from "@/hooks/common/useOutsideClick";
@@ -7,13 +7,17 @@ import Button from "../../shared/ui/Button";
 import Spacing from "@/components/common/shared/layout/Spacing";
 
 interface ModalProps {
-  setState: Dispatch<SetStateAction<boolean>>;
+  openModal: () => void;
+  closeModal: () => void;
 }
 
-export default function LogoutModal({ setState }: ModalProps) {
+export default function LogoutModal({
+  closeModal,
+}: // , openModal
+ModalProps) {
   const modalRef = useRef<HTMLDivElement>(null!);
 
-  useOutsideClick([modalRef], () => setState(false));
+  useOutsideClick([modalRef], closeModal);
 
   return (
     <ModalPortal>
@@ -23,7 +27,7 @@ export default function LogoutModal({ setState }: ModalProps) {
             <Text fontSize="text-xl">로그아웃 하시겠습니까?</Text>
             <Spacing size={4} />
             <div className="flex justify-center gap-4 w-full">
-              <Button fullWidth color={"gray"} onClick={() => setState(false)}>
+              <Button fullWidth color={"gray"} onClick={closeModal}>
                 취소
               </Button>
               <Spacing size={4} />
