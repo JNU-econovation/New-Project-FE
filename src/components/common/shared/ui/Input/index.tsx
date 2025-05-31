@@ -7,6 +7,7 @@ export const InputVariants = cva(`rounded-lg`, {
   variants: {
     color: {
       primary: "bg-input-gray",
+      white: "bg-white border border-gray-300",
     },
     size: {
       primary: "w-full p-4",
@@ -24,18 +25,13 @@ interface InputProps
   className?: string;
 }
 
-export function Input({
-  type,
-  placeholder,
-  className,
-  size,
-  color,
-}: InputProps) {
+export function Input({ className, size, color, ...props }: InputProps) {
   return (
     <input
-      className={cn(InputVariants({ className, size, color }))}
-      type={type}
-      placeholder={placeholder}
+      {...props}
+      className={cn(InputVariants({ color, size }), className)}
+      type={props.type}
+      placeholder={props.placeholder}
     />
   );
 }
