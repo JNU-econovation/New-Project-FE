@@ -2,23 +2,19 @@
 
 import LogoutModal from "@/components/common/entities/LogoutModal";
 import Text from "@/components/common/shared/ui/Text";
-import { useState } from "react";
+import { useModal } from "@/hooks/common/useModal";
 
 export default function LogoutButton() {
-  const [isLogoutModalOpen, setLogoutModalOpen] = useState(false);
-
-  const onLogoutBtnClick = () => {
-    setLogoutModalOpen(true);
-  };
+  const { closeModal, isOpen, openModal } = useModal();
 
   return (
     <>
-      <button onClick={onLogoutBtnClick}>
+      <button onClick={openModal}>
         <Text fontSize="text-xl" color="text-main-green">
           로그아웃
         </Text>
       </button>
-      {isLogoutModalOpen && <LogoutModal setState={setLogoutModalOpen} />}
+      {isOpen && <LogoutModal closeModal={closeModal} openModal={openModal} />}
     </>
   );
 }
