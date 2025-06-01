@@ -7,7 +7,7 @@ export const useEmergencyPersonalInfo = () => {
     bloodType: "",
   });
 
-  const onChangePersonalInfo = (
+  const onChangeEmergencyPersonalInfo = (
     key: keyof typeof emergencyPersonalInfo,
     value: string
   ) => {
@@ -17,7 +17,9 @@ export const useEmergencyPersonalInfo = () => {
     }));
   };
 
-  const onClearPersonalInfo = (key: keyof typeof emergencyPersonalInfo) => {
+  const onClearEmergencyPersonalInfo = (
+    key: keyof typeof emergencyPersonalInfo
+  ) => {
     setEmergencyPersonalInfo((prev) => ({
       ...prev,
       [key]: "",
@@ -26,7 +28,7 @@ export const useEmergencyPersonalInfo = () => {
 
   return {
     emergencyPersonalInfo,
-    onChangePersonalInfo,
-    onClearPersonalInfo,
+    onChangeEmergencyPersonalInfo,
+    onClearEmergencyPersonalInfo,
   };
 };

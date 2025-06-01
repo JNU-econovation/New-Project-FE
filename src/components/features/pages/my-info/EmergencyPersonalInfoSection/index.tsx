@@ -10,8 +10,11 @@ import { useModal } from "@/hooks/common/useModal";
 import WithdrawMemberModal from "@/components/common/entities/WithdrawMemberModal";
 
 export default function EmergencyPersonalInfoSection() {
-  const { emergencyPersonalInfo, onChangePersonalInfo, onClearPersonalInfo } =
-    useEmergencyPersonalInfo();
+  const {
+    emergencyPersonalInfo,
+    onChangeEmergencyPersonalInfo,
+    onClearEmergencyPersonalInfo,
+  } = useEmergencyPersonalInfo();
 
   const { closeModal, isOpen, openModal } = useModal();
 
@@ -30,13 +33,15 @@ export default function EmergencyPersonalInfoSection() {
         placeholder="100"
         color="white"
         value={emergencyPersonalInfo.weight}
-        onChange={(e) => onChangePersonalInfo("weight", e.target.value)}
+        onChange={(e) =>
+          onChangeEmergencyPersonalInfo("weight", e.target.value)
+        }
         right={
           <div className="flex items-center gap-2">
             <Text fontSize="text-2xl" color="text-sub-gray">
               kg
             </Text>
-            <button onClick={() => onClearPersonalInfo("weight")}>
+            <button onClick={() => onClearEmergencyPersonalInfo("weight")}>
               <Image src={Cancel} alt="입력 취소" width={24} height={24} />
             </button>
           </div>
@@ -48,13 +53,15 @@ export default function EmergencyPersonalInfoSection() {
         placeholder="100"
         color="white"
         value={emergencyPersonalInfo.height}
-        onChange={(e) => onChangePersonalInfo("height", e.target.value)}
+        onChange={(e) =>
+          onChangeEmergencyPersonalInfo("height", e.target.value)
+        }
         right={
           <div className="flex items-center gap-2">
             <Text fontSize="text-2xl" color="text-sub-gray">
               cm
             </Text>
-            <button onClick={() => onClearPersonalInfo("height")}>
+            <button onClick={() => onClearEmergencyPersonalInfo("height")}>
               <Image src={Cancel} alt="입력 취소" width={24} height={24} />
             </button>
           </div>
@@ -66,13 +73,15 @@ export default function EmergencyPersonalInfoSection() {
         placeholder="B"
         color="white"
         value={emergencyPersonalInfo.bloodType}
-        onChange={(e) => onChangePersonalInfo("bloodType", e.target.value)}
+        onChange={(e) =>
+          onChangeEmergencyPersonalInfo("bloodType", e.target.value)
+        }
         right={
           <div className="flex items-center gap-2">
             <Text fontSize="text-2xl" color="text-sub-gray">
               형
             </Text>
-            <button onClick={() => onClearPersonalInfo("bloodType")}>
+            <button onClick={() => onClearEmergencyPersonalInfo("bloodType")}>
               <Image src={Cancel} alt="입력 취소" width={24} height={24} />
             </button>
           </div>
