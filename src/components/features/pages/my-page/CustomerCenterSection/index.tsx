@@ -3,7 +3,7 @@ import Text from "@/components/common/shared/ui/Text";
 import ROUTE from "@/constants/route";
 import Link from "next/link";
 
-export default function CustomerSection() {
+export default function CustomerCenterSection() {
   return (
     <div className="border-b border-gray-30">
       <Text fontSize="text-xl" color="text-main-green">
