@@ -30,7 +30,7 @@ export default function CustomerSection() {
         </Text>
       </Link>
       <Link
-        href={ROUTE.INQUIRY_HISTORY}
+        href={ROUTE.CHECK_TERMS}
         className="flex items-center justify-between h-10"
       >
         <Text fontSize="text-xl" fontWeight="font-medium">
