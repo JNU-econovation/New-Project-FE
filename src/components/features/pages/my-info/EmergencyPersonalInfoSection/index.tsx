@@ -7,7 +7,7 @@ import Image from "next/image";
 import Cancel from "@/icons/Cancel.svg";
 import { useEmergencyPersonalInfo } from "@/hooks/feature/info/useEmergencyPersonalInfo";
 import { useModal } from "@/hooks/common/useModal";
-import WithdrawMemberModal from "@entities/WithdrawMemberModal";
+import WithdrawMemberModal from "@/components/features/widgets/WithdrawMemberModal";
 
 export default function EmergencyPersonalInfoSection() {
   const {
