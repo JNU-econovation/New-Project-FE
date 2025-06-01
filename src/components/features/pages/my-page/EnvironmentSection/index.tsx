@@ -7,7 +7,7 @@ import Gray_Right_Arrow from "@/icons/Gray_Right_Arrow.svg";
 
 export default function EnvironmentSection() {
   return (
-    <div className="border-b border-gray-30">
+    <section className="border-b border-gray-30">
       <Spacing size={4} />
       <Text fontSize="text-xl" color="text-main-green">
         환경
@@ -36,6 +36,6 @@ export default function EnvironmentSection() {
           {"2.0.0"}
         </Text>
       </div>
-    </div>
+    </section>
   );
 }

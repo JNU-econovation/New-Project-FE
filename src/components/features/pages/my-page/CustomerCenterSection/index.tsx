@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function CustomerCenterSection() {
   return (
-    <div className="border-b border-gray-30">
+    <section className="border-b border-gray-30">
       <Text fontSize="text-xl" color="text-main-green">
         고객 센터
       </Text>
@@ -52,6 +52,6 @@ export default function CustomerCenterSection() {
         />
       </Link>
       <Spacing size={2} />
-    </div>
+    </section>
   );
 }

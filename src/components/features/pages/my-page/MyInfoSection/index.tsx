@@ -8,7 +8,7 @@ import CommonImage from "@/components/common/shared/ui/Image";
 
 export default function MyInfoSection() {
   return (
-    <div className="p-5">
+    <section className="p-5">
       <div className="w-full border-b border-gray-30 flex flex-col items-center">
         <Text fontSize="text-2xl" className="pb-3">
           마이 페이지
@@ -58,6 +58,6 @@ export default function MyInfoSection() {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
