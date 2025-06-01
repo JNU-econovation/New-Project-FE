@@ -1,8 +1,8 @@
 "use client";
 
-import LogoutModal from "@/components/common/entities/LogoutModal";
-import Text from "@/components/common/shared/ui/Text";
-import { useModal } from "@/hooks/common/useModal";
+import LogoutModal from "@entities/LogoutModal";
+import Text from "@shared/ui/Text";
+import { useModal } from "@hooks/common/useModal";
 
 export default function LogoutButton() {
   const { closeModal, isOpen, openModal } = useModal();
