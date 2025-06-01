@@ -8,11 +8,13 @@ import CommonImage from "@/components/common/shared/ui/Image";
 
 export default function MyInfoSection() {
   return (
-    <section className="p-5">
-      <div className="w-full border-b border-gray-30 flex flex-col items-center">
-        <Text fontSize="text-2xl" className="pb-3">
-          마이 페이지
-        </Text>
+    <section>
+      <div className="pr-5 pl-5">
+        <div className="w-full border-b border-gray-30 flex flex-col items-center">
+          <Text fontSize="text-2xl" className="pb-3">
+            마이 페이지
+          </Text>
+        </div>
       </div>
       <div className="flex flex-col items-center mt-5 gap-4">
         <CommonImage
