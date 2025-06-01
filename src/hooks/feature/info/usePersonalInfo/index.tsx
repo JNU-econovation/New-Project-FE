@@ -8,7 +8,10 @@ export const usePersonalInfo = () => {
     password: "",
   });
 
-  const onChangePersonalInfo = (key: string, value: string) => {
+  const onChangePersonalInfo = (
+    key: keyof typeof personalInfo,
+    value: string
+  ) => {
     setPersonalInfo((prev) => ({
       ...prev,
       [key]: value,

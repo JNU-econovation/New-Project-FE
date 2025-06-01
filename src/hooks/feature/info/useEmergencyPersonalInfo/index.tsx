@@ -7,7 +7,10 @@ export const useEmergencyPersonalInfo = () => {
     bloodType: "",
   });
 
-  const onChangePersonalInfo = (key: string, value: string) => {
+  const onChangePersonalInfo = (
+    key: keyof typeof emergencyPersonalInfo,
+    value: string
+  ) => {
     setEmergencyPersonalInfo((prev) => ({
       ...prev,
       [key]: value,
