@@ -1,10 +1,10 @@
 import { useRef } from "react";
 
-import ModalPortal from "@/components/common/entities/ModalPortal";
+import ModalPortal from "@entities/ModalPortal";
 import useOutsideClick from "@/hooks/common/useOutsideClick";
-import Text from "@/components/common/shared/ui/Text";
-import Button from "../../../common/shared/ui/Button";
-import Spacing from "@/components/common/shared/layout/Spacing";
+import Text from "@shared/ui/Text";
+import Button from "@shared/ui/Button";
+import Spacing from "@shared/layout/Spacing";
 
 interface ModalProps {
   openModal: () => void;
