@@ -6,12 +6,13 @@ import TextField from "@shared/ui/TextField";
 import { usePersonalInfo } from "@hooks/feature/info/usePersonalInfo";
 import Image from "next/image";
 import Cancel from "@/icons/Cancel.svg";
-import Link from "next/link";
-import ROUTE from "@/constants/route";
+import useRouteChangePasswordBridge from "@/hooks/bridge/useRouteChangePasswordBridge";
 
 export default function PersonalInfoSection() {
   const { personalInfo, onChangePersonalInfo, onClearPersonalInfo } =
     usePersonalInfo();
+
+  const goToChangePassword = useRouteChangePasswordBridge();
 
   return (
     <section>
@@ -78,12 +79,12 @@ export default function PersonalInfoSection() {
       />
       <Spacing size={8} />
       <div className="flex justify-end w-full">
-        <Link
-          href={ROUTE.CHANGE_PASSWORD}
+        <button
+          onClick={goToChangePassword}
           className="bg-main-green text-white px-4 py-2 rounded-xl font-bold text-lg"
         >
           비밀번호 변경
-        </Link>
+        </button>
       </div>
     </section>
   );

@@ -1,12 +1,19 @@
+"use client";
+
 import Text from "@shared/ui/Text";
-import ROUTE from "@/constants/route";
 import Image from "next/image";
-import Link from "next/link";
 import Black_Right_Arrow from "@/icons/Black_Right_Arrow.svg";
 import Default_Profile_Image from "@/images/Default_Profile_Image.png";
 import CommonImage from "@shared/ui/Image";
+import useRouteMyInfoBridge from "@/hooks/bridge/useRouteMyInfoBridge";
+import useRouteHikingLogBridge from "@/hooks/bridge/useRouteHikingLogBridge";
+import useRouteCourseBookmarkBridge from "@/hooks/bridge/useRouteCourseBookmarkBridge";
 
 export default function MyInfoSection() {
+  const goToMyInfo = useRouteMyInfoBridge();
+  const goToHikingLog = useRouteHikingLogBridge();
+  const goToCourseBookmark = useRouteCourseBookmarkBridge();
+
   return (
     <section>
       <div className="pr-5 pl-5">
@@ -23,7 +30,10 @@ export default function MyInfoSection() {
           height={100}
           className="rounded-full border border-gray-30"
         />
-        <Link href={ROUTE.MY_INFO} className="flex flex-row items-center gap-2">
+        <button
+          onClick={goToMyInfo}
+          className="flex flex-row items-center gap-2"
+        >
           <Text fontSize="text-3xl" fontWeight="font-bold">
             {"사용자 이름"}
           </Text>
@@ -33,12 +43,12 @@ export default function MyInfoSection() {
             width={10}
             height={10}
           />
-        </Link>
+        </button>
         <Text fontSize="text-xl" color="text-main-green">
           {"test@naver.com"}
         </Text>
         <div className="flex flex-row items-center gap-10">
-          <Link href={ROUTE.HIKING_LOG}>
+          <button onClick={goToHikingLog}>
             <Text
               fontSize="text-xl"
               fontWeight="font-semibold"
@@ -46,8 +56,8 @@ export default function MyInfoSection() {
             >
               산행 기록
             </Text>
-          </Link>
-          <Link href={ROUTE.COURSE_BOOKMARK}>
+          </button>
+          <button onClick={goToCourseBookmark}>
             <Text
               fontSize="text-xl"
               fontWeight="font-semibold"
@@ -55,7 +65,7 @@ export default function MyInfoSection() {
             >
               코스 북마크
             </Text>
-          </Link>
+          </button>
         </div>
       </div>
     </section>
