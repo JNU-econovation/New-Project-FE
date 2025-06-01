@@ -19,7 +19,7 @@ export default function EmergencyPersonalInfoSection() {
   const { closeModal, isOpen, openModal } = useModal();
 
   return (
-    <>
+    <section>
       <Text
         fontSize="text-xl"
         fontWeight="font-semibold"
@@ -96,6 +96,6 @@ export default function EmergencyPersonalInfoSection() {
       {isOpen && (
         <WithdrawMemberModal closeModal={closeModal} openModal={openModal} />
       )}
-    </>
+    </section>
   );
 }

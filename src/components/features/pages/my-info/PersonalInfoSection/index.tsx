@@ -14,7 +14,7 @@ export default function PersonalInfoSection() {
     usePersonalInfo();
 
   return (
-    <>
+    <section>
       <Text
         fontSize="text-xl"
         fontWeight="font-semibold"
@@ -85,6 +85,6 @@ export default function PersonalInfoSection() {
           비밀번호 변경
         </Link>
       </div>
-    </>
+    </section>
   );
 }
