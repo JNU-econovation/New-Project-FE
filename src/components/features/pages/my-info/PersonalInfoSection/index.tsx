@@ -1,9 +1,9 @@
 "use client";
 
-import Spacing from "@/components/common/shared/layout/Spacing";
-import Text from "@/components/common/shared/ui/Text";
-import TextField from "@/components/common/shared/ui/TextField";
-import { usePersonalInfo } from "@/hooks/feature/info/usePersonalInfo";
+import Spacing from "@shared/layout/Spacing";
+import Text from "@shared/ui/Text";
+import TextField from "@shared/ui/TextField";
+import { usePersonalInfo } from "@hooks/feature/info/usePersonalInfo";
 import Image from "next/image";
 import Cancel from "@/icons/Cancel.svg";
 import Link from "next/link";
