@@ -2,6 +2,7 @@ import Text from "@/components/common/shared/ui/Text";
 import ROUTE from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
+import Black_Right_Arrow from "@/icons/Black_Right_Arrow.svg";
 
 export default function MyInfoSection() {
   return (
@@ -23,9 +24,12 @@ export default function MyInfoSection() {
           <Text fontSize="text-3xl" fontWeight="font-bold">
             {"사용자 이름"}
           </Text>
-          <Text fontSize="text-xl" fontWeight="font-bold">
-            {">"}
-          </Text>
+          <Image
+            src={Black_Right_Arrow}
+            alt="화살표 아이콘"
+            width={10}
+            height={10}
+          />
         </Link>
         <Text fontSize="text-xl" color="text-main-green">
           {"test@naver.com"}
