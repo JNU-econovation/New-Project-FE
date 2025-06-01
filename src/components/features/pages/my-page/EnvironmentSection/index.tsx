@@ -1,11 +1,14 @@
+"use client";
+
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
-import ROUTE from "@/constants/route";
 import Image from "next/image";
-import Link from "next/link";
 import Gray_Right_Arrow from "@/icons/Gray_Right_Arrow.svg";
+import useRouteNotificationSettingsBridge from "@/hooks/bridge/useRouteNotificationSettingsBridge";
 
 export default function EnvironmentSection() {
+  const goToNotificationSettings = useRouteNotificationSettingsBridge();
+
   return (
     <section className="border-b border-gray-30">
       <Spacing size={4} />
@@ -13,9 +16,9 @@ export default function EnvironmentSection() {
         환경
       </Text>
       <Spacing size={2} />
-      <Link
-        href={ROUTE.NOTIFICATION_SETTINGS}
-        className="flex items-center justify-between h-10"
+      <button
+        onClick={goToNotificationSettings}
+        className="flex items-center justify-between h-10 w-full"
       >
         <Text fontSize="text-xl" fontWeight="font-medium">
           알림 설정
@@ -26,7 +29,7 @@ export default function EnvironmentSection() {
           width={10}
           height={10}
         />
-      </Link>
+      </button>
       <Spacing size={2} />
       <div className="flex items-center justify-between h-10">
         <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
