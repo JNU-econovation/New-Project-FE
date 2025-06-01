@@ -3,6 +3,8 @@ import ROUTE from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
 import Black_Right_Arrow from "@/icons/Black_Right_Arrow.svg";
+import Default_Profile_Image from "@/images/Default_Profile_Image.png";
+import CommonImage from "@/components/common/shared/ui/Image";
 
 export default function MyInfoSection() {
   return (
@@ -13,8 +15,9 @@ export default function MyInfoSection() {
         </Text>
       </div>
       <div className="flex flex-col items-center mt-5 gap-4">
-        <Image
-          src="/images/profile.png"
+        <CommonImage
+          src={""}
+          defaultSrc={Default_Profile_Image}
           alt="나의 프로필"
           width={100}
           height={100}
