@@ -30,8 +30,6 @@ export function Input({ className, size, color, ...props }: InputProps) {
     <input
       {...props}
       className={cn(InputVariants({ color, size }), className)}
-      type={props.type}
-      placeholder={props.placeholder}
     />
   );
 }
