@@ -1,10 +1,10 @@
-import Text from "@/components/common/shared/ui/Text";
+import Text from "@shared/ui/Text";
 import ROUTE from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
 import Black_Right_Arrow from "@/icons/Black_Right_Arrow.svg";
 import Default_Profile_Image from "@/images/Default_Profile_Image.png";
-import CommonImage from "@/components/common/shared/ui/Image";
+import CommonImage from "@shared/ui/Image";
 
 export default function MyInfoSection() {
   return (

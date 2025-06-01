@@ -1,5 +1,5 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
-import Text from "@/components/common/shared/ui/Text";
+import Spacing from "@shared/layout/Spacing";
+import Text from "@shared/ui/Text";
 import ROUTE from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";

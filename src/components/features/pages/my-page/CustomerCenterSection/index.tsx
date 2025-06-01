@@ -1,5 +1,5 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
-import Text from "@/components/common/shared/ui/Text";
+import Spacing from "@shared/layout/Spacing";
+import Text from "@shared/ui/Text";
 import ROUTE from "@/constants/route";
 import Link from "next/link";
 import Gray_Right_Arrow from "@/icons/Gray_Right_Arrow.svg";
