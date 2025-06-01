@@ -4,7 +4,7 @@ import Text from "@shared/ui/Text";
 import Image from "next/image";
 import Black_Right_Arrow from "@/icons/Black_Right_Arrow.svg";
 import Default_Profile_Image from "@/images/Default_Profile_Image.png";
-import CommonImage from "@shared/ui/Image";
+import CommonImage from "@shared/ui/CommonImage";
 import useRouteMyInfoBridge from "@/hooks/bridge/useRouteMyInfoBridge";
 import useRouteHikingLogBridge from "@/hooks/bridge/useRouteHikingLogBridge";
 import useRouteCourseBookmarkBridge from "@/hooks/bridge/useRouteCourseBookmarkBridge";
