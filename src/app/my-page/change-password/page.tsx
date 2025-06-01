@@ -1,6 +1,6 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
-import ChangePasswordHeaderSection from "@/components/features/pages/change-password/ChangePasswordHeaderSection";
-import PasswordInfoSection from "@/components/features/pages/change-password/PasswordInfoSection";
+import Spacing from "@shared/layout/Spacing";
+import ChangePasswordHeaderSection from "@pages/change-password/ChangePasswordHeaderSection";
+import PasswordInfoSection from "@pages/change-password/PasswordInfoSection";
 
 export default function ChangePasswordPage() {
   return (

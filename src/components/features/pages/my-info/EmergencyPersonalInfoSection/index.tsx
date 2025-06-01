@@ -1,13 +1,13 @@
 "use client";
 
-import Spacing from "@/components/common/shared/layout/Spacing";
-import Text from "@/components/common/shared/ui/Text";
-import TextField from "@/components/common/shared/ui/TextField";
+import Spacing from "@shared/layout/Spacing";
+import Text from "@shared/ui/Text";
+import TextField from "@shared/ui/TextField";
 import Image from "next/image";
 import Cancel from "@/icons/Cancel.svg";
 import { useEmergencyPersonalInfo } from "@/hooks/feature/info/useEmergencyPersonalInfo";
 import { useModal } from "@/hooks/common/useModal";
-import WithdrawMemberModal from "@/components/common/entities/WithdrawMemberModal";
+import WithdrawMemberModal from "@entities/WithdrawMemberModal";
 
 export default function EmergencyPersonalInfoSection() {
   const {

@@ -1,11 +1,11 @@
 "use client";
 
-import Spacing from "@/components/common/shared/layout/Spacing";
-import TextField from "@/components/common/shared/ui/TextField";
+import Spacing from "@shared/layout/Spacing";
+import TextField from "@shared/ui/TextField";
 import Image from "next/image";
 import Cancel from "@/icons/Cancel.svg";
 import { usePasswordInfo } from "@/hooks/feature/info/usePasswordInfo";
-import Button from "@/components/common/shared/ui/Button";
+import Button from "@shared/ui/Button";
 
 export default function PasswordInfoSection() {
   const { onChangePasswordInfo, onClearPasswordInfo, passwordInfo } =

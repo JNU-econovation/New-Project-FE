@@ -1,4 +1,4 @@
-import Text from "@/components/common/shared/ui/Text";
+import Text from "@shared/ui/Text";
 import ROUTE from "@/constants/route";
 import Link from "next/link";
 import Left_Chevron from "@/icons/Left_Chevron.svg";
