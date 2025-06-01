@@ -1,7 +1,9 @@
 import Spacing from "@/components/common/shared/layout/Spacing";
 import Text from "@/components/common/shared/ui/Text";
 import ROUTE from "@/constants/route";
+import Image from "next/image";
 import Link from "next/link";
+import Gray_Right_Arrow from "@/icons/Gray_Right_Arrow.svg";
 
 export default function EnvironmentSection() {
   return (
@@ -18,9 +20,12 @@ export default function EnvironmentSection() {
         <Text fontSize="text-xl" fontWeight="font-medium">
           알림 설정
         </Text>
-        <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
-          {">"}
-        </Text>
+        <Image
+          src={Gray_Right_Arrow}
+          alt="화살표 아이콘"
+          width={10}
+          height={10}
+        />
       </Link>
       <Spacing size={2} />
       <div className="flex items-center justify-between h-10">
