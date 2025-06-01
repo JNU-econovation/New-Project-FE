@@ -7,7 +7,9 @@ import LogoutButton from "@/components/features/widgets/LogoutButton";
 export default function MyPage() {
   return (
     <>
+      <Spacing size={5} />
       <MyInfoSection />
+      <Spacing size={5} />
       <div className="h-3 bg-gray-100" />
       <div className="p-5">
         <CustomerCenterSection />
