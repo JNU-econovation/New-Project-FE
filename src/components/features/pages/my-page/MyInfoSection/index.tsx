@@ -20,7 +20,7 @@ export default function MyInfoSection() {
         </div>
       </div>
       <div className="flex flex-col items-center mt-5 gap-4">
-        <MyProfileImage src={""} alt="나의 프로필" width={100} height={100} />
+        <MyProfileImage src={""} width={100} height={100} />
         <button
           onClick={goToMyInfo}
           className="flex flex-row items-center gap-2"
