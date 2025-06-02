@@ -1,9 +1,9 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import Default_Profile_Image from "@/images/Default_Profile_Image.png";
 
-interface CommonImageProps {
+interface MyProfileImageProps {
   src: StaticImageData | string;
-  alt: string;
   width?: number;
   height?: number;
 }
@@ -12,7 +12,7 @@ export default function MyProfileImage({
   src,
   width,
   height,
-}: CommonImageProps) {
+}: MyProfileImageProps) {
   return (
     <Image
       src={src || Default_Profile_Image}
