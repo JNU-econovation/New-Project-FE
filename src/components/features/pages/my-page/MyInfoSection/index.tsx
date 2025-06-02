@@ -1,13 +1,12 @@
 "use client";
 
 import Text from "@shared/ui/Text";
-import Image from "next/image";
-import Black_Right_Arrow from "@/icons/Black_Right_Arrow.svg";
 import Default_Profile_Image from "@/images/Default_Profile_Image.png";
 import CommonImage from "@shared/ui/CommonImage";
 import useRouteMyInfoBridge from "@/hooks/bridge/useRouteMyInfoBridge";
 import useRouteHikingLogBridge from "@/hooks/bridge/useRouteHikingLogBridge";
 import useRouteCourseBookmarkBridge from "@/hooks/bridge/useRouteCourseBookmarkBridge";
+import BlackRightArrowIcon from "@/components/common/shared/ui/BlackRightArrowIcon";
 
 export default function MyInfoSection() {
   const goToMyInfo = useRouteMyInfoBridge();
@@ -37,12 +36,7 @@ export default function MyInfoSection() {
           <Text fontSize="text-3xl" fontWeight="font-bold">
             {"사용자 이름"}
           </Text>
-          <Image
-            src={Black_Right_Arrow}
-            alt="화살표 아이콘"
-            width={10}
-            height={10}
-          />
+          <BlackRightArrowIcon width={10} height={10} />
         </button>
         <Text fontSize="text-xl" color="text-main-green">
           {"test@naver.com"}
