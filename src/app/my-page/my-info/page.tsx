@@ -1,7 +1,7 @@
-import Spacing from "@/components/common/shared/layout/Spacing";
-import EmergencyPersonalInfoSection from "@/components/features/pages/my-info/EmergencyPersonalInfoSection";
-import MyInfoHeaderSection from "@/components/features/pages/my-info/MyInfoHeaderSection";
-import PersonalInfoSection from "@/components/features/pages/my-info/PersonalInfoSection";
+import Spacing from "@shared/layout/Spacing";
+import EmergencyPersonalInfoSection from "@pages/my-info/EmergencyPersonalInfoSection";
+import MyInfoHeaderSection from "@pages/my-info/MyInfoHeaderSection";
+import PersonalInfoSection from "@pages/my-info/PersonalInfoSection";
 
 export default function MyInfoPage() {
   return (
