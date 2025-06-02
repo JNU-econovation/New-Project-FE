@@ -1,12 +1,11 @@
 "use client";
 
 import Text from "@shared/ui/Text";
-import Default_Profile_Image from "@/images/Default_Profile_Image.png";
-import CommonImage from "@shared/ui/CommonImage";
 import useRouteMyInfoBridge from "@/hooks/bridge/useRouteMyInfoBridge";
 import useRouteHikingLogBridge from "@/hooks/bridge/useRouteHikingLogBridge";
 import useRouteCourseBookmarkBridge from "@/hooks/bridge/useRouteCourseBookmarkBridge";
-import BlackRightArrowIcon from "@/components/common/shared/ui/BlackRightArrowIcon";
+import BlackRightArrowIcon from "@shared/ui/BlackRightArrowIcon";
+import MyProfileImage from "@widgets/MyProfileImage";
 
 export default function MyInfoSection() {
   const goToMyInfo = useRouteMyInfoBridge();
@@ -21,14 +20,7 @@ export default function MyInfoSection() {
         </div>
       </div>
       <div className="flex flex-col items-center mt-5 gap-4">
-        <CommonImage
-          src={""}
-          defaultSrc={Default_Profile_Image}
-          alt="나의 프로필"
-          width={100}
-          height={100}
-          className="rounded-full border border-gray-30"
-        />
+        <MyProfileImage src={""} alt="나의 프로필" width={100} height={100} />
         <button
           onClick={goToMyInfo}
           className="flex flex-row items-center gap-2"
