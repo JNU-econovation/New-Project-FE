@@ -36,6 +36,11 @@ const font = localFont({
       style: "normal",
     },
     {
+      path: "../../public/fonts/Pretendard-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
       path: "../../public/fonts/Pretendard-Light.woff2",
       weight: "300",
       style: "normal",
