@@ -24,11 +24,7 @@ export default function Tabs({ children }: PropsWithChildren) {
   };
 
   useEffect(() => {
-    setSelectedTabIndex(
-      tabItems.findIndex((item) => item === selectedTab) >= 0
-        ? tabItems.findIndex((item) => item === selectedTab)
-        : null
-    );
+    setSelectedTabIndex(tabItems.findIndex((item) => item === selectedTab));
   }, [selectedTab, setSelectedTabIndex, tabItems]);
 
   const value: TabContextType = {
