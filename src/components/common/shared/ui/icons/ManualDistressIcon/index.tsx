@@ -3,8 +3,8 @@ import Image from "next/image";
 import { ComponentProps } from "react";
 
 const DEFAULT_ALT = "응급상황 매뉴얼";
-const DEFAULT_WIDTH = 24;
-const DEFAULT_HEIGHT = 24;
+const DEFAULT_WIDTH = 61;
+const DEFAULT_HEIGHT = 61;
 
 interface ManualDistressIconProps
   extends Omit<
@@ -22,5 +22,13 @@ export default function ManualDistressIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: ManualDistressIconProps) {
-  return <Image src={Manual_Distress} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image
+      src={Manual_Distress}
+      alt={alt}
+      width={width}
+      height={height}
+      {...props}
+    />
+  );
 }

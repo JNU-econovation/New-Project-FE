@@ -3,8 +3,8 @@ import Image from "next/image";
 import { ComponentProps } from "react";
 
 const DEFAULT_ALT = "체온 매뉴얼";
-const DEFAULT_WIDTH = 24;
-const DEFAULT_HEIGHT = 24;
+const DEFAULT_WIDTH = 61;
+const DEFAULT_HEIGHT = 61;
 
 interface ManualTemperatureIconProps
   extends Omit<
@@ -22,5 +22,13 @@ export default function ManualTemperatureIcon({
   height = DEFAULT_HEIGHT,
   ...props
 }: ManualTemperatureIconProps) {
-  return <Image src={Manual_Temperature} alt={alt} width={width} height={height} {...props} />;
+  return (
+    <Image
+      src={Manual_Temperature}
+      alt={alt}
+      width={width}
+      height={height}
+      {...props}
+    />
+  );
 }

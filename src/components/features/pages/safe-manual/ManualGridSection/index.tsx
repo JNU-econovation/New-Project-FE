@@ -12,27 +12,19 @@ export default function ManualGridSection() {
           신체 부상
         </span>
         <Spacing size={8} />
-        <ManualPainManIcon
-          alt="신체 부상"
-          width={61}
-          height={61}
-          className="self-center mx-auto"
-        />
+        <ManualPainManIcon alt="신체 부상" className="self-center mx-auto" />
         <Spacing size={8} />
         <p className="text-sm">
           외부 충격에 의한 일반적인 부상에 대한 응급조치
         </p>
       </div>
       <div className="p-4 rounded-lg shadow break-keep">
-        {/* <Text align>신체 부상</Text> */}
         <span className="text-main-green font-bold text-lg text-center">
           체온 및 대사 이상
         </span>
         <Spacing size={8} />
         <ManualTemperatureIcon
           alt="체온 및 대사 이상"
-          width={61}
-          height={61}
           className="self-center mx-auto"
         />
         <Spacing size={8} />
@@ -47,8 +39,6 @@ export default function ManualGridSection() {
         <Spacing size={2} />
         <ManualAnimalIcon
           alt="동물 및 자연환경 피해"
-          width={61}
-          height={61}
           className="self-center mx-auto"
         />
         <Spacing size={8} />
@@ -63,8 +53,6 @@ export default function ManualGridSection() {
         <Spacing size={8} />
         <ManualDistressIcon
           alt="조난 및 고립"
-          width={61}
-          height={61}
           className="self-center mx-auto"
         />
         <Spacing size={8} />
