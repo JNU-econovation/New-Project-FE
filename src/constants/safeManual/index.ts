@@ -1,3 +1,10 @@
+import BrokenBornIcon from "@icons/BrokenBornIcon";
+import ExhaustionIcon from "@icons/ExhaustionIcon";
+import FrostbiteIcon from "@icons/FrostbiteIcon";
+import HeadDamageIcon from "@icons/HeadDamageIcon";
+import HeartIcon from "@icons/HeartIcon";
+import ScratchIcon from "@icons/ScratchIcon";
+
 export const SAFE_MANUAL_TITLES = [
   "신체 부상",
   "체온 및 대사 이상",
@@ -12,15 +19,35 @@ export const SAFE_MANUAL_CONTENTS = {
     cases: [
       {
         symptom: "가슴 통증・호흡곤란 등 급성 질환",
+        Icon: HeartIcon,
       },
       {
         symptom: "염좌 또는 골절",
+        Icon: BrokenBornIcon,
       },
       {
         symptom: "찰과상",
+        Icon: ScratchIcon,
       },
       {
         symptom: "머리 손상",
+        Icon: HeadDamageIcon,
+      },
+      {
+        symptom: "가슴 통증・호흡곤란 등 급성 질환",
+        Icon: HeartIcon,
+      },
+      {
+        symptom: "염좌 또는 골절",
+        Icon: BrokenBornIcon,
+      },
+      {
+        symptom: "찰과상",
+        Icon: ScratchIcon,
+      },
+      {
+        symptom: "머리 손상",
+        Icon: HeadDamageIcon,
       },
     ],
   },
@@ -30,9 +57,11 @@ export const SAFE_MANUAL_CONTENTS = {
     cases: [
       {
         symptom: "저체온증",
+        Icon: FrostbiteIcon,
       },
       {
         symptom: "탈진",
+        Icon: ExhaustionIcon,
       },
     ],
   },
@@ -42,15 +71,19 @@ export const SAFE_MANUAL_CONTENTS = {
     cases: [
       {
         symptom: "가슴 통증・호흡곤란 등 급성 질환",
+        Icon: HeartIcon,
       },
       {
         symptom: "염좌 또는 골절",
+        Icon: BrokenBornIcon,
       },
       {
         symptom: "찰과상",
+        Icon: ScratchIcon,
       },
       {
         symptom: "머리 손상",
+        Icon: HeadDamageIcon,
       },
     ],
   },
@@ -59,16 +92,12 @@ export const SAFE_MANUAL_CONTENTS = {
     content: "조난 및 고립 상황에서의 대처 방법",
     cases: [
       {
-        symptom: "가슴 통증・호흡곤란 등 급성 질환",
+        symptom: "저체온증",
+        Icon: FrostbiteIcon,
       },
       {
-        symptom: "염좌 또는 골절",
-      },
-      {
-        symptom: "찰과상",
-      },
-      {
-        symptom: "머리 손상",
+        symptom: "탈진",
+        Icon: ExhaustionIcon,
       },
     ],
   },
