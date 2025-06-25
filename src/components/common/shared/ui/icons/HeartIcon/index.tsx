@@ -10,17 +10,11 @@ interface HeartIconProps
     "src" | "width" | "height" | "alt"
   > {
   alt?: string;
-  width?: number;
-  height?: number;
 }
 
 export default function HeartIcon({
   alt = DEFAULT_ALT,
-  width,
-  height,
   ...props
 }: HeartIconProps) {
-  return (
-    <Image src={Heart} alt={alt} width={width} height={height} {...props} />
-  );
+  return <Image src={Heart} alt={alt} {...props} />;
 }

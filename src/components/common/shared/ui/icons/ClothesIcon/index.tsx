@@ -16,11 +16,7 @@ interface ClothesIconProps
 
 export default function ClothesIcon({
   alt = DEFAULT_ALT,
-  width,
-  height,
   ...props
 }: ClothesIconProps) {
-  return (
-    <Image src={Clothes} alt={alt} width={width} height={height} {...props} />
-  );
+  return <Image src={Clothes} alt={alt} {...props} />;
 }

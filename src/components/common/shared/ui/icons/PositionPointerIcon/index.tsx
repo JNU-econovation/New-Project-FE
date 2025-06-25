@@ -10,23 +10,11 @@ interface PositionPointerIconProps
     "src" | "width" | "height" | "alt"
   > {
   alt?: string;
-  width?: number;
-  height?: number;
 }
 
 export default function PositionPointerIcon({
   alt = DEFAULT_ALT,
-  width,
-  height,
   ...props
 }: PositionPointerIconProps) {
-  return (
-    <Image
-      src={Position_Pointer}
-      alt={alt}
-      width={width}
-      height={height}
-      {...props}
-    />
-  );
+  return <Image src={Position_Pointer} alt={alt} {...props} />;
 }
