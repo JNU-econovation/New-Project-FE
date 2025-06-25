@@ -3,7 +3,7 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 
 import Tab from "./components/Tab";
-import TabContent from "./components/TabContext";
+import TabContent from "./components/TabContent";
 import TabList from "./components/TabLIst/index";
 import TabContext from "./context/TabContext/index";
 import type { TabContextType } from "./types";
