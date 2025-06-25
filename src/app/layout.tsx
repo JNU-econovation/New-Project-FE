@@ -65,7 +65,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={font.className}>
-      <body>
+      <body className="select-none">
         <TanstackQueryProvider>{children}</TanstackQueryProvider>
         <div id="modal-root" />
       </body>
