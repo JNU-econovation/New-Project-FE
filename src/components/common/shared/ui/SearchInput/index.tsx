@@ -1,5 +1,4 @@
-import Search from "@/icons/Search.svg";
-import Image from "next/image";
+import SearchIcon from "@icons/SearchIcon";
 
 interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   inputRef?: React.RefObject<HTMLInputElement | null>;
@@ -23,7 +22,7 @@ export default function SearchInput({
         onClick={handleSearch}
         className="absolute top-1/2 right-4 -translate-y-1/2"
       >
-        <Image src={Search} alt="산 검색" />
+        <SearchIcon />
       </button>
     </div>
   );

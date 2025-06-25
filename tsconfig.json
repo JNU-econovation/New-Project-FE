@@ -30,6 +30,9 @@
       "@shared/*": [
         "./src/components/common/shared/*"
       ],
+      "@icons/*": [
+        "./src/components/common/shared/ui/icons/*"
+      ],
       "@pages/*": [
         "./src/components/features/pages/*"
       ],

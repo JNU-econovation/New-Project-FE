@@ -1,8 +1,7 @@
-import Clock from "@/icons/Clock.svg";
-import Position_Pointer from "@/icons/Position_Pointer.svg";
-import Image from "next/image";
-import DifficultyTag from "../DifficultyTag";
 import type { CourseDifficulty } from "@/types/course";
+import ClockIcon from "@icons/ClockIcon";
+import PositionPointerIcon from "@icons/PositionPointerIcon";
+import DifficultyTag from "@shared/ui/DifficultyTag";
 
 interface CourseMetaDataUiProps {
   distance: number;
@@ -18,11 +17,11 @@ export default function CourseMetaDataUi({
   return (
     <div className="flex justify-between items-center">
       <div className="flex items-center gap-1">
-        <Image src={Position_Pointer} alt="거리" />
+        <PositionPointerIcon />
         <span className="text-gray-20 text-sm">{distance}km</span>
       </div>
       <div className="flex items-center gap-1">
-        <Image src={Clock} alt="소요시간" />
+        <ClockIcon />
         <span className="text-gray-20 text-sm">{time}시간</span>
       </div>
       <DifficultyTag difficulty={difficulty} />

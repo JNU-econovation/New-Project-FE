@@ -1,9 +1,8 @@
 "use client";
 
-import X from "@/icons/X.svg";
 import Text from "@shared/ui/Text";
-import Image from "next/image";
 import { useCallback } from "react";
+import XIcon from "@icons/XIcon";
 
 interface TagItemWithCancelProps {
   text: string;
@@ -32,7 +31,7 @@ export default function TagItemWithCancel({
     >
       <Text fontSize="text-xs">{text}</Text>
       <button onClick={onCLickCancelButton} className="ml-1">
-        <Image src={X} alt="태그 제거" />
+        <XIcon alt="태그 제거" />
       </button>
     </div>
   );
