@@ -1,8 +1,5 @@
-import Image from "next/image";
-
-import Star from "@/icons/Star.svg";
-import Login_Logo from "@/icons/Login_Logo.svg";
-
+import LoginLogoIcon from "@icons/LoginLogoIcon";
+import StarIcon from "@icons/StarIcon";
 import Flex from "@shared/layout/Flex";
 import Text from "@shared/ui/Text";
 
@@ -24,9 +21,9 @@ export default function LoginTitleSection() {
               모험을 시작해볼까요?
             </Text>
           </Flex>
-          <Image src={Star} alt="별" />
+          <StarIcon />
         </Flex>
-        <Image src={Login_Logo} alt="로그인 페이지 로고" />
+        <LoginLogoIcon alt="로그인 페이지 로고" />
       </Flex>
     </section>
   );

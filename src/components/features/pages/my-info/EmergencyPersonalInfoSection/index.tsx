@@ -1,13 +1,12 @@
 "use client";
 
+import { useModal } from "@hooks/common/useModal";
+import { useEmergencyPersonalInfo } from "@hooks/feature/info/useEmergencyPersonalInfo";
 import Spacing from "@shared/layout/Spacing";
+import CancelIcon from "@shared/ui/icons/CancelIcon";
 import Text from "@shared/ui/Text";
 import TextField from "@shared/ui/TextField";
-import Image from "next/image";
-import Cancel from "@/icons/Cancel.svg";
-import { useEmergencyPersonalInfo } from "@/hooks/feature/info/useEmergencyPersonalInfo";
-import { useModal } from "@/hooks/common/useModal";
-import WithdrawMemberModal from "@/components/features/widgets/WithdrawMemberModal";
+import WithdrawMemberModal from "@widgets/WithdrawMemberModal";
 
 export default function EmergencyPersonalInfoSection() {
   const {
@@ -42,7 +41,7 @@ export default function EmergencyPersonalInfoSection() {
               kg
             </Text>
             <button onClick={() => onClearEmergencyPersonalInfo("weight")}>
-              <Image src={Cancel} alt="입력 취소" width={24} height={24} />
+              <CancelIcon alt="입력 취소" width={24} height={24} />
             </button>
           </div>
         }
@@ -62,7 +61,7 @@ export default function EmergencyPersonalInfoSection() {
               cm
             </Text>
             <button onClick={() => onClearEmergencyPersonalInfo("height")}>
-              <Image src={Cancel} alt="입력 취소" width={24} height={24} />
+              <CancelIcon alt="입력 취소" width={24} height={24} />
             </button>
           </div>
         }
@@ -82,7 +81,7 @@ export default function EmergencyPersonalInfoSection() {
               형
             </Text>
             <button onClick={() => onClearEmergencyPersonalInfo("bloodType")}>
-              <Image src={Cancel} alt="입력 취소" width={24} height={24} />
+              <CancelIcon alt="입력 취소" width={24} height={24} />
             </button>
           </div>
         }

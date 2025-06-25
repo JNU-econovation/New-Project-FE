@@ -6,6 +6,10 @@ import Image from "next/image";
 import Cancel from "@/icons/Cancel.svg";
 import { usePasswordInfo } from "@/hooks/feature/info/usePasswordInfo";
 import Button from "@shared/ui/Button";
+import CancelIcon from "@icons/CancelIcon";
+import Spacing from "@shared/layout/Spacing";
+import Button from "@shared/ui/Button";
+import TextField from "@shared/ui/TextField";
 
 export default function PasswordInfoSection() {
   const { onChangePasswordInfo, onClearPasswordInfo, passwordInfo } =

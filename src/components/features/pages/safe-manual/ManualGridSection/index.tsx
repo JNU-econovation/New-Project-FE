@@ -1,9 +1,8 @@
-import Manual_Animal from "@/icons/Manual_Animal.svg";
-import Manual_Distress from "@/icons/Manual_Distress.svg";
-import Manual_Pain_Man from "@/icons/Manual_Pain_Man.svg";
-import Manual_Temperature from "@/icons/Manual_Temperature.svg";
+import ManualAnimalIcon from "@icons/ManualAnimalIcon";
+import ManualDistressIcon from "@icons/ManualDistressIcon";
+import ManualPainManIcon from "@icons/ManualPainManIcon";
+import ManualTemperatureIcon from "@icons/ManualTemperatureIcon";
 import Spacing from "@shared/layout/Spacing";
-import Image from "next/image";
 
 export default function ManualGridSection() {
   return (
@@ -13,8 +12,7 @@ export default function ManualGridSection() {
           신체 부상
         </span>
         <Spacing size={8} />
-        <Image
-          src={Manual_Pain_Man}
+        <ManualPainManIcon
           alt="신체 부상"
           width={61}
           height={61}
@@ -31,8 +29,7 @@ export default function ManualGridSection() {
           체온 및 대사 이상
         </span>
         <Spacing size={8} />
-        <Image
-          src={Manual_Temperature}
+        <ManualTemperatureIcon
           alt="체온 및 대사 이상"
           width={61}
           height={61}
@@ -48,8 +45,7 @@ export default function ManualGridSection() {
           동물 및 자연환경 피해
         </span>
         <Spacing size={2} />
-        <Image
-          src={Manual_Animal}
+        <ManualAnimalIcon
           alt="동물 및 자연환경 피해"
           width={61}
           height={61}
@@ -65,8 +61,7 @@ export default function ManualGridSection() {
           조난 및 고립
         </span>
         <Spacing size={8} />
-        <Image
-          src={Manual_Distress}
+        <ManualDistressIcon
           alt="조난 및 고립"
           width={61}
           height={61}

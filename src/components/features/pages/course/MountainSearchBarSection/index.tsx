@@ -1,11 +1,10 @@
 "use client";
 
-import Left_Chevron from "@/icons/Left_Chevron.svg";
 import { useBridge } from "@hooks/common/useBridge";
+import LeftChevronIcon from "@icons/LeftChevronIcon";
 import Spacing from "@shared/layout/Spacing";
 import SearchInput from "@shared/ui/SearchInput";
 import TagItemWithCancel from "@shared/ui/TagItemWithCancel";
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function MountainSearchBarSection() {
@@ -95,7 +94,7 @@ export default function MountainSearchBarSection() {
           <Spacing size={16} />
 
           <button onClick={() => setIsFocused(false)}>
-            <Image src={Left_Chevron} alt="뒤로 가기" />
+            <LeftChevronIcon alt="뒤로 가기" />
           </button>
 
           <Spacing size={8} />

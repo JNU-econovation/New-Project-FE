@@ -1,8 +1,7 @@
 import Flex from "@shared/layout/Flex";
-import Text from "@shared/ui/Text";
-import Image from "next/image";
-import Apple_Logo from "@/icons/Apple_Logo.svg";
 import Button from "@shared/ui/Button";
+import AppleLogo from "@shared/ui/icons/AppleLogoIcon";
+import Text from "@shared/ui/Text";
 
 export default function AppleLoginButton() {
   return (
@@ -13,7 +12,7 @@ export default function AppleLoginButton() {
         justifyContent="justify-center"
         gap={3}
       >
-        <Image src={Apple_Logo} alt="애플 로고" />
+        <AppleLogo />
         <Text color="text-white" fontSize="text-sm" fontWeight="font-semibold">
           Apple로 계속하기
         </Text>
