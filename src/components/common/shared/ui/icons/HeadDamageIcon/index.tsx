@@ -16,17 +16,7 @@ interface HeadDamageIconProps
 
 export default function HeadDamageIcon({
   alt = DEFAULT_ALT,
-  width,
-  height,
   ...props
 }: HeadDamageIconProps) {
-  return (
-    <Image
-      src={Head_Damage}
-      alt={alt}
-      width={width}
-      height={height}
-      {...props}
-    />
-  );
+  return <Image src={Head_Damage} alt={alt} {...props} />;
 }

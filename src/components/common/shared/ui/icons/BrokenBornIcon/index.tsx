@@ -10,23 +10,11 @@ interface BrokenBornIconProps
     "src" | "width" | "height" | "alt"
   > {
   alt?: string;
-  width?: number;
-  height?: number;
 }
 
 export default function BrokenBornIcon({
   alt = DEFAULT_ALT,
-  width,
-  height,
   ...props
 }: BrokenBornIconProps) {
-  return (
-    <Image
-      src={Broken_Born}
-      alt={alt}
-      width={width}
-      height={height}
-      {...props}
-    />
-  );
+  return <Image src={Broken_Born} alt={alt} {...props} />;
 }
