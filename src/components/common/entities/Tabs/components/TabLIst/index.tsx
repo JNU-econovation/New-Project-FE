@@ -26,5 +26,7 @@ export default memo(function TabList({ children }: TabListProps) {
     );
   }, [children]);
 
-  return <div className="flex overflow-y-scroll">{children}</div>;
+  return (
+    <div className="flex overflow-y-scroll hide-scrollbar">{children}</div>
+  );
 });
