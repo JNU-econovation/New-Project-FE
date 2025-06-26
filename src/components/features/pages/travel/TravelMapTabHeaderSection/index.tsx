@@ -1,10 +1,10 @@
 "use client";
 
-import MapHeaderTag from "@shared/ui/MapHeaderTag";
+import MapHeaderTag from "@/components/common/shared/ui/MapHeaderTag";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-export default function MapTadHeaderSection() {
+export default function TravelMapTagHeaderSection() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const selectedTagId = searchParams.get("tag") || "base";
@@ -30,8 +30,7 @@ export default function MapTadHeaderSection() {
           text={text}
           isSelected={id === selectedTagId}
           onClickHandler={() => {
-            //TODO: 상수 데이터 따로 빼기
-            router.replace(`/map?tag=${id}`);
+            router.replace(`/travel?tag=${id}`);
           }}
         />
       ))}
