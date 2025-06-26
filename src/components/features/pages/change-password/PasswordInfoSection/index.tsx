@@ -1,11 +1,10 @@
 "use client";
 
 import { usePasswordInfo } from "@hooks/feature/info/usePasswordInfo";
-import Cancel from "@icons/Cancel.svg";
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
+import CancelIcon from "@shared/ui/icons/CancelIcon";
 import TextField from "@shared/ui/TextField";
-import Image from "next/image";
 
 export default function PasswordInfoSection() {
   const { onChangePasswordInfo, onClearPasswordInfo, passwordInfo } =
@@ -23,7 +22,12 @@ export default function PasswordInfoSection() {
           onChange={(e) => onChangePasswordInfo("password", e.target.value)}
           right={
             <button onClick={() => onClearPasswordInfo("password")}>
-              <Image src={Cancel} alt="입력 취소" width={24} height={24} />
+              <CancelIcon
+                alt="입력 취소"
+                width={24}
+                height={24}
+                className="hidden"
+              />
             </button>
           }
         />
@@ -37,7 +41,12 @@ export default function PasswordInfoSection() {
           onChange={(e) => onChangePasswordInfo("newPassword", e.target.value)}
           right={
             <button onClick={() => onClearPasswordInfo("newPassword")}>
-              <Image src={Cancel} alt="입력 취소" width={24} height={24} />
+              <CancelIcon
+                alt="입력 취소"
+                width={24}
+                height={24}
+                className="hidden"
+              />
             </button>
           }
         />

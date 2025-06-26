@@ -1,5 +1,4 @@
 import { isValidElement, memo, useEffect } from "react";
-
 import useTabContext from "../../hooks/useTabContext";
 
 interface TabListProps {
@@ -17,8 +16,8 @@ export default memo(function TabList({ children }: TabListProps) {
   useEffect(() => {
     setTabItemsHandler(
       children.map((child) => {
-        if (isValidElement(child) && child.props?.label) {
-          return child.props.label;
+        if (isValidElement(child) && (child.props as any)?.label) {
+          return (child.props as any).label;
         }
         throw new Error(
           "TabList의 자식 요소는 유효한 React 요소여야 하며, label 속성을 가져야 합니다."
