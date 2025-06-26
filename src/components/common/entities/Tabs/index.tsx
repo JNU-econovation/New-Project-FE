@@ -8,9 +8,14 @@ import TabList from "./components/TabLIst/index";
 import TabContext from "./context/TabContext/index";
 import type { TabContextType } from "./types";
 
-// interface TabProps extends PropsWithChildren {}
+//TODO: 탭이 변경되면 상단으로 스크롤 되도록 구현하기
+//TODO: 탭이 변경되면 해당 탭 전체가 화면에 보이도록 탭 리스트 스크롤 되도록 구현하기
 
-export default function Tabs({ children }: PropsWithChildren) {
+interface TabProps extends PropsWithChildren {
+  onChange?: (selectedTab: string | null) => void;
+}
+
+export default function Tabs({ onChange, children }: TabProps) {
   const [tabItems, setTabItems] = useState<string[]>([]);
   const [selectedTab, setSelectedTab] = useState<string | null>(null);
   const [selectedTabIndex, setSelectedTabIndex] = useState<number | null>(null);
@@ -26,6 +31,12 @@ export default function Tabs({ children }: PropsWithChildren) {
   useEffect(() => {
     setSelectedTabIndex(tabItems.findIndex((item) => item === selectedTab));
   }, [selectedTab, setSelectedTabIndex, tabItems]);
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(selectedTab);
+    }
+  }, [selectedTab, onChange]);
 
   const value: TabContextType = {
     tabItems,
