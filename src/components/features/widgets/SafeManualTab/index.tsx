@@ -6,28 +6,44 @@ import {
 } from "@/constants/safeManual";
 import Tabs from "@entities/Tabs";
 import Spacing from "@shared/layout/Spacing";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 
 export default function SafeManualTab() {
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+
+  const onChangeHandler = useCallback(
+    (selectedTab: string | null) => {
+      if (selectedTab) {
+        const url = `/safe-manual/detail?manual=${selectedTab}`;
+        router.replace(url);
+      }
+    },
+    [router]
+  );
+
   return (
     <div className="flex flex-col h-full">
-      <Tabs>
+      <Tabs onChange={onChangeHandler}>
         <div className="px-6 border-b border-gray-30">
           <Tabs.TabList>
             {SAFE_MANUAL_TITLES.map((title, index) => (
               <Tabs.Tab
                 key={index}
                 label={title}
-                defaultSelected={index === 0}
+                defaultSelected={
+                  title === decodeURIComponent(searchParams.get("manual") || "")
+                }
               />
             ))}
           </Tabs.TabList>
         </div>
         <Tabs.Content<keyof typeof SAFE_MANUAL_CONTENTS>>
           {({ selectedTab }) => {
-            const selectedContent =
-              SAFE_MANUAL_CONTENTS[
-                selectedTab ? selectedTab : SAFE_MANUAL_TITLES[0]
-              ];
+            if (!selectedTab) return null;
+            const selectedContent = SAFE_MANUAL_CONTENTS[selectedTab];
             return (
               <div className="px-6 grow h-full overflow-y-scroll hide-scrollbar">
                 <Spacing size={12} />
