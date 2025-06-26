@@ -2,6 +2,7 @@ import CourseDetailMapSection from "@pages/map/CourseDetailMapSection";
 import MapTadHeaderSection from "@pages/map/MapTadHeaderSection";
 import Spacing from "@shared/layout/Spacing";
 import BackButton from "@widgets/BackButton";
+import { Suspense } from "react";
 
 export default function MapPage() {
   return (
@@ -12,7 +13,9 @@ export default function MapPage() {
           <BackButton />
         </div>
         <Spacing size={3} />
-        <MapTadHeaderSection />
+        <Suspense>
+          <MapTadHeaderSection />
+        </Suspense>
       </div>
       <CourseDetailMapSection />
     </div>
