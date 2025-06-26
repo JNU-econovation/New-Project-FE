@@ -3,7 +3,7 @@
 import Spacing from "@/components/common/shared/layout/Spacing";
 import CourseMetaDataUi from "@/components/common/shared/ui/CourseMetaDataUi";
 import ROUTE from "@/constants/route";
-import useRouteCourseDetail from "@/hooks/bridge/useRouteCourseDetail";
+import useRouteBridge from "@/hooks/bridge/useRouteBridge";
 import { cn } from "@/utils/cn";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
@@ -19,7 +19,10 @@ export default function CourseTabSection() {
   const { mountainName } = useParams<{ mountainName: string }>();
   const searchParams = useSearchParams();
   const sortBy = searchParams.get("sort");
-  const routeCourseDetail = useRouteCourseDetail();
+  const routeCourseDetail = useRouteBridge({
+    path: "course-detail",
+    routeType: "push",
+  });
 
   // TODO: 서버에서 데이터 받아오기
   const courseList = new Array(10).fill(0);
