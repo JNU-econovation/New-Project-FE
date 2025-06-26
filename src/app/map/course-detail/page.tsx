@@ -5,6 +5,7 @@ import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import BackButton from "@widgets/BackButton";
 import TravelStartButton from "@widgets/TravelStartButton";
+import { Suspense } from "react";
 
 export default function CourseDetailPage() {
   return (
@@ -13,7 +14,9 @@ export default function CourseDetailPage() {
         <Spacing size={4} />
         <BackButton />
         <Spacing size={3} />
-        <CourseDetailMapTagHeaderSection />
+        <Suspense>
+          <CourseDetailMapTagHeaderSection />
+        </Suspense>
       </div>
       <PositionBottom bottom={88}>
         <div className="px-6">

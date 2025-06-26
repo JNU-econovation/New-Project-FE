@@ -1,6 +1,7 @@
 import StackHeader from "@entities/StackHeader";
 import Spacing from "@shared/layout/Spacing";
 import SafeManualTab from "@widgets/SafeManualTab";
+import { Suspense } from "react";
 
 export default function SafeManualDetailPage() {
   return (
@@ -8,7 +9,9 @@ export default function SafeManualDetailPage() {
       <Spacing size={5} />
       <StackHeader title="안전 매뉴얼" />
       <Spacing size={5} />
-      <SafeManualTab />
+      <Suspense>
+        <SafeManualTab />
+      </Suspense>
     </div>
   );
 }
