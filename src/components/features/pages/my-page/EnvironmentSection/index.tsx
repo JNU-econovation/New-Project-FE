@@ -11,7 +11,7 @@ export default function EnvironmentSection() {
   return (
     <section className="border-b border-gray-30">
       <Spacing size={4} />
-      <Text fontSize="text-xl" color="text-main-green">
+      <Text fontSize="text-sm" color="text-main-green">
         환경
       </Text>
       <Spacing size={2} />
@@ -19,17 +19,27 @@ export default function EnvironmentSection() {
         onClick={goToNotificationSettings}
         className="flex items-center justify-between h-10 w-full"
       >
-        <Text fontSize="text-xl" fontWeight="font-medium">
+        <Text fontSize="text-base" fontWeight="font-medium">
           알림 설정
         </Text>
-        <GrayRightArrowIcon width={10} height={10} />
+        <GrayRightArrowIcon width={6} height={10} />
       </button>
       <Spacing size={2} />
       <div className="flex items-center justify-between h-10">
-        <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
+        <Text
+          fontSize="text-base"
+          fontWeight="font-medium"
+          color="text-main-green"
+          opacity={"opacity-50"}
+        >
           버전 정보
         </Text>
-        <Text fontSize="text-xl" fontWeight="font-medium" color="text-sub-gray">
+        <Text
+          fontSize="text-base"
+          fontWeight="font-medium"
+          color="text-main-green"
+          opacity={"opacity-50"}
+        >
           {"2.0.0"}
         </Text>
       </div>

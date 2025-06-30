@@ -10,7 +10,7 @@ export default function LogoutButton() {
   return (
     <>
       <button onClick={openModal}>
-        <Text fontSize="text-xl" color="text-main-green">
+        <Text fontSize="text-sm" color="text-main-green">
           로그아웃
         </Text>
       </button>

@@ -7,6 +7,8 @@ interface TextProps {
   fontSize?: SizeType;
   fontWeight?: WeightType;
   display?: "block" | "inline";
+  align?: TextAlignType;
+  opacity?: OpacityType;
   zIndex?:
     | "z-0"
     | "z-10"
@@ -53,6 +55,21 @@ type WeightType =
   | "font-extrabold"
   | "font-black";
 
+type TextAlignType = "text-left" | "text-center" | "text-right";
+
+type OpacityType =
+  | "opacity-0"
+  | "opacity-10"
+  | "opacity-20"
+  | "opacity-30"
+  | "opacity-40"
+  | "opacity-50"
+  | "opacity-60"
+  | "opacity-70"
+  | "opacity-80"
+  | "opacity-90"
+  | "opacity-100";
+
 export default function Text({
   children,
   className,
@@ -60,11 +77,22 @@ export default function Text({
   fontSize = "text-base",
   fontWeight = "font-normal",
   display = "inline",
+  align = "text-left",
+  opacity = "opacity-100",
   zIndex,
 }: TextProps) {
   return (
     <span
-      className={cn(color, fontSize, fontWeight, className, display, zIndex)}
+      className={cn(
+        color,
+        fontSize,
+        fontWeight,
+        className,
+        display,
+        zIndex,
+        align,
+        opacity
+      )}
     >
       {children}
     </span>
