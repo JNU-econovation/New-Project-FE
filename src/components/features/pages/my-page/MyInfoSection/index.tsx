@@ -1,10 +1,11 @@
 "use client";
 
-import Text from "@shared/ui/Text";
-import useRouteMyInfoBridge from "@/hooks/bridge/useRouteMyInfoBridge";
-import useRouteHikingLogBridge from "@/hooks/bridge/useRouteHikingLogBridge";
-import useRouteCourseBookmarkBridge from "@/hooks/bridge/useRouteCourseBookmarkBridge";
+import useRouteCourseBookmarkBridge from "@hooks/bridge/useRouteCourseBookmarkBridge";
+import useRouteHikingLogBridge from "@hooks/bridge/useRouteHikingLogBridge";
+import useRouteMyInfoBridge from "@hooks/bridge/useRouteMyInfoBridge";
+import Spacing from "@shared/layout/Spacing";
 import BlackRightArrowIcon from "@shared/ui/BlackRightArrowIcon";
+import Text from "@shared/ui/Text";
 import MyProfileImage from "@widgets/MyProfileImage";
 
 export default function MyInfoSection() {
@@ -14,29 +15,33 @@ export default function MyInfoSection() {
 
   return (
     <section>
-      <div className="pr-5 pl-5">
-        <div className="w-full border-b border-gray-30 flex flex-col items-center pb-3">
-          <Text fontSize="text-2xl">마이 페이지</Text>
-        </div>
+      <div className="px-6">
+        <Text fontSize="text-xl" align="text-center">
+          마이 페이지
+        </Text>
+        <hr className="w-full mx-auto text-gray-30" />
       </div>
-      <div className="flex flex-col items-center mt-5 gap-4">
-        <MyProfileImage src={""} width={100} height={100} />
+      <Spacing size={5} />
+      <div className="flex flex-col items-center">
+        <MyProfileImage src={""} width={89} height={89} />
+        <Spacing size={4} />
         <button
           onClick={goToMyInfo}
           className="flex flex-row items-center gap-2"
         >
-          <Text fontSize="text-3xl" fontWeight="font-bold">
-            {"사용자 이름"}
+          <Text fontSize="text-2xl" fontWeight="font-bold">
+            {"홍길동"}
           </Text>
           <BlackRightArrowIcon width={10} height={10} />
         </button>
-        <Text fontSize="text-xl" color="text-main-green">
+        <Text fontSize="text-base" color="text-main-green">
           {"test@naver.com"}
         </Text>
-        <div className="flex flex-row items-center gap-10">
+        <Spacing size={4} />
+        <div className="flex flex-row items-center gap-22">
           <button onClick={goToHikingLog}>
             <Text
-              fontSize="text-xl"
+              fontSize="text-base"
               fontWeight="font-semibold"
               color="text-main-green"
             >
@@ -45,7 +50,7 @@ export default function MyInfoSection() {
           </button>
           <button onClick={goToCourseBookmark}>
             <Text
-              fontSize="text-xl"
+              fontSize="text-base"
               fontWeight="font-semibold"
               color="text-main-green"
             >
