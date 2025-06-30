@@ -8,7 +8,7 @@ type RouteBridgePath =
   | "course-detail"
   | "course-search"
   | "faq"
-  | "hiking-log"
+  | "travel-log"
   | "inquiry"
   | "manual-detail"
   | "mountain-course"
