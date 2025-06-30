@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/common/shared/ui/Button";
 import useRouteChangePasswordBridge from "@hooks/bridge/useRouteChangePasswordBridge";
 import { usePersonalInfo } from "@hooks/feature/info/usePersonalInfo";
 import CancelIcon from "@icons/CancelIcon";
@@ -15,17 +16,13 @@ export default function PersonalInfoSection() {
 
   return (
     <section>
-      <Text
-        fontSize="text-xl"
-        fontWeight="font-semibold"
-        color="text-main-green"
-      >
+      <Text fontSize="text-sm" fontWeight="font-semibold" color="text-sub-gray">
         내 정보 관리
       </Text>
-      <Spacing size={8} />
+      <Spacing size={6} />
       <TextField
         label="이름"
-        placeholder="이주희"
+        placeholder="홍길동"
         color="white"
         value={personalInfo.name}
         onChange={(e) => onChangePersonalInfo("name", e.target.value)}
@@ -78,12 +75,9 @@ export default function PersonalInfoSection() {
       />
       <Spacing size={8} />
       <div className="flex justify-end w-full">
-        <button
-          onClick={goToChangePassword}
-          className="bg-main-green text-white px-4 py-2 rounded-xl font-bold text-lg"
-        >
+        <Button size={"sm"} onClick={goToChangePassword}>
           비밀번호 변경
-        </button>
+        </Button>
       </div>
     </section>
   );

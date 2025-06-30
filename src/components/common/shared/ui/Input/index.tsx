@@ -10,7 +10,7 @@ export const InputVariants = cva(`rounded-lg`, {
       white: "bg-white border border-gray-300",
     },
     size: {
-      primary: "w-full p-4",
+      primary: "w-full p-3",
     },
   },
   defaultVariants: {
