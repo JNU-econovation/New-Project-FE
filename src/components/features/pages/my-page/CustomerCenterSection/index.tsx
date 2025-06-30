@@ -1,16 +1,25 @@
 "use client";
 
+import useRouteBridge from "@/hooks/bridge/useRouteBridge";
 import Spacing from "@shared/layout/Spacing";
-import Text from "@shared/ui/Text";
-import useRouteFaqBridge from "@/hooks/bridge/useRouteFaqBridge";
-import useRouteInquiryBridge from "@/hooks/bridge/useRouteInquiryBridge";
-import useRouteCheckTermsBridge from "@/hooks/bridge/useRouteCheckTermsBridge";
 import GrayRightArrowIcon from "@shared/ui/GrayRightArrowIcon";
+import Text from "@shared/ui/Text";
 
 export default function CustomerCenterSection() {
-  const goToFaq = useRouteFaqBridge();
-  const goToInquiry = useRouteInquiryBridge();
-  const goToCheckTerms = useRouteCheckTermsBridge();
+  const goToFaq = useRouteBridge({
+    path: "faq",
+    routeType: "push",
+  });
+
+  const goToInquiry = useRouteBridge({
+    path: "inquiry",
+    routeType: "push",
+  });
+
+  const goToCheckTerms = useRouteBridge({
+    path: "check-terms",
+    routeType: "push",
+  });
 
   return (
     <section className="border-b border-gray-30">

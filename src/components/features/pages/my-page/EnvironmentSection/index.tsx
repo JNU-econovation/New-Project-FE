@@ -1,12 +1,15 @@
 "use client";
 
+import useRouteBridge from "@hooks/bridge/useRouteBridge";
 import Spacing from "@shared/layout/Spacing";
-import Text from "@shared/ui/Text";
-import useRouteNotificationSettingsBridge from "@/hooks/bridge/useRouteNotificationSettingsBridge";
 import GrayRightArrowIcon from "@shared/ui/GrayRightArrowIcon";
+import Text from "@shared/ui/Text";
 
 export default function EnvironmentSection() {
-  const goToNotificationSettings = useRouteNotificationSettingsBridge();
+  const goToNotificationSettings = useRouteBridge({
+    path: "notification-setting",
+    routeType: "push",
+  });
 
   return (
     <section className="border-b border-gray-30">
