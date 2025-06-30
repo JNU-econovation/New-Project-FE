@@ -160,7 +160,7 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
     <div
       ref={bottomSheet}
       className={cn(
-        "rounded-2xl bg-white overflow-hidden transition-all transform-gpu shadow-md"
+        "rounded-3xl bg-white overflow-hidden transition-all transform-gpu shadow-md"
       )}
     >
       <button
