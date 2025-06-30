@@ -2,18 +2,19 @@ import { useBridge } from "@/hooks/common/useBridge";
 import { useCallback } from "react";
 
 type RouteBridgePath =
+  | "change-password"
+  | "check-terms"
+  | "course-bookmark"
   | "course-detail"
-  | "start-travel"
+  | "course-search"
+  | "faq"
+  | "hiking-log"
+  | "inquiry"
+  | "manual-detail"
   | "mountain-course"
   | "my-info"
-  | "hiking-log"
-  | "course-bookmark"
-  | "faq"
-  | "inquiry"
-  | "check-terms"
   | "notification-setting"
-  | "change-password"
-  | "manual-detail";
+  | "start-travel";
 
 interface RouteBridgeRequest {
   path: RouteBridgePath;
