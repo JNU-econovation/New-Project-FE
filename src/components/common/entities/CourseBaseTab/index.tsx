@@ -24,13 +24,16 @@ export default function CourseBaseTab({
 
   return (
     <>
-      <div className="flex items-center justify-center bg-gray-30 rounded-full mx-auto w-fit">
+      <div className="flex items-center justify-center bg-gray-30 rounded-full mx-auto w-full">
         {courseList.map((courseName, index) => (
           <button
-            className={cn("px-4 py-1 rounded-full transition-all", {
-              "border border-main-green bg-white":
-                selectedCourseName === courseName,
-            })}
+            className={cn(
+              "px-4 py-1 rounded-full transition-all grow shrink-0",
+              {
+                "border border-main-green bg-white":
+                  selectedCourseName === courseName,
+              }
+            )}
             key={`${index}-${courseName}`}
             onClick={() => {
               if (selectedCourseName === courseName) return;
