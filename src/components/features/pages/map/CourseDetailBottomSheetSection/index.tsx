@@ -15,9 +15,9 @@ export default function CourseDetailBottomSheetSection() {
     <section>
       <BottomSheet>
         <CourseBaseTab courseList={courseList} />
-        <Spacing size={4} />
+        <Spacing size={2} />
         <CourseMetaDataUi difficulty="easy" distance={123} time={23} />
-        <Spacing size={4} />
+        <Spacing size={2} />
 
         <Carousel
           items={[
@@ -25,6 +25,7 @@ export default function CourseDetailBottomSheetSection() {
             <CourseImageInfoSection key={2} />,
           ]}
         />
+        <Spacing size={1} />
       </BottomSheet>
     </section>
   );

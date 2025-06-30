@@ -3,7 +3,7 @@ import SunnyIcon from "@icons/SunnyIcon";
 
 export default function CourseWeatherClothesInfoSection() {
   return (
-    <div className="grid grid-cols-2 bg-green-10 rounded-2xl p-2">
+    <div className="grid grid-cols-2 bg-green-10 rounded-2xl p-2.5">
       <p className="font-bold text-gray-20">기상 정보</p>
       <p className="font-bold text-gray-20">산행 복장</p>
       <div className="flex items-center justify-around">
