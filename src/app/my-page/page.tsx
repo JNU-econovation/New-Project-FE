@@ -6,8 +6,8 @@ import LogoutButton from "@widgets/LogoutButton";
 
 export default function MyPage() {
   return (
-    <>
-      <Spacing size={5} />
+    <div className="max-h-screen overflow-y-auto">
+      <Spacing size={4} />
       <MyInfoSection />
       <Spacing size={5} />
       <div className="h-3 bg-gray-100" />
@@ -17,6 +17,7 @@ export default function MyPage() {
         <Spacing size={4} />
         <LogoutButton />
       </div>
-    </>
+      <Spacing size={4} />
+    </div>
   );
 }
