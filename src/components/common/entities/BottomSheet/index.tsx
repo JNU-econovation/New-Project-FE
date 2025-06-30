@@ -2,7 +2,7 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import { PropsWithChildren, useEffect, useRef, useState } from "react";
+import { memo, PropsWithChildren, useEffect, useRef, useState } from "react";
 
 const MIN_CONTENT_HEIGHT = 0; // 최소 컨텐츠 높이
 const SNAP_THRESHOLD = 1; // 스냅 임계값
@@ -11,13 +11,17 @@ interface BottomSheetProps extends PropsWithChildren {
   debug?: boolean;
 }
 
-export default function BottomSheet({ debug, children }: BottomSheetProps) {
+export default memo(function BottomSheet({
+  debug,
+  children,
+}: BottomSheetProps) {
   const [isReady, setIsReady] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const [startY, setStartY] = useState(0); // 드래그 시작 Y 좌표
   const [currentY, setCurrentY] = useState(0); // 현재 드래그 Y 좌표
   const [contentHeight, setContentHeight] = useState(0); // 현재 컨텐츠 높이
   const [maxContentHeight, setMaxContentHeight] = useState(0); // 최대 컨텐츠 높이
+  const [isOpen, setIsOpen] = useState(true); // BottomSheet 열림 상태
 
   const bottomSheet = useRef<HTMLDivElement | null>(null);
   const bottomSheetContent = useRef<HTMLDivElement | null>(null);
@@ -29,9 +33,9 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
       setContentHeight(bottomSheetContent.current.scrollHeight);
       setIsReady(true);
     }
-  }, [children]);
+  }, []);
 
-  // 마우스 이벤트 핸들러
+  // 마우스의 움직임에 따라 BottomSheet의 높이를 조정하는 핸들러
   const handleMove = (e: MouseEvent) => {
     if (!isPressed) return;
 
@@ -48,6 +52,7 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
     }
   };
 
+  // 마우스가 어디로 이동했는지에 따라 열거나 닫는 핸들러
   const handleMouseUp = (e: MouseEvent) => {
     if (!isPressed) return;
 
@@ -64,8 +69,10 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
 
     if (Math.abs(deltaY) > SNAP_THRESHOLD) {
       if (deltaY > 0) {
+        setIsOpen(false);
         finalHeight = MIN_CONTENT_HEIGHT;
       } else {
+        setIsOpen(true);
         finalHeight = maxContentHeight;
       }
     }
@@ -73,7 +80,7 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
     setContentHeight(finalHeight);
   };
 
-  // 터치 이벤트 핸들러
+  // 손가락 터치에 따라 BottomSheet의 높이를 조정하는 핸들러
   const handleTouchMove = (e: TouchEvent) => {
     if (!isPressed) return;
     e.preventDefault();
@@ -92,6 +99,7 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
     }
   };
 
+  // 손가락 터치가 끝났을 때 BottomSheet를 열거나 닫는 핸들러
   const handleTouchEnd = (e: TouchEvent) => {
     if (!isPressed) return;
 
@@ -108,8 +116,10 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
 
     if (Math.abs(deltaY) > SNAP_THRESHOLD) {
       if (deltaY > 0) {
+        setIsOpen(false);
         finalHeight = MIN_CONTENT_HEIGHT;
       } else {
+        setIsOpen(true);
         finalHeight = maxContentHeight;
       }
     }
@@ -191,6 +201,7 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
           <p>최소 높이: {MIN_CONTENT_HEIGHT}px</p>
           <p>드래그 중: {isPressed ? "Yes" : "No"}</p>
           <p>준비 완료: {isReady ? "Yes" : "No"}</p>
+          <p>열림 상태: {isOpen ? "Yes" : "No"}</p>
         </div>
       )}
 
@@ -206,4 +217,4 @@ export default function BottomSheet({ debug, children }: BottomSheetProps) {
       </div>
     </div>
   );
-}
+});
