@@ -1,17 +1,26 @@
 "use client";
 
-import useRouteCourseBookmarkBridge from "@hooks/bridge/useRouteCourseBookmarkBridge";
-import useRouteHikingLogBridge from "@hooks/bridge/useRouteHikingLogBridge";
-import useRouteMyInfoBridge from "@hooks/bridge/useRouteMyInfoBridge";
+import useRouteBridge from "@hooks/bridge/useRouteBridge";
 import Spacing from "@shared/layout/Spacing";
 import BlackRightArrowIcon from "@shared/ui/BlackRightArrowIcon";
 import Text from "@shared/ui/Text";
 import MyProfileImage from "@widgets/MyProfileImage";
 
 export default function MyInfoSection() {
-  const goToMyInfo = useRouteMyInfoBridge();
-  const goToHikingLog = useRouteHikingLogBridge();
-  const goToCourseBookmark = useRouteCourseBookmarkBridge();
+  const goToMyInfo = useRouteBridge({
+    path: "my-info",
+    routeType: "push",
+  });
+
+  const goToHikingLog = useRouteBridge({
+    path: "travel-log",
+    routeType: "push",
+  });
+
+  const goToCourseBookmark = useRouteBridge({
+    path: "course-bookmark",
+    routeType: "push",
+  });
 
   return (
     <section>
