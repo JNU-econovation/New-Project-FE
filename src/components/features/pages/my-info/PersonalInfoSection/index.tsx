@@ -1,10 +1,10 @@
 "use client";
 
-import Button from "@/components/common/shared/ui/Button";
 import useRouteChangePasswordBridge from "@hooks/bridge/useRouteChangePasswordBridge";
 import { usePersonalInfo } from "@hooks/feature/info/usePersonalInfo";
-import CancelIcon from "@icons/CancelIcon";
 import Spacing from "@shared/layout/Spacing";
+import Button from "@shared/ui/Button";
+import CancelIcon from "@shared/ui/icons/CancelIcon";
 import Text from "@shared/ui/Text";
 import TextField from "@shared/ui/TextField";
 
@@ -27,9 +27,11 @@ export default function PersonalInfoSection() {
         value={personalInfo.name}
         onChange={(e) => onChangePersonalInfo("name", e.target.value)}
         right={
-          <button onClick={() => onClearPersonalInfo("name")}>
-            <CancelIcon alt="입력 취소" width={24} height={24} />
-          </button>
+          <div className="flex items-center">
+            <button onClick={() => onClearPersonalInfo("name")}>
+              <CancelIcon alt="입력 취소" />
+            </button>
+          </div>
         }
       />
       <Spacing size={8} />
@@ -40,9 +42,11 @@ export default function PersonalInfoSection() {
         value={personalInfo.phone}
         onChange={(e) => onChangePersonalInfo("phone", e.target.value)}
         right={
-          <button onClick={() => onClearPersonalInfo("phone")}>
-            <CancelIcon alt="입력 취소" width={24} height={24} />
-          </button>
+          <div className="flex items-center">
+            <button onClick={() => onClearPersonalInfo("phone")}>
+              <CancelIcon alt="입력 취소" />
+            </button>
+          </div>
         }
       />
       <Spacing size={8} />
@@ -54,9 +58,11 @@ export default function PersonalInfoSection() {
         value={personalInfo.email}
         onChange={(e) => onChangePersonalInfo("email", e.target.value)}
         right={
-          <button onClick={() => onClearPersonalInfo("email")}>
-            <CancelIcon alt="입력 취소" width={24} height={24} />
-          </button>
+          <div className="flex items-center">
+            <button onClick={() => onClearPersonalInfo("email")}>
+              <CancelIcon alt="입력 취소" />
+            </button>
+          </div>
         }
       />
       <Spacing size={8} />
@@ -68,9 +74,11 @@ export default function PersonalInfoSection() {
         value={personalInfo.password}
         onChange={(e) => onChangePersonalInfo("password", e.target.value)}
         right={
-          <button onClick={() => onClearPersonalInfo("password")}>
-            <CancelIcon alt="입력 취소" width={24} height={24} />
-          </button>
+          <div className="flex items-center">
+            <button onClick={() => onClearPersonalInfo("password")}>
+              <CancelIcon alt="입력 취소" />
+            </button>
+          </div>
         }
       />
       <Spacing size={8} />
