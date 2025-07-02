@@ -25,7 +25,6 @@ export type SizeType =
   | "text-base"
   | "text-lg"
   | "text-xl"
-  | "text-xl"
   | "text-2xl"
   | "text-3xl"
   | "text-4xl"
