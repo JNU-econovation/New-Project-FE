@@ -4,7 +4,7 @@ import Spacing from "@shared/layout/Spacing";
 
 export default function ChangePasswordPage() {
   return (
-    <div className="p-5">
+    <div className="p-6">
       <ChangePasswordHeaderSection />
       <Spacing size={12} />
       <PasswordInfoSection />
