@@ -7,13 +7,15 @@ import Text from "@shared/ui/Text";
 
 export default function CustomerCenterSection() {
   const goToFaq = useRouteBridge({
-    path: "faq",
+    path: "customer-center",
     routeType: "push",
+    params: [{ tab: "faq" }],
   });
 
   const goToInquiry = useRouteBridge({
-    path: "inquiry",
+    path: "customer-center",
     routeType: "push",
+    params: [{ tab: "문의하기" }],
   });
 
   const goToCheckTerms = useRouteBridge({
