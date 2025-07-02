@@ -37,7 +37,7 @@ const useRouteBridge = ({ path, routeType, params }: RouteBridgeRequest) => {
         },
       },
     });
-  }, [path, request, routeType, params]);
+  }, [params, path, request, routeType]);
 };
 
 export default useRouteBridge;
