@@ -7,14 +7,15 @@ type RouteBridgePath =
   | "course-bookmark"
   | "course-detail"
   | "course-search"
-  | "faq"
+  // | "faq"
   | "travel-log"
-  | "inquiry"
+  // | "inquiry"
   | "manual-detail"
   | "mountain-course"
   | "my-info"
   | "notification-setting"
-  | "start-travel";
+  | "start-travel"
+  | "customer-center";
 
 interface RouteBridgeRequest {
   path: RouteBridgePath;
