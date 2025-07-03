@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
 import { isValidElement, memo, useEffect } from "react";
 import useTabContext from "../../hooks/useTabContext";
 

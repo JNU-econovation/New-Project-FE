@@ -22,12 +22,7 @@ export default function PasswordInfoSection() {
           onChange={(e) => onChangePasswordInfo("password", e.target.value)}
           right={
             <button onClick={() => onClearPasswordInfo("password")}>
-              <CancelIcon
-                alt="입력 취소"
-                width={24}
-                height={24}
-                className="hidden"
-              />
+              <CancelIcon alt="입력 취소" className="hidden" />
             </button>
           }
         />
@@ -41,12 +36,7 @@ export default function PasswordInfoSection() {
           onChange={(e) => onChangePasswordInfo("newPassword", e.target.value)}
           right={
             <button onClick={() => onClearPasswordInfo("newPassword")}>
-              <CancelIcon
-                alt="입력 취소"
-                width={24}
-                height={24}
-                className="hidden"
-              />
+              <CancelIcon alt="입력 취소" className="hidden" />
             </button>
           }
         />

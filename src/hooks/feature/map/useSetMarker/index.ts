@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const useSetMarker = (
   map: any,
   { latitude, longitude }: { latitude: number; longitude: number }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * infoWindow : 지도에 표시되는 정보창
  */
