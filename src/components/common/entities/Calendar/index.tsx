@@ -81,13 +81,13 @@ export default memo(function Calendar({ content, onDateClick }: CalendarProps) {
       <Spacing size={4} />
 
       <div className="flex items-center justify-between ">
-        <button onClick={handlePrevMonth}>
+        <button onClick={handlePrevMonth} aria-label="이전 달">
           <LeftChevronThinIcon />
         </button>
         <Text fontSize="text-2xl" fontWeight="font-bold" align="text-center">
           {currentMonth + 1}월
         </Text>
-        <button onClick={handleNextMonth}>
+        <button onClick={handleNextMonth} aria-label="다음 달">
           <RightChevronThinIcon />
         </button>
       </div>
@@ -101,6 +101,11 @@ export default memo(function Calendar({ content, onDateClick }: CalendarProps) {
                 key={dayIndex}
                 className="w-full flex flex-col items-center justify-center"
                 disabled={day === null}
+                aria-label={
+                  day !== null
+                    ? `${currentYear}년 ${currentMonth + 1}월 ${day}일`
+                    : undefined
+                }
                 onClick={() => {
                   if (day !== null && onDateClick) {
                     onDateClick(new Date(currentYear, currentMonth, day));

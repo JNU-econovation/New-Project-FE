@@ -13,7 +13,11 @@ export default function WeekHeader({ headerText }: WeekHeaderProps) {
 
   return (
     <header className="border-gray-30 flex flex-col items-center relative pb-3">
-      <button onClick={goBack} className="absolute left-0">
+      <button
+        onClick={goBack}
+        className="absolute left-0"
+        aria-label="뒤로가기"
+      >
         <LeftChevronIcon />
       </button>
       <Text fontSize="text-base">{headerText}</Text>
