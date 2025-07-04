@@ -12,7 +12,6 @@ COPY tsconfig.json next.config.ts ./
 COPY public ./public
 COPY src ./src
 
-#RUN pnpm build
+RUN pnpm build
 EXPOSE 3000
-#CMD ["pnpm", "start"]
-CMD ["pnpm", "dev"]
+CMD ["pnpm", "start"]
