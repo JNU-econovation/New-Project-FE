@@ -1,9 +1,9 @@
 "use client";
 
+import useSendToken from "@hooks/common/useSendToken";
+import useSaveAuthToken from "@hooks/feature/useSaveAuthToken";
 import Flex from "@shared/layout/Flex";
 import Spinner from "@shared/ui/Spinner";
-import useSaveAuthToken from "@hooks/feature/useSaveAuthToken";
-import useSendToken from "@hooks/common/useSendToken";
 
 export default function TokenProcessingSection() {
   useSaveAuthToken();
