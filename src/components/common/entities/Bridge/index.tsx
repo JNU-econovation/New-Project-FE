@@ -80,6 +80,7 @@ export default function Bridge({ onRequest }: BridgeProps) {
         }
       } catch (error) {
         console.error("handshake 중 에러 발생:", error);
+        window.removeEventListener("message", handleMessage);
       }
     };
 
