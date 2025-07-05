@@ -1,5 +1,12 @@
-import LoginBridge from "@widgets/LoginBridge";
+// import LoginBridge from "@widgets/LoginBridge";
+
+import KakaoLoginSection from "@pages/login/KakaoLoginSection";
 
 export default function LoginPage() {
-  return <LoginBridge />;
+  return (
+    <>
+      <KakaoLoginSection />
+      {/* <LoginBridge /> */}
+    </>
+  );
 }
