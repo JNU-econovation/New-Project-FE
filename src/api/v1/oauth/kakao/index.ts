@@ -1,7 +1,16 @@
-import { instance } from "@api/_instances";
+import publicApi from "@api/_instances/publicApi";
 
-export const KAKAO_LOGIN_URI = `api/v1/oauth/kakao`;
+export const KAKAO_LOGIN_URI = `api/v1/oauth/kakao/login`;
 
-const postKakaoLogin = async () => await instance.post(KAKAO_LOGIN_URI, {});
+interface KakaoLoginResponse {
+  uri: string;
+}
 
-export default postKakaoLogin;
+export const getKakaoLogin = async () => {
+  const response = await publicApi<KakaoLoginResponse>({
+    method: "get",
+    url: KAKAO_LOGIN_URI,
+  });
+
+  return response.data;
+};
