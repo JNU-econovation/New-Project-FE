@@ -1,7 +1,8 @@
-import localFont from "next/font/local";
 import TanstackQueryProvider from "@entities/TanstackQueryProvider";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
+import BridgeTester from "@pages/Bridge";
 
 export const metadata: Metadata = {
   title: "산악구조",
@@ -68,6 +69,7 @@ export default function RootLayout({
       <body className="select-none">
         <TanstackQueryProvider>{children}</TanstackQueryProvider>
         <div id="modal-root" />
+        <BridgeTester />
       </body>
     </html>
   );

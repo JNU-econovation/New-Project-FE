@@ -1,6 +1,6 @@
 "use client";
 
-import { useBridge } from "@hooks/common/useBridge";
+import { useBridge } from "@/service/bridge/hooks/useBridge";
 import LeftChevronIcon from "@icons/LeftChevronIcon";
 import Spacing from "@shared/layout/Spacing";
 import SearchInput from "@shared/ui/SearchInput";
