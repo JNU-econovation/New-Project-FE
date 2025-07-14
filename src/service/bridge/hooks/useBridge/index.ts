@@ -44,7 +44,7 @@ export const useBridge = <ReqBody = unknown, ResBody = unknown>() => {
 
   useEffect(() => {
     sendHandshakeSynMessage();
-  });
+  }, [sendHandshakeSynMessage]);
 
   const request = ({
     requestMessage,
