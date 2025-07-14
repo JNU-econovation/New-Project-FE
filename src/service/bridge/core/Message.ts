@@ -47,15 +47,6 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
   };
 
   public send = <Body>(callback?: (m: WebviewBridgeMessage<Body>) => void) => {
-    // console.log("[web] send message to app ", callback);
-    // alert(
-    //   "[web] send message to app: " +
-    //     this._id +
-    //     " / " +
-    //     this.flag.syn +
-    //     " / " +
-    //     this.ack
-    // );
     Message.sendWebviewMessage(this.createNewMessageObj());
 
     if (!callback) return;

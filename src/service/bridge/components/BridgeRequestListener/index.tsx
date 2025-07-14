@@ -1,9 +1,5 @@
 "use client";
 
-// import type {
-//   MessageEventRequestData,
-//   MessageEventResponseData,
-// } from "@/types/bridge";
 import { useCallback, useEffect, useState } from "react";
 
 import Bridge from "../..";
@@ -28,14 +24,6 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
       syn: BRIDGE.SET,
       ack: null,
     }).send((message) => {
-      // alert(
-      //   "[web] syn/ack 메시지 받음: " +
-      //     message._id +
-      //     " / " +
-      //     message.flag.syn +
-      //     " / " +
-      //     message.ack
-      // );
       const {
         _id,
         ack,
@@ -51,7 +39,6 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
             "웹뷰 핸드쉐이크 메시지의 ack 값이 null입니다. 올바른 ack 값을 포함해야 합니다."
           );
       }
-      // alert("[web] 핸드쉐이크 완료: ");
       setIsReady(true);
 
       Bridge.createMessage({
@@ -116,8 +103,6 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
   // 웹뷰 핸드쉐이크를 위한 로직
   useEffect(() => {
     sendHandshakeSynMessage();
-
-    // const timeoutId = setTimeout(sendHandshakeSynMessage, BRIDGE.TIMEOUT);
   }, [sendHandshakeSynMessage]);
 
   return null;

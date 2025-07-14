@@ -16,7 +16,7 @@ export const useGetCurrentPosition = () => {
   );
 
   const onError = () => {
-    // alert("위치 정보를 가져올 수 없습니다.");
+    console.error("현재 위치를 가져오는 데 실패했습니다.");
   };
 
   useEffect(() => {
