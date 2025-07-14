@@ -1,5 +1,9 @@
-import { useBridge } from "@/hooks/common/useBridge";
+import { useBridge } from "@/service/bridge/hooks/useBridge";
 import { useCallback } from "react";
+import type {
+  MessageEventRequestData,
+  MessageEventResponseData,
+} from "@/types/bridge";
 
 type RouteBridgePath =
   | "change-password"
@@ -23,22 +27,21 @@ interface RouteBridgeRequest {
   params?: Record<string, string>[];
 }
 
-const useRouteBridge = ({ path, routeType, params }: RouteBridgeRequest) => {
-  const { request } = useBridge();
+const useRouteBridge = (body: RouteBridgeRequest) => {
+  const { request } = useBridge<
+    MessageEventRequestData<RouteBridgeRequest>,
+    MessageEventResponseData
+  >();
 
   return useCallback(() => {
     request({
       requestMessage: {
         method: "POST",
         name: "route-to",
-        body: {
-          path,
-          routeType,
-          params,
-        },
+        body,
       },
     });
-  }, [params, path, request, routeType]);
+  }, [body, request]);
 };
 
 export default useRouteBridge;
