@@ -72,7 +72,7 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
             "핸드쉐이크가 끝난 시점에서 웹뷰 핸드쉐이크 메시지가 도착하였습니다."
           );
 
-        if (requestValidator && requestValidator(body)) {
+        if (requestValidator && !requestValidator(body)) {
           throw new Error(
             "요청 메시지의 유효성 검사에 실패하였습니다. 요청 메시지를 확인해주세요."
           );
