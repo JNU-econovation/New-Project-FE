@@ -1,6 +1,6 @@
-import localFont from "next/font/local";
 import TanstackQueryProvider from "@entities/TanstackQueryProvider";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 
 export const metadata: Metadata = {
