@@ -1,5 +1,9 @@
-import { useBridge } from "@/hooks/common/useBridge";
+import { useBridge } from "@/service/bridge/hooks/useBridge";
 import { useCallback } from "react";
+import type {
+  MessageEventRequestData,
+  MessageEventResponseData,
+} from "@/types/bridge";
 
 interface Coords {
   accuracy: number;
@@ -19,11 +23,14 @@ export interface Position {
 type OnResponse = (position: Position) => void;
 
 const useGetCurrentPositionBridge = () => {
-  const { request } = useBridge();
+  const { request } = useBridge<
+    MessageEventRequestData<null>,
+    MessageEventResponseData<Position>
+  >();
 
   return useCallback(
     (onResponse: OnResponse) => {
-      request<null, Position>({
+      request({
         requestMessage: {
           name: "get-current-position",
           method: "GET",

@@ -1,8 +1,15 @@
-import { useBridge } from "@/hooks/common/useBridge";
+import { useBridge } from "@/service/bridge/hooks/useBridge";
 import { useCallback } from "react";
+import type {
+  MessageEventRequestData,
+  MessageEventResponseData,
+} from "@/types/bridge";
 
 const useRouteChangePasswordBridge = () => {
-  const { request } = useBridge();
+  const { request } = useBridge<
+    MessageEventRequestData,
+    MessageEventResponseData
+  >();
 
   return useCallback(() => {
     request({
