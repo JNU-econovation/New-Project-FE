@@ -64,6 +64,7 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
       if (resMessage.ack === this._id) {
         const listeners = this.R_WND.popCallbacksById(this._id);
         listeners.forEach((listener) => listener(resMessage));
+        window.removeEventListener("message", messageHandler);
       }
     };
 
