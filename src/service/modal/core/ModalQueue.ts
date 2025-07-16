@@ -31,6 +31,6 @@ export default class ModalQueue {
   }
 
   private getRandomId() {
-    return Math.random().toString(36).substring(2, 15);
+    return `modal_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
   }
 }
