@@ -1,9 +1,9 @@
-import { useBridge } from "@/service/bridge/hooks/useBridge";
 import { useCallback } from "react";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
+import { useBridge } from "@/service/bridge";
 
 interface Coords {
   accuracy: number;
