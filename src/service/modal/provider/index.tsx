@@ -2,9 +2,9 @@
 
 import { PropsWithChildren, useCallback, useState } from "react";
 
-import Queue from "../core";
 import ModalContext from "../context";
 import CreatePortal from "../components/CreatePortal";
+import getQueue from "../core";
 
 export const useFlush = () => {
   const setFlush = useState(0)[1];
@@ -15,6 +15,7 @@ export const useFlush = () => {
 };
 
 export default function ModalProvider({ children }: PropsWithChildren) {
+  const Queue = getQueue();
   const flush = useFlush();
 
   const addModalAsync = useCallback(
@@ -22,13 +23,13 @@ export default function ModalProvider({ children }: PropsWithChildren) {
       Queue.enqueue(modalComponent);
       flush();
     },
-    [flush]
+    [Queue, flush]
   );
 
   const closeModalAsync = useCallback(() => {
     Queue.dequeue();
     flush();
-  }, [flush]);
+  }, [Queue, flush]);
 
   const value = { addModalAsync, closeModalAsync };
 
