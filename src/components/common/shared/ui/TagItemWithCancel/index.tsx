@@ -15,7 +15,7 @@ export default function TagItemWithCancel({
   onClickCancel,
   onClickTag,
 }: TagItemWithCancelProps) {
-  const onCLickCancelButton = useCallback(
+  const onClickCancelButton = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
       if (!onClickCancel) return;
@@ -23,14 +23,30 @@ export default function TagItemWithCancel({
     },
     [onClickCancel]
   );
+
+  const handleClickTag = useCallback(
+    (e: React.MouseEvent) => {
+      if (!onClickTag) return;
+
+      if (e.target === e.currentTarget) {
+        alert("태그를 클릭했습니다.");
+        e.stopPropagation();
+        return;
+      }
+
+      onClickTag();
+    },
+    [onClickTag]
+  );
+
   return (
     <div
       className="border border-gray-200 rounded-full pl-4 pr-3 py-1 text-xs"
       typeof="button"
-      onClick={onClickTag}
+      onClick={handleClickTag}
     >
       <Text fontSize="text-xs">{text}</Text>
-      <button onClick={onCLickCancelButton} className="ml-1">
+      <button onClick={onClickCancelButton} className="ml-1">
         <XIcon alt="태그 제거" />
       </button>
     </div>
