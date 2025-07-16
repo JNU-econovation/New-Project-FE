@@ -1,10 +1,10 @@
 "use client";
 
 // import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
-import useLogBridge from "@/hooks/feature/bridge/useLogBridge";
 import useGetCurrentPositionBridge, {
   Position,
 } from "@hooks/feature/bridge/useGetCurrentPositionBridge";
+import useLogBridge from "@hooks/feature/bridge/useLogBridge";
 import { useNaverMap } from "@hooks/feature/map/useNaverMap";
 import { useSetMarker } from "@hooks/feature/map/useSetMarker";
 import { useEffect, useState } from "react";

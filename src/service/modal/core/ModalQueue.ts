@@ -19,7 +19,7 @@ export default class ModalQueue {
   }
 
   get queueItems() {
-    return this.queue;
+    return [...this.queue];
   }
 
   remove(modalId: string) {
