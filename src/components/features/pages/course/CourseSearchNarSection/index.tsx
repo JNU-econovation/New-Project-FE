@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteBridge from "@/hooks/bridge/useRouteBridge";
+import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import SearchInput from "@shared/ui/SearchInput";
 import { FocusEvent, useCallback } from "react";
 

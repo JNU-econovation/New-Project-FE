@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteBridge from "@/hooks/bridge/useRouteBridge";
+import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 

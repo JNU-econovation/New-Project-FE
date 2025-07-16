@@ -3,7 +3,7 @@
 import Spacing from "@/components/common/shared/layout/Spacing";
 import CourseMetaDataUi from "@/components/common/shared/ui/CourseMetaDataUi";
 import ROUTE from "@/constants/route";
-import useRouteBridge from "@/hooks/bridge/useRouteBridge";
+import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import { cn } from "@/utils/cn";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 

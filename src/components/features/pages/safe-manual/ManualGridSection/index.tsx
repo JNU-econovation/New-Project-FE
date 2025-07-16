@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteBridge from "@/hooks/bridge/useRouteBridge";
+import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import ManualAnimalIcon from "@icons/ManualAnimalIcon";
 import ManualDistressIcon from "@icons/ManualDistressIcon";
 import ManualPainManIcon from "@icons/ManualPainManIcon";
