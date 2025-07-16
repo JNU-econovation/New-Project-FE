@@ -6,8 +6,6 @@ type LatLongPath = [number, number][];
 export const useDrawPath = (map: any, path: LatLongPath) => {
   useEffect(() => {
     (async () => {
-      // console.log(res.route.traoptimal[0].path);
-
       new naver.maps.Polyline({
         map,
         path,

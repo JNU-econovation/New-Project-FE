@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-// import useOutsideClick from "@/hooks/common/useOutsideClick";
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
 import Dimmed from "@shared/ui/Dimmed";
