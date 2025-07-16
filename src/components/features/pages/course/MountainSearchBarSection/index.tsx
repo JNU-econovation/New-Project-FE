@@ -1,6 +1,6 @@
 "use client";
 
-import { useBridge } from "@/service/bridge/hooks/useBridge";
+import useRouteBridge from "@hooks/feature/bridge/useRouteBridge/index";
 import LeftChevronIcon from "@icons/LeftChevronIcon";
 import Spacing from "@shared/layout/Spacing";
 import SearchInput from "@shared/ui/SearchInput";
@@ -13,7 +13,13 @@ export default function MountainSearchBarSection() {
   const [isFocused, setIsFocused] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [currentSearchTexts, setCurrentSearchTexts] = useState<string[]>([]);
-  const { request } = useBridge();
+  const [submitted, setSubmitted] = useState(false);
+
+  const routeCourseList = useRouteBridge({
+    path: "mountain-course",
+    routeType: "push",
+    params: [{ mountainName: searchText }],
+  });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -25,20 +31,14 @@ export default function MountainSearchBarSection() {
     setCurrentSearchTexts(prevSearchTexts);
   }, []);
 
-  const postNavigateMessage = useCallback(
-    (mountainName: string) => {
-      request({
-        requestMessage: {
-          method: "POST",
-          name: "request-navigate",
-          body: {
-            mountainName,
-          },
-        },
-      });
-    },
-    [request]
-  );
+  useEffect(() => {
+    if (!submitted) return;
+    routeCourseList();
+
+    setSearchText("");
+    setIsFocused(false);
+    setSubmitted(false);
+  }, [routeCourseList, submitted]);
 
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,14 +50,17 @@ export default function MountainSearchBarSection() {
   const handleSearch = useCallback(() => {
     if (typeof window === "undefined") return;
 
-    const newCurrentSearchTexts = JSON.stringify([
-      searchText,
-      ...currentSearchTexts,
-    ]);
+    const set = new Set<string>();
+    set.add(searchText);
+    currentSearchTexts.forEach((text) => set.add(text));
+
+    const newCurrentSearchTexts = JSON.stringify([...set].filter(Boolean));
+
     localStorage.setItem("currenMountainSearchList", newCurrentSearchTexts);
 
-    postNavigateMessage(searchText);
-  }, [currentSearchTexts, postNavigateMessage, searchText]);
+    setCurrentSearchTexts([...set]);
+    setSubmitted(true);
+  }, [currentSearchTexts, searchText]);
 
   const handleDeleteAll = useCallback(() => {
     if (typeof window === "undefined") return;
@@ -66,12 +69,10 @@ export default function MountainSearchBarSection() {
     setCurrentSearchTexts([]);
   }, []);
 
-  const handleClickTag = useCallback(
-    (mountainName: string) => {
-      postNavigateMessage(mountainName);
-    },
-    [postNavigateMessage]
-  );
+  const handleClickTag = useCallback((mountainName: string) => {
+    setSearchText(mountainName);
+    setSubmitted(true);
+  }, []);
 
   const handleClickCancel = useCallback(
     (text: string) => {

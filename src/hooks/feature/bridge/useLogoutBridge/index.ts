@@ -1,4 +1,4 @@
-import { useBridge } from "@/service/bridge/hooks/useBridge";
+import { useBridge } from "@/service/bridge";
 import { useModalContext } from "@/service/modal";
 import type {
   MessageEventRequestData,
