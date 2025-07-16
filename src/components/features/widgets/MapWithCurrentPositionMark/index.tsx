@@ -1,11 +1,12 @@
 "use client";
 
-import useGetCurrentPositionBridge from "@/hooks/bridge/useGetCurrentPositionBridge";
-import { Position } from "@/hooks/bridge/useGetCurrentPositionBridge";
-import useLogBridge from "@/hooks/bridge/useLogBridge";
 // import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
-import { useNaverMap } from "@/hooks/feature/map/useNaverMap";
-import { useSetMarker } from "@/hooks/feature/map/useSetMarker";
+import useLogBridge from "@/hooks/feature/bridge/useLogBridge";
+import useGetCurrentPositionBridge, {
+  Position,
+} from "@hooks/feature/bridge/useGetCurrentPositionBridge";
+import { useNaverMap } from "@hooks/feature/map/useNaverMap";
+import { useSetMarker } from "@hooks/feature/map/useSetMarker";
 import { useEffect, useState } from "react";
 
 // CHECK: 여기 수정
