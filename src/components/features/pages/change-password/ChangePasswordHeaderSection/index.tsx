@@ -1,7 +1,7 @@
 "use client";
 
 import Text from "@shared/ui/Text";
-import useRouteBackBridge from "@/hooks/bridge/useRouteBackBridge";
+import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 // import LeftBlackArrowIcon from "@shared/ui/LeftBlackArrowIcon";
 
 export default function ChangePasswordHeaderSection() {

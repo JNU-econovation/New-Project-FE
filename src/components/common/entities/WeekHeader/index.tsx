@@ -1,7 +1,7 @@
 "use client";
 
 import Text from "@shared/ui/Text";
-import useRouteBackBridge from "@/hooks/bridge/useRouteBackBridge";
+import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 import LeftChevronIcon from "@/components/common/shared/ui/icons/LeftChevronIcon";
 
 interface WeekHeaderProps {

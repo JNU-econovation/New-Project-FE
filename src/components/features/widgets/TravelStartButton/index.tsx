@@ -1,6 +1,6 @@
 "use client";
 
-import useStartTravelBridge from "@hooks/bridge/useStartTravelBridge";
+import useStartTravelBridge from "@/hooks/feature/bridge/useStartTravelBridge";
 import Button from "@shared/ui/Button";
 
 export default function TravelStartButton() {

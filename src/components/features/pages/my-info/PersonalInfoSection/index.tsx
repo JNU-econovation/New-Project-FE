@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteChangePasswordBridge from "@hooks/bridge/useRouteChangePasswordBridge";
+import useRouteChangePasswordBridge from "@/hooks/feature/bridge/useRouteChangePasswordBridge";
 import { usePersonalInfo } from "@hooks/feature/info/usePersonalInfo";
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";

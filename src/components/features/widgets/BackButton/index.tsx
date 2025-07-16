@@ -1,6 +1,6 @@
 "use client";
 
-import useRouteBackBridge from "@hooks/bridge/useRouteBackBridge";
+import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 import LeftChevronIcon from "@icons/LeftChevronIcon";
 
 export default function BackButton() {
