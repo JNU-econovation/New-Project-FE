@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Bridge from "../..";
 import BRIDGE from "../../constants";
+import getBridge from "../../core";
 
 interface RequestProps<ReqBody = unknown, ResBody = unknown> {
   requestMessage: ReqBody;
@@ -10,8 +10,10 @@ interface RequestProps<ReqBody = unknown, ResBody = unknown> {
   onErrorCallback?: (error: Error) => void;
 }
 
-export const useBridge = <ReqBody = unknown, ResBody = unknown>() => {
+const useBridge = <ReqBody = unknown, ResBody = unknown>() => {
+  const Bridge = getBridge();
   const [isReady, setIsReady] = useState(false);
+
   const sendHandshakeSynMessage = useCallback(() => {
     if (isReady) return;
     Bridge.createMessage({
@@ -40,7 +42,7 @@ export const useBridge = <ReqBody = unknown, ResBody = unknown>() => {
         syn: BRIDGE.RESET,
       }).send();
     });
-  }, [isReady]);
+  }, [Bridge, isReady]);
 
   useEffect(() => {
     sendHandshakeSynMessage();
@@ -71,3 +73,5 @@ export const useBridge = <ReqBody = unknown, ResBody = unknown>() => {
 
   return { request };
 };
+
+export default useBridge;

@@ -1,5 +1,3 @@
-import { WebviewBridge } from "./core/WebviewBridge";
-
-const Bridge = new WebviewBridge();
-
-export default Bridge;
+export { default as BridgeRequestListener } from "./components/BridgeRequestListener";
+export { default as useBridge } from "./hooks/useBridge";
+export { sendMessageAsync } from "./lib";
