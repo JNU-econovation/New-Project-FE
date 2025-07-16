@@ -11,13 +11,12 @@ type RouteBridgePath =
   | "course-bookmark"
   | "course-detail"
   | "course-search"
-  // | "faq"
   | "travel-log"
-  // | "inquiry"
   | "manual-detail"
   | "mountain-course"
   | "my-info"
   | "notification-setting"
+  | "starter"
   | "start-travel"
   | "customer-center";
 
