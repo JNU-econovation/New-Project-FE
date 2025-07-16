@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import Bridge from "../..";
 import BRIDGE from "../../constants";
+import getBridge from "../../core";
 import type { WebviewBridgeMessage } from "../../types";
 
 interface BridgeProps<RequestMessage, ResponseMessage> {
@@ -17,6 +17,7 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
   onRequest,
   requestValidator,
 }: BridgeProps<RequestType, ResponseType>) {
+  const Bridge = getBridge();
   const [isReady, setIsReady] = useState(false);
   const sendHandshakeSynMessage = useCallback(() => {
     if (isReady) return;
@@ -46,7 +47,7 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
         syn: BRIDGE.RESET,
       }).send();
     });
-  }, [isReady]);
+  }, [Bridge, isReady]);
 
   // 웹뷰의 응답을 처리하는 로직. 앱으로부터 요청을 받았을 때 실행된다.
   useEffect(() => {
@@ -98,7 +99,7 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
     window.addEventListener("message", handleMessage);
 
     return () => window.removeEventListener("message", handleMessage);
-  }, [isReady, onRequest, requestValidator, strictMode]);
+  }, [Bridge, isReady, onRequest, requestValidator, strictMode]);
 
   // 웹뷰 핸드쉐이크를 위한 로직
   useEffect(() => {
