@@ -27,7 +27,9 @@ const useLogoutBridge = () => {
         if (status === "success") {
           closeModalAsync();
           openLogoutAlertModal();
+          return;
         }
+        console.error("Logout failed");
       },
     });
   }, [closeModalAsync, openLogoutAlertModal, request]);

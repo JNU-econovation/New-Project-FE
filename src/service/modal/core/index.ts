@@ -1,5 +1,17 @@
 import ModalQueue from "./ModalQueue";
 
-const Queue = new ModalQueue();
+let Queue: ModalQueue | null = null;
 
-export default Queue;
+const getQueue = (): ModalQueue => {
+  if (typeof window === "undefined") {
+    return new ModalQueue();
+  }
+
+  if (!Queue) {
+    Queue = new ModalQueue();
+  }
+
+  return Queue;
+};
+
+export default getQueue;

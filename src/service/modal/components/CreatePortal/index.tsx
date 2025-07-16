@@ -2,9 +2,11 @@
 
 import { createPortal } from "react-dom";
 
-import Queue from "../../core";
+import getQueue from "../../core";
 
 export default function CreatePortal() {
+  const Queue = getQueue();
+
   if (typeof document === "undefined") return null;
 
   const modalRoot = document?.getElementById("modal-root");
