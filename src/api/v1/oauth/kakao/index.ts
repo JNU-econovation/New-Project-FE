@@ -6,7 +6,7 @@ interface KakaoLoginResponse {
   uri: string;
 }
 
-export const getKakaoLogin = async () => {
+export const getKakaoLoginApi = async () => {
   const response = await publicApi<KakaoLoginResponse>({
     method: "get",
     url: KAKAO_LOGIN_URI,
