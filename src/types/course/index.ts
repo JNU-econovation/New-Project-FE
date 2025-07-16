@@ -1,1 +1,1 @@
-export type CourseDifficulty = "easy" | "normal" | "hard";
+export type CourseDifficulty = "쉬움" | "보통" | "어려움";
