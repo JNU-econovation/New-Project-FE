@@ -1,12 +1,10 @@
 "use client";
 
-// import { useModal } from "@hooks/common/useModal";
 import { useEmergencyPersonalInfo } from "@hooks/feature/info/useEmergencyPersonalInfo";
 import CancelIcon from "@icons/CancelIcon";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 import TextField from "@shared/ui/TextField";
-// import WithdrawMemberModal from "@widgets/WithdrawMemberModal";
 
 export default function EmergencyPersonalInfoSection() {
   const {
@@ -14,8 +12,6 @@ export default function EmergencyPersonalInfoSection() {
     onChangeEmergencyPersonalInfo,
     onClearEmergencyPersonalInfo,
   } = useEmergencyPersonalInfo();
-
-  // const { closeModal, isOpen, openModal } = useModal();
 
   return (
     <section>
