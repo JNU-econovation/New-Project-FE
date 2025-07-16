@@ -1,9 +1,9 @@
-import { useBridge } from "@/service/bridge/hooks/useBridge";
-import { useCallback } from "react";
+import { useBridge } from "@/service/bridge";
 import type {
   MessageEventRequestData,
   MessageEventResponseData,
 } from "@/types/bridge";
+import { useCallback } from "react";
 
 const useLogBridge = () => {
   const { request } = useBridge<
