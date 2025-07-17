@@ -4,12 +4,12 @@ const ROUTE = {
   SOCIAL_LOGIN_LOADING: "/social-login-loading",
   COURSE: "/course",
   COURSE_SEARCH_RESULT: ({
-    mountainName,
+    mountainId,
     sort = "my",
   }: {
-    mountainName: string;
+    mountainId: string;
     sort?: string;
-  }) => `/course/${mountainName}?sort=${sort}`,
+  }) => `/course/${mountainId}?sort=${sort}`,
   MY_PAGE: "/my-page",
   MY_INFO: "/my-page/my-info",
   HIKING_LOG: "/my-page/hiking-log",
