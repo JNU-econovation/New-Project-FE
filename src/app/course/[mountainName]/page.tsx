@@ -3,7 +3,6 @@ import CourseTabSection from "@pages/course/CourseTabBarSection";
 import Flex from "@shared/layout/Flex";
 import Spacing from "@shared/layout/Spacing";
 import BackButton from "@widgets/BackButton";
-import { Suspense } from "react";
 
 export default function MountainCoursePage() {
   return (
@@ -16,9 +15,7 @@ export default function MountainCoursePage() {
           <Spacing size={4} />
         </div>
       </Flex>
-      <Suspense>
-        <CourseTabSection />
-      </Suspense>
+      <CourseTabSection />
     </Flex>
   );
 }
