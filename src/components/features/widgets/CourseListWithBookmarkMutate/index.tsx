@@ -19,16 +19,17 @@ export default function CourseListWithBookmarkMutate({
   ...props
 }: CourseListWithBookmarkMutateProps) {
   const { mutate: postBookmark } = useBookmarkMutation();
-  const deleteBookmark = (courseId: string) => {
-    console.log(courseId);
-  };
+  // const deleteBookmark = (courseId: string) => {
+  // console.log(courseId);
+  // };
 
   return (
     <CourseList
       {...props}
       stared={bookmark}
       onSetStared={() => postBookmark(id)}
-      onResetStared={() => deleteBookmark(id)}
+      // onResetStared={() => deleteBookmark(id)}
+      onResetStared={() => null}
     />
   );
 }

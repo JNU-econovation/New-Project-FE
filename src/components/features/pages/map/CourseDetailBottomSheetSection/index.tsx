@@ -16,7 +16,7 @@ export default function CourseDetailBottomSheetSection() {
       <BottomSheet>
         <CourseBaseTab courseList={courseList} />
         <Spacing size={2} />
-        <CourseMetaDataUi difficulty="easy" distance={123} time={23} />
+        <CourseMetaDataUi difficulty="쉬움" distance={123} time={23} />
         <Spacing size={2} />
 
         <Carousel
