@@ -1,8 +1,8 @@
 "use client";
 
+import XIcon from "@icons/XIcon";
 import Text from "@shared/ui/Text";
 import { useCallback } from "react";
-import XIcon from "@icons/XIcon";
 
 interface TagItemWithCancelProps {
   text: string;
@@ -29,7 +29,6 @@ export default function TagItemWithCancel({
       if (!onClickTag) return;
 
       if (e.target === e.currentTarget) {
-        alert("태그를 클릭했습니다.");
         e.stopPropagation();
         return;
       }
