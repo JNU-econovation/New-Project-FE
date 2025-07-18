@@ -8,7 +8,9 @@ interface CourseListProps {
   duration: number;
   length: number;
   difficulty: CourseDifficulty;
-  bookmark: boolean;
+  stared: boolean;
+  onSetStared?: () => void;
+  onResetStared?: () => void;
 }
 
 export default function CourseList({
@@ -16,7 +18,9 @@ export default function CourseList({
   duration,
   length,
   difficulty,
-  bookmark,
+  stared,
+  onSetStared,
+  onResetStared,
 }: CourseListProps) {
   return (
     <li className="flex gap-4 justify-between bg-white rounded-lg p-3">
@@ -30,10 +34,14 @@ export default function CourseList({
       </div>
       <div className="w-24 h-24 bg-slate-100 rounded-xl relative">
         <div className="absolute top-2 right-2">
-          {bookmark ? (
-            <StarBlockIcon alt="북마크된 코스" />
+          {stared ? (
+            <button onClick={onResetStared}>
+              <StarBlockIcon alt="북마크된 코스" />
+            </button>
           ) : (
-            <StarWeakIcon alt="북마크되지 않은 코스" />
+            <button onClick={onSetStared}>
+              <StarWeakIcon alt="북마크되지 않은 코스" />
+            </button>
           )}
         </div>
       </div>
