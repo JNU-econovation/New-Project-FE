@@ -5,8 +5,8 @@ import { cn } from "@/utils/cn";
 import useRouteBridge from "@hooks/feature/bridge/useRouteBridge";
 import useCoursesOfMountainQuery from "@hooks/feature/query/useCoursesOfMountainQuery";
 import Spacing from "@shared/layout/Spacing";
-import CourseList from "@shared/ui/CourseList";
 import { Suspense } from "@suspensive/react";
+import CourseListWithBookmarkMutate from "@widgets/CourseListWithBookmarkMutate";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 import CourseTabBarSectionSkeleton from "./CourseTabBarSection.skeleton";
@@ -72,7 +72,7 @@ export default Suspense.with(
               onClick={routeCourseDetail}
               typeof="button"
             >
-              <CourseList {...props} />
+              <CourseListWithBookmarkMutate id={id} {...props} />
             </div>
           ))}
         </ul>
