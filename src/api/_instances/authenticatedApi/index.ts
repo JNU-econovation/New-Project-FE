@@ -1,8 +1,3 @@
-import { sendMessageAsync } from "@/service/bridge";
-import {
-  MessageEventRequestData,
-  MessageEventResponseData,
-} from "@/types/bridge";
 import axios, { AxiosResponse } from "axios";
 
 const authenticatedApi = axios.create({
@@ -14,26 +9,9 @@ const authenticatedApi = axios.create({
   },
 });
 
-interface Token {
-  accessToken: string;
-  refreshToken: string;
-  accessTokenExpiredTime: number;
-}
-
 authenticatedApi.interceptors.request.use(
   async (config) => {
-    // const token = localStorage.getItem("authToken");
-    // const token = await sendMessageAsync<
-    //   MessageEventRequestData,
-    //   MessageEventResponseData<Token>
-    // >({
-    //   method: "GET",
-    //   name: "get-token",
-    // }).then((response) => response);
-
-    // console.log("Token:", token);
-
-    const token = "asdfasdfasdf"; // Temporary hardcoded token for testing
+    const token = localStorage.getItem("accessToken");
 
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
