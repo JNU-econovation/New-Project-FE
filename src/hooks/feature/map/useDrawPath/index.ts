@@ -11,13 +11,29 @@ export const useDrawPath = (map: any, path: CourseData[]) => {
     const bounds = new naver.maps.LatLngBounds();
     const markers: any[] = [];
 
-    path.forEach(({ content, name }: CourseData) => {
+    // 10가지 색상 배열
+    const colors = [
+      "#FF0000", // 빨강
+      "#0000FF", // 파랑
+      "#00AA00", // 초록
+      "#FF8800", // 주황
+      "#AA00AA", // 보라
+      "#00AAAA", // 청록
+      "#AA0000", // 진한 빨강
+      "#0066FF", // 하늘색
+      "#AAAA00", // 노랑
+      "#FF00AA", // 핑크
+    ];
+
+    path.forEach(({ content, name }: CourseData, index: number) => {
+      const color = colors[index % colors.length];
+
       // Polyline 생성
       new naver.maps.Polyline({
         map,
         path: content,
         strokeWeight: 5,
-        strokeColor: "#FF0000",
+        strokeColor: color,
         strokeOpacity: 0.8,
         strokeStyle: "solid",
         strokeLineCap: "round",
@@ -30,8 +46,11 @@ export const useDrawPath = (map: any, path: CourseData[]) => {
       });
 
       // 시작점에 마커와 InfoWindow 생성
-      const startPosition = new naver.maps.LatLng(content[0][1], content[0][0]);
-      
+      const startPosition = new naver.maps.LatLng(
+        content[0][1] + index * 0.000005, // 위도에 약간의 오프셋 추가
+        content[0][0] + index * 0.000005 // 경도에 약간의 오프셋 추가
+      );
+
       const marker = new naver.maps.Marker({
         position: startPosition,
         map: map,
@@ -39,12 +58,12 @@ export const useDrawPath = (map: any, path: CourseData[]) => {
         icon: {
           content: `<div style="
             background: white; 
-            border: 2px solid #FF0000; 
+            border: 2px solid ${color}; 
             border-radius: 20px; 
             padding: 5px 10px; 
             font-size: 12px; 
             font-weight: bold; 
-            color: #FF0000;
+            color: ${color};
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             white-space: nowrap;
           ">${name}</div>`,
@@ -52,7 +71,7 @@ export const useDrawPath = (map: any, path: CourseData[]) => {
           anchor: new naver.maps.Point(50, 15),
         },
       });
-      
+
       markers.push({ marker });
     });
 
