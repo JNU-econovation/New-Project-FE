@@ -29,7 +29,7 @@ export default function StackLink({
 }: StackLinkedProps) {
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const originalStylesRef = useRef<{
     transition: string;
     transform: string;
