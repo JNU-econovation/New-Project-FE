@@ -1,9 +1,6 @@
 "use client";
 
-import useGetCurrentPositionBridge from "@/hooks/bridge/useGetCurrentPositionBridge";
-import { Position } from "@/hooks/bridge/useGetCurrentPositionBridge";
-import useLogBridge from "@/hooks/bridge/useLogBridge";
-// import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
+import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
 import { useNaverMap } from "@/hooks/feature/map/useNaverMap";
 import { useSetMarker } from "@/hooks/feature/map/useSetMarker";
 import { useEffect, useState } from "react";
@@ -17,38 +14,28 @@ import { useEffect, useState } from "react";
 // ...
 // ];
 
+export interface CourseData {
+  name: string;
+  content: [number, number][];
+}
+
 const defaultPosition = { latitude: 35.122769, longitude: 126.996822 };
 
 export default function MapWithCurrentPositionMark() {
-  // const { currentPosition } = useGetCurrentPosition();
-  const [currentPosition, setCurrentPosition] = useState<{
-    latitude: number;
-    longitude: number;
-  }>(defaultPosition);
-
-  const getCurrentPosition = useGetCurrentPositionBridge();
-
-  const onResponse = ({ coords }: Position) => {
-    try {
-      const { latitude, longitude } = coords;
-      setCurrentPosition({ latitude, longitude });
-      return { latitude, longitude };
-    } catch (error) {
-      console.error("Error in getCurrentPosition:", error);
-      return null;
-    }
-  };
+  const [path, setPath] = useState<CourseData[]>();
 
   useEffect(() => {
-    getCurrentPosition(onResponse);
+    (async () => {
+      const response = await fetch("/api/course");
+      const data = await response.json();
+      setPath(data);
+    })();
   }, []);
 
-  const { mapId, map } = useNaverMap(currentPosition);
-  const logBridge = useLogBridge();
-  // useDrawPath(map, path as [number, number][]);
+  const { mapId, map } = useNaverMap(defaultPosition);
+  useDrawPath(map, path);
 
-  useSetMarker(map, currentPosition ?? defaultPosition);
-  logBridge(currentPosition);
+  useSetMarker(map, defaultPosition);
 
   return <div id={mapId} className="h-screen w-screen" />;
 }
