@@ -1,4 +1,4 @@
-import { isInIframe } from "@/service/StackLink";
+import { isInStackFrame } from "@/service/StackLink";
 import axios, { AxiosResponse } from "axios";
 
 const authenticatedApi = axios.create({
@@ -19,7 +19,7 @@ const authenticatedApi = axios.create({
 
 authenticatedApi.interceptors.request.use(
   async (config) => {
-    if (isInIframe()) {
+    if (isInStackFrame()) {
       await new Promise((resolve) => setTimeout(resolve, 99999));
     }
 
