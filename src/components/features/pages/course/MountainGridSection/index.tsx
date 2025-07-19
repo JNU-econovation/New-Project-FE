@@ -19,14 +19,16 @@ export default function MountainGridSection() {
   return (
     <section className="flex grow gap-4">
       <div className="flex flex-col w-full h-fit gap-4">
-        <StackLink href="/course/무등산" preLoad>
-          <button
+        {/* TODO: href 하드코딩 피하기 */}
+        <StackLink href="/course/1?sort=my" preLoad>
+          <div
             className="h-72 rounded-2xl flex items-center justify-center relative overflow-hidden"
             style={{
               backgroundImage: `url('/images/mudeungsan.jpg')`, //TODO: 하드 코딩 없애기 -> 정적 이미지 주소를 관리하는 방법 고안 필요
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
             }}
+            role="button"
             onClick={routeToCoursePage}
           >
             <div className="absolute top-0 right-0 bg-black opacity-40 w-full h-full" />
@@ -48,17 +50,15 @@ export default function MountainGridSection() {
             >
               무등산
             </Text>
-          </button>
+          </div>
         </StackLink>
         {/* TODO: 실제 산으로 변경하기 */}
         <div className="h-72 bg-amber-100 rounded-2xl" />
-        {/* <div className="h-72 bg-amber-100 rounded-2xl" /> */}
       </div>
       <div className="flex flex-col w-full h-fit gap-4">
         <Spacing size={12} />
         <div className="h-72 bg-amber-100 rounded-2xl" />
-        {/* <div className="h-72 bg-amber-100 rounded-2xl" />
-        <div className="h-72 bg-amber-100 rounded-2xl" /> */}
+        <div className="h-72 bg-amber-100 rounded-2xl" />
       </div>
     </section>
   );
