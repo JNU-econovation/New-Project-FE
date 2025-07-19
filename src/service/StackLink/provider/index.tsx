@@ -19,6 +19,10 @@ export default function StackLinkProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     const element = document.getElementById("stack-root");
+    if (!element) {
+      console.error("[StackLinkProvider] stack-root element not found");
+    }
+
     setPortalElement(element);
   }, []);
 
