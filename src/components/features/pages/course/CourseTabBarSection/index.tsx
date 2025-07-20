@@ -51,10 +51,7 @@ export default Suspense.with(
               key={`${index}-${tabTitle}`}
               onClick={() => {
                 router.replace(
-                  `${ROUTE.COURSE_SEARCH_RESULT({
-                    mountainId,
-                    sort,
-                  })}`
+                  `${ROUTE.MOUNTAIN_COURSE(mountainId)}?sort=${sort}`
                 );
               }}
             >
