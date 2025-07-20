@@ -1,20 +1,20 @@
 "use client";
 
-import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
+// import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import { StackLink } from "@/service/StackLink";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 
 export default function MountainGridSection() {
-  const routeToCoursePage = useRouteBridge({
-    path: "mountain-course",
-    routeType: "push",
-    params: [
-      {
-        mountainName: "무등산",
-      },
-    ],
-  });
+  // const routeToCoursePage = useRouteBridge({
+  //   path: "mountain-course",
+  //   routeType: "push",
+  //   params: [
+  //     {
+  //       mountainName: "무등산",
+  //     },
+  //   ],
+  // });
 
   return (
     <section className="flex grow gap-4">
@@ -29,7 +29,7 @@ export default function MountainGridSection() {
               backgroundRepeat: "no-repeat",
             }}
             role="button"
-            onClick={routeToCoursePage}
+            // onClick={routeToCoursePage}
           >
             <div className="absolute top-0 right-0 bg-black opacity-40 w-full h-full" />
             <div className="absolute top-6 right-4">

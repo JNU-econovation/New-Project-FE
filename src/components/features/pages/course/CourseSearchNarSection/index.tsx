@@ -1,24 +1,21 @@
 "use client";
 
-import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
+// import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import { StackLink } from "@/service/StackLink";
 import SearchInput from "@shared/ui/SearchInput";
 import { FocusEvent, useCallback } from "react";
 
 export default function CourseSearchBarSection() {
-  const routeToCourseSearch = useRouteBridge({
-    path: "course-search",
-    routeType: "push",
-  });
+  // const routeToCourseSearch = useRouteBridge({
+  //   path: "course-search",
+  //   routeType: "push",
+  // });
 
-  const onFocus = useCallback(
-    (e: FocusEvent<HTMLInputElement>) => {
-      e.preventDefault();
-      e.currentTarget.blur();
-      routeToCourseSearch();
-    },
-    [routeToCourseSearch]
-  );
+  const onFocus = useCallback((e: FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    e.currentTarget.blur();
+    // routeToCourseSearch();
+  }, []);
 
   return (
     <section>
