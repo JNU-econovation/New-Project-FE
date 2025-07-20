@@ -2,7 +2,7 @@
 
 import ROUTE from "@/constants/route";
 import { cn } from "@/utils/cn";
-import useRouteBridge from "@hooks/feature/bridge/useRouteBridge";
+// import useRouteBridge from "@hooks/feature/bridge/useRouteBridge";
 import useCoursesOfMountainQuery from "@hooks/feature/query/useCoursesOfMountainQuery";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
@@ -30,10 +30,10 @@ export default Suspense.with(
     const { mountainId } = useParams<{ mountainId: string }>();
     const searchParams = useSearchParams();
     const sortBy = searchParams.get("sort");
-    const routeCourseDetail = useRouteBridge({
-      path: "course-detail",
-      routeType: "push",
-    });
+    // const routeCourseDetail = useRouteBridge({
+    //   path: "course-detail",
+    //   routeType: "push",
+    // });
 
     const { data: courseList } = useCoursesOfMountainQuery(mountainId);
 
@@ -75,7 +75,7 @@ export default Suspense.with(
             <StackLink href={`/map/course-detail/`} key={id}>
               <div
                 key={`${id}-${index}`}
-                onClick={routeCourseDetail}
+                // onClick={routeCourseDetail}
                 role="button"
               >
                 <CourseListWithBookmarkMutate id={id} {...props} />
