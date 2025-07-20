@@ -8,3 +8,17 @@ export interface FacilityMarker {
   facilityName: string;
   coordinate: Coordinate;
 }
+
+export interface BaseMarker {
+  baseId: string;
+  name: string;
+  coordinate: Coordinate;
+}
+
+// 통용되는 마커 타입
+export interface Markers {
+  id: string;
+  name: string;
+  coordinate: Coordinate;
+  // facilityType: keyof typeof MAP.FACILITY_TYPES;
+}
