@@ -5,7 +5,7 @@
 
 import { useCallback, useEffect, useId, useState } from "react";
 
-// const DEFAULT_MAP_ZOOM = 16;
+const DEFAULT_MAP_ZOOM = 18;
 
 const ACCESS_KEY = process.env.NEXT_PUBLIC_NAVER_KEY;
 
@@ -20,7 +20,7 @@ const loadScript = (src: string, callback: () => void) => {
 interface NaverMapProps {
   latitude: number;
   longitude: number;
-  // zoom: number;
+  zoom?: number;
 }
 
 /**
@@ -30,11 +30,11 @@ interface NaverMapProps {
  * 리턴값으로 mapId를 사용하여 맵을 렌더링할 div의 id를 설정해야합니다.
  * 리턴값 map을 다른 훅의 첫 인자로 넘겨주어야합니다.
  */
-export const useNaverMap = ({
+const useNaverMap = ({
   latitude,
   longitude,
-}: // zoom = DEFAULT_MAP_ZOOM,
-NaverMapProps) => {
+  zoom = DEFAULT_MAP_ZOOM,
+}: NaverMapProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [map, setMap] = useState<any>(null);
   const mapId = useId();
@@ -55,14 +55,13 @@ NaverMapProps) => {
         mapDataControlOptions: {
           position: naver.maps.Position.BOTTOM_LEFT,
         },
-
-        // zoom,
+        zoom,
       };
 
       setMap(new naver.maps.Map(mapId, mapOptions));
       setIsLoading(false);
     },
-    [mapId]
+    [mapId, zoom]
   );
 
   useEffect(() => {
@@ -74,6 +73,7 @@ NaverMapProps) => {
       return;
     }
     initMap(latitude, longitude);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [latitude, longitude]);
 
   return {
@@ -83,3 +83,5 @@ NaverMapProps) => {
     initMap,
   };
 };
+
+export default useNaverMap;
