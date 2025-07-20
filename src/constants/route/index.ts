@@ -2,6 +2,12 @@ const ROUTE = {
   MAIN: "/",
   LOGIN: "/login",
   SOCIAL_LOGIN_LOADING: "/social-login-loading",
+  MOUNTAIN: "/mountain",
+  MOUNTAIN_COURSE: (mountainId: string) => `/mountain/${mountainId}/course`,
+  MOUNTAIN_COURSE_DETAIL: (mountainId: string, courseId: string) =>
+    `/mountain/${mountainId}/course/${courseId}`,
+  MOUNTAIN_COURSE_SEARCH: (mountainId: string) =>
+    `/mountain/${mountainId}/course/search`,
   COURSE: "/course",
   COURSE_SEARCH_RESULT: ({
     mountainId,
