@@ -37,8 +37,7 @@ authenticatedApi.interceptors.request.use(
 
 authenticatedApi.interceptors.response.use(
   (response: AxiosResponse) => {
-    response.data = response.data.data || {};
-    return response;
+    return response.data;
   },
   async (error) => {
     return Promise.reject(error);
