@@ -83,6 +83,8 @@ export default function GoBackTrigger() {
     }
   }, []);
 
+  if (history.length <= 0) return null;
+
   return (
     <>
       {portalElement &&
@@ -107,7 +109,7 @@ export default function GoBackTrigger() {
       {history.length > 0 &&
         createPortal(
           <div
-            className="fixed w-3 h-screen top-0 transform-gpu select-none z-50"
+            className="fixed w-4 h-screen top-0 transform-gpu select-none z-50"
             role="button"
             onTouchStart={(e) => {
               const touchX = e.touches[0].clientX;
