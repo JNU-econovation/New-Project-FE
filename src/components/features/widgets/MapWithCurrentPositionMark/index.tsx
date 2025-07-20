@@ -3,7 +3,7 @@
 import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
 import useSetCircle from "@/hooks/feature/map/useSetCurrentPosition";
-import type { FacilityMarker } from "@/types/map";
+import type { Markers } from "@/types/map";
 import useGetCurrentPositionBridge, {
   Position,
 } from "@hooks/feature/bridge/useGetCurrentPositionBridge";
@@ -17,7 +17,7 @@ const DEFAULT_POSITION = { latitude: 35.122769, longitude: 126.996822 };
 interface MapWWithCurrentPositionMarkProps {
   defaultPosition?: { latitude: number; longitude: number };
   path?: [number, number][];
-  markers?: FacilityMarker[];
+  markers?: Markers[];
   currentPositionIcon?: boolean;
   zoom?: number;
 }
