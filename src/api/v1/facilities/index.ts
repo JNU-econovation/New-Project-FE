@@ -1,5 +1,5 @@
 import authenticatedApi from "@/api/_instances/authenticatedApi";
-import { FacilityMarker } from "@/types/map";
+import type { FacilityMarker } from "@/types/map";
 
 export const FACILITY_API_PATH = (mountainId: string) =>
   `api/v1/facilities?mountainId=${mountainId}`;
