@@ -17,7 +17,7 @@ export default function PositionBottom({
   return (
     <div
       className={cn("absolute left-0 w-full")}
-      style={{ bottom, zIndex: 10, padding: `${padding * 0.25}rem` }}
+      style={{ bottom, zIndex: 1, padding: `${padding * 0.25}rem` }}
     >
       {children}
     </div>
