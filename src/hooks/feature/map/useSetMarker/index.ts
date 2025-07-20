@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const useSetMarker = (
+const useSetMarker = (
   map: any,
   { latitude, longitude }: { latitude: number; longitude: number }
 ) => {
@@ -21,3 +21,5 @@ export const useSetMarker = (
     map: map,
   });
 };
+
+export default useSetMarker;
