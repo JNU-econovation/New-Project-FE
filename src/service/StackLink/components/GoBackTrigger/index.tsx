@@ -4,7 +4,6 @@ import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 
 import useStackContext from "../../hooks/useStackContext";
-// import Iframe from "../Iframe";
 
 import { useRouter } from "next/navigation";
 
@@ -45,15 +44,21 @@ export default function GoBackTrigger() {
     const handleTouchEnd = () => {
       const deltaX = currentX - startX;
 
-      if (deltaX > 100) {
+      if (deltaX > 50) {
         setIsNavigating(true);
         main.style.transform = "translateX(100%)";
-        main.style.transition = "transform 0.2s ease-in-out";
+        main.style.transition = "transform 0.23s ease";
 
         pop();
 
         setTimeout(() => {
           router.back();
+          setIsNavigating(false);
+          main.style.transition = "none";
+          main.style.transform = "translateX(0px)";
+          setStartX(0);
+          setCurrentX(0);
+          setIsTouching(false);
         }, 200);
 
         return;
@@ -62,6 +67,8 @@ export default function GoBackTrigger() {
       // 원래 위치로 복귀
       main.style.transform = "translateX(0px)";
       setIsTouching(false);
+      setStartX(0);
+      setCurrentX(0);
     };
 
     window.addEventListener("touchmove", handleTouchMove, { passive: false });
@@ -73,16 +80,6 @@ export default function GoBackTrigger() {
     };
   }, [isTouching, startX, currentX, history, router, pop]);
 
-  useEffect(() => {
-    const main = document.getElementById("stack-main");
-    if (!main) {
-      console.error(
-        "[StackLink] Main element not found. Ensure it exists in your layout."
-      );
-      return;
-    }
-  }, []);
-
   if (history.length <= 0) return null;
 
   return (
@@ -90,36 +87,28 @@ export default function GoBackTrigger() {
       {portalElement &&
         !isNavigating &&
         createPortal(
-          <>
-            {history.length > 0 && (
-              <div
-                id={goBackTriggerElementId}
-                className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50"
-              >
-                {/* <Iframe
-                  className="w-screen h-screen -z-50"
-                  src={history[history.length - 1][0]}
-                /> */}
-              </div>
-            )}
-          </>,
+          <div
+            id={goBackTriggerElementId}
+            className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50"
+          />,
+
           portalElement
         )}
 
-      {history.length > 0 &&
-        createPortal(
-          <div
-            className="fixed w-4 h-screen top-0 transform-gpu select-none z-50"
-            role="button"
-            onTouchStart={(e) => {
-              const touchX = e.touches[0].clientX;
-              setStartX(touchX);
-              setCurrentX(touchX);
-              setIsTouching(true);
-            }}
-          />,
-          document.body
-        )}
+      {createPortal(
+        <div
+          id={goBackTriggerElementId}
+          className="fixed w-10 h-screen top-0 transform-gpu select-none z-[9999]"
+          role="button"
+          onTouchStart={(e) => {
+            const touchX = e.touches[0].clientX;
+            setStartX(touchX);
+            setCurrentX(touchX);
+            setIsTouching(true);
+          }}
+        />,
+        document.body
+      )}
     </>
   );
 }

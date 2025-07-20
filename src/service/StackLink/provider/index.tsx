@@ -4,6 +4,7 @@ import { PropsWithChildren, useCallback, useEffect, useState } from "react";
 
 import StackContext from "../context/stackContext";
 import type { PathTuple } from "../types";
+import GoBackTrigger from "../components/GoBackTrigger";
 
 export default function StackLinkProvider({ children }: PropsWithChildren) {
   const [history, setHistory] = useState<PathTuple[]>([]);
@@ -32,6 +33,7 @@ export default function StackLinkProvider({ children }: PropsWithChildren) {
         {children}
       </div>
       <div id="stack-root" />
+      {portalElement && history.length > 0 && <GoBackTrigger />}
     </StackContext.Provider>
   );
 }
