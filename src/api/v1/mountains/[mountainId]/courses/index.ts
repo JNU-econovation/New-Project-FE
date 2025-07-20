@@ -13,12 +13,12 @@ interface Course {
   bookmark: boolean;
 }
 
-interface CoursesOfMountainResponse {
+interface GetCoursesOfMountainResponse {
   courses: Course[];
 }
 
 export const getCoursesOfMountainApi = async (mountainId: string) => {
-  const response = await authenticatedApi<CoursesOfMountainResponse>({
+  const response = await authenticatedApi<GetCoursesOfMountainResponse>({
     method: "get",
     url: COURSES_OF_MOUNTAIN(mountainId),
   });
