@@ -1,6 +1,7 @@
 "use client";
 
 import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
+import { StackLink } from "@/service/StackLink";
 import SearchInput from "@shared/ui/SearchInput";
 import { FocusEvent, useCallback } from "react";
 
@@ -21,7 +22,9 @@ export default function CourseSearchBarSection() {
 
   return (
     <section>
-      <SearchInput placeholder="코스 지점 직접 검색" onFocus={onFocus} />
+      <StackLink href="/course/search" preLoad animation="none">
+        <SearchInput placeholder="코스 지점 직접 검색" onFocus={onFocus} />
+      </StackLink>
     </section>
   );
 }
