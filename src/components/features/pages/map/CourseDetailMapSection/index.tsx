@@ -1,11 +1,14 @@
 "use client";
 
 import MAP from "@/constants/map";
+import useBasesQuery from "@/hooks/feature/query/useBasesQuery";
 import useFacilitiesQuery from "@/hooks/feature/query/useFacilitiesQuery";
+import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
 import { Suspense } from "@suspensive/react";
 import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 
 const MapWithCurrentPositionMark = dynamic(
   () => import("@widgets/MapWithCurrentPositionMark"),
@@ -17,7 +20,7 @@ export default Suspense.with(
     fallback: <div className="w-full h-full bg-gray-30" />,
     name: "CourseDetailMapSection",
   },
-  function CourseDetailMapSection() {
+  () => {
     const params = useParams<{
       mountainId: string;
       courseId: string;
@@ -29,15 +32,34 @@ export default Suspense.with(
       (searchParams.get("tag") as keyof typeof MAP.BASE_AND_FACILITY) ||
       MAP.BASE.facilityName;
 
-    const { data } = useFacilitiesQuery({ mountainId });
+    const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
+    const { data: basesData } = useBasesQuery({ mountainId });
 
-    const { facilities } = data;
+    const { facilities } = facilitiesData;
+    const { bases } = basesData;
+
+    const markers: Markers[] = useMemo(() => {
+      if (selectedTagId === MAP.BASE.id) {
+        return bases.map(({ baseId, coordinate, name }) => ({
+          id: baseId,
+          name: name,
+          coordinate,
+        }));
+      }
+      return getFacilitiesByFacilityType(facilities, selectedTagId).map(
+        ({ coordinate, facilityId, facilityName }) => ({
+          id: facilityId,
+          name: facilityName,
+          coordinate,
+        })
+      );
+    }, [facilities, bases, selectedTagId]);
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">
         <MapWithCurrentPositionMark
           // path={data?.path}
-          markers={getFacilitiesByFacilityType(facilities, selectedTagId)}
+          markers={markers}
           currentPositionIcon={true}
           zoom={13}
         />
