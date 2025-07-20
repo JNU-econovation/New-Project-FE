@@ -1,5 +1,6 @@
 "use client";
 
+import MAP from "@/constants/map";
 import ROUTE from "@/constants/route";
 import MapHeaderTag from "@shared/ui/MapHeaderTag";
 import BackButton from "@widgets/BackButton";
@@ -13,20 +14,15 @@ export default function CourseDetailMapTagHeaderSection() {
     courseId: string;
   }>();
   const router = useRouter();
-  const selectedTagId = searchParams.get("tag") || "base";
+  const selectedTagId = searchParams.get("tag") || MAP.BASE.facilityName;
 
-  //TODO: 서버와 통신할 때 id 값을 맞추기
-  const mapHeaderTags = useMemo(
-    () => [
-      { text: "거점", id: "base" },
-      { text: "쉼터", id: "rest" },
-      { text: "화장실", id: "toilet" },
-      { text: "응급키트", id: "emergency-kit" },
-      { text: "매장 위치", id: "market" },
-      { text: "대여서비스", id: "rental" },
-    ],
-    []
-  );
+  const mapHeaderTags = useMemo(() => {
+    return [...Object.keys(MAP.BASE_AND_FACILITY)].map((id) => ({
+      id,
+      text: MAP.BASE_AND_FACILITY[id as keyof typeof MAP.BASE_AND_FACILITY]
+        .facilityName,
+    }));
+  }, []);
 
   return (
     <section className="flex w-full overflow-hidden gap-4">

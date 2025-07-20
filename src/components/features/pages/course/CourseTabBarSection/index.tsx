@@ -9,6 +9,7 @@ import { Suspense } from "@suspensive/react";
 import CourseListWithBookmarkMutate from "@widgets/CourseListWithBookmarkMutate";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
+import MAP from "@/constants/map";
 import { StackLink } from "@/service/StackLink";
 import CourseTabBarSectionSkeleton from "./CourseTabBarSection.skeleton";
 
@@ -70,7 +71,10 @@ export default Suspense.with(
         <ul className="flex flex-col gap-4 bg-gray-200 p-6 overflow-y-auto flex-1">
           {courses.map(({ id, ...props }, index) => (
             <StackLink
-              href={ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, id)}
+              href={
+                ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, id) +
+                `?tag=${MAP.BASE.id}`
+              }
               key={id}
             >
               <div
