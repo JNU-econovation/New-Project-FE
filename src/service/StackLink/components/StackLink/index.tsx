@@ -10,7 +10,6 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import useStackContext from "../../hooks/useStackContext";
-import GoBackTrigger from "../GoBackTrigger";
 import Iframe from "../Iframe";
 
 const DEFAULT_DURATION = 240;
@@ -130,7 +129,6 @@ export default function StackLink({
             portalElement
           )}
       </div>
-      <GoBackTrigger />
     </>
   );
 }
