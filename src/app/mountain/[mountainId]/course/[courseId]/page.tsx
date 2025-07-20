@@ -3,17 +3,14 @@ import CourseDetailMapSection from "@pages/map/CourseDetailMapSection";
 import CourseDetailMapTagHeaderSection from "@pages/map/CourseDetailMapTagHeaderSection";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
-import BackButton from "@widgets/BackButton";
+import { Suspense } from "@suspensive/react";
 import TravelStartButton from "@widgets/TravelStartButton";
-import { Suspense } from "react";
 
 export default function CourseDetailPage() {
   return (
     <div className="relative w-screen h-screen">
-      <div className="px-6 z-10 fixed">
-        <Spacing size={4} />
-        <BackButton />
-        <Spacing size={3} />
+      <div className="px-6 z-10 fixed w-full">
+        <Spacing size={8} />
         <Suspense>
           <CourseDetailMapTagHeaderSection />
         </Suspense>
