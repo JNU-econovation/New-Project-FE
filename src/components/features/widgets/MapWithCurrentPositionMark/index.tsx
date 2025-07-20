@@ -1,27 +1,35 @@
 "use client";
 
-// import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
+import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
+import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
+import useSetCircle from "@/hooks/feature/map/useSetCurrentPosition";
+import type { FacilityMarker } from "@/types/map";
 import useGetCurrentPositionBridge, {
   Position,
 } from "@hooks/feature/bridge/useGetCurrentPositionBridge";
 import useLogBridge from "@hooks/feature/bridge/useLogBridge";
-import { useNaverMap } from "@hooks/feature/map/useNaverMap";
-import { useSetMarker } from "@hooks/feature/map/useSetMarker";
+import useNaverMap from "@hooks/feature/map/useNaverMap";
+// import useSetMarker from "@hooks/feature/map/useSetMarker";
 import { useEffect, useState } from "react";
 
-// CHECK: 여기 수정
-// const path = [
-// [126.95589685, 35.13408406],
-// [126.95744761, 35.13354734],
-// [126.95768452, 35.13345813],
-// [126.9577291, 35.13344179],
-// ...
-// ];
+const DEFAULT_POSITION = { latitude: 35.122769, longitude: 126.996822 };
 
-const defaultPosition = { latitude: 35.122769, longitude: 126.996822 };
+interface MapWWithCurrentPositionMarkProps {
+  defaultPosition?: { latitude: number; longitude: number };
+  path?: [number, number][];
+  markers?: FacilityMarker[];
+  currentPositionIcon?: boolean;
+  zoom?: number;
+}
 
-export default function MapWithCurrentPositionMark() {
-  // const { currentPosition } = useGetCurrentPosition();
+export default function MapWithCurrentPositionMark({
+  path,
+  defaultPosition = DEFAULT_POSITION,
+  markers,
+  currentPositionIcon = true,
+  zoom = 18,
+}: MapWWithCurrentPositionMarkProps) {
+  // const { currentPosition } = useGetCurrentPosition(); //for web
   const [currentPosition, setCurrentPosition] = useState<{
     latitude: number;
     longitude: number;
@@ -42,13 +50,31 @@ export default function MapWithCurrentPositionMark() {
 
   useEffect(() => {
     getCurrentPosition(onResponse);
-  }, []);
+  }, [getCurrentPosition]);
 
-  const { mapId, map } = useNaverMap(currentPosition);
+  const { mapId, map } = useNaverMap({
+    latitude: currentPosition.latitude,
+    longitude: currentPosition.longitude,
+    zoom,
+  });
+
   const logBridge = useLogBridge();
-  // useDrawPath(map, path as [number, number][]);
+  useDrawPath(map, path as [number, number][]);
 
-  useSetMarker(map, currentPosition ?? defaultPosition);
+  useSetCircle({
+    map,
+    position: currentPosition,
+    zoom,
+    enable: currentPositionIcon,
+  });
+
+  useDrawMarkers({
+    map,
+    markers: markers ?? [],
+    enable: (markers ?? []).length > 0,
+  });
+
+  // useSetMarker(map, currentPosition ?? defaultPosition);
   logBridge(currentPosition);
 
   return <div id={mapId} className="h-screen w-screen" />;
