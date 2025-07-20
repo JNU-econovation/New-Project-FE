@@ -16,6 +16,7 @@ export default function BackButton() {
         if (!canGoBack) {
           if (history.length > 1) {
             router.back();
+            return;
           }
           goBackBridge();
           return;

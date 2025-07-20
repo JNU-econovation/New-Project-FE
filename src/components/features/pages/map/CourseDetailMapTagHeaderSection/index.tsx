@@ -1,11 +1,16 @@
 "use client";
 
-import MapHeaderTag from "@/components/common/shared/ui/MapHeaderTag";
-import { useRouter, useSearchParams } from "next/navigation";
+import ROUTE from "@/constants/route";
+import MapHeaderTag from "@shared/ui/MapHeaderTag";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
 export default function CourseDetailMapTagHeaderSection() {
   const searchParams = useSearchParams();
+  const { mountainId, courseId } = useParams<{
+    mountainId: string;
+    courseId: string;
+  }>();
   const router = useRouter();
   const selectedTagId = searchParams.get("tag") || "base";
 
@@ -30,7 +35,9 @@ export default function CourseDetailMapTagHeaderSection() {
           text={text}
           isSelected={id === selectedTagId}
           onClickHandler={() => {
-            router.replace(`/map/course-detail?tag=${id}`);
+            router.replace(
+              ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId) + "?tag=${id}"
+            );
           }}
         />
       ))}

@@ -1,5 +1,6 @@
 "use client";
 
+import ROUTE from "@/constants/route";
 // import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import { StackLink } from "@/service/StackLink";
 import Spacing from "@shared/layout/Spacing";
@@ -20,7 +21,7 @@ export default function MountainGridSection() {
     <section className="flex grow gap-4">
       <div className="flex flex-col w-full h-fit gap-4">
         {/* TODO: href 하드코딩 피하기 */}
-        <StackLink href="/course/1?sort=my" preLoad>
+        <StackLink href={ROUTE.MOUNTAIN_COURSE("1") + "?sort=my"} preLoad>
           <div
             className="h-72 rounded-2xl flex items-center justify-center relative overflow-hidden"
             style={{
@@ -28,7 +29,7 @@ export default function MountainGridSection() {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
             }}
-            role="button"
+            // role="button"
             // onClick={routeToCoursePage}
           >
             <div className="absolute top-0 right-0 bg-black opacity-40 w-full h-full" />
