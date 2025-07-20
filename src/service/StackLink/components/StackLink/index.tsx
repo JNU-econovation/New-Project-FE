@@ -13,19 +13,21 @@ import useStackContext from "../../hooks/useStackContext";
 import GoBackTrigger from "../GoBackTrigger";
 import Iframe from "../Iframe";
 
-const DEFAULT_DURATION = 300;
+const DEFAULT_DURATION = 240;
 
 interface StackLinkedProps extends PropsWithChildren {
   href: string;
-  duration?: number;
+  // duration?: number;
   preLoad?: boolean;
+  animation?: "slide" | "none";
 }
 
 export default function StackLink({
   href,
   children,
   preLoad = false,
-  duration = DEFAULT_DURATION,
+  // duration = DEFAULT_DURATION,
+  animation = "slide",
 }: StackLinkedProps) {
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -79,6 +81,8 @@ export default function StackLink({
       return;
     }
 
+    const animDuration = animation === "slide" ? DEFAULT_DURATION : 0; //ms
+
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
@@ -89,7 +93,7 @@ export default function StackLink({
       zIndex: main.style.zIndex,
     };
 
-    main.style.transition = `transform ${duration}ms ease-in-out`;
+    main.style.transition = `transform ${animDuration}ms ease-in-out`;
     main.style.transform = "translateX(-20%)";
 
     if (!iframeRef.current) {
@@ -98,7 +102,7 @@ export default function StackLink({
     }
 
     iframeRef.current.style.transform = "translateX(-100%)";
-    iframeRef.current.style.transition = `transform ${duration}ms ease-in-out`;
+    iframeRef.current.style.transition = `transform ${animDuration}ms ease-in-out`;
 
     // 스택에 현재 경로와 이동한 경로 추가
     push([window.location.href, href]);
@@ -108,8 +112,8 @@ export default function StackLink({
       main.style.transform = "translateX(0)";
       main.style.zIndex = "-999";
       router.push(href);
-    }, duration);
-  }, [duration, href, push, router]);
+    }, animDuration);
+  }, [animation, href, push, router]);
 
   return (
     <>
