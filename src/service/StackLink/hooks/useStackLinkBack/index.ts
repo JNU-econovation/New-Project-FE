@@ -16,23 +16,23 @@ const useStackLinkBack = () => {
   useEffect(() => {
     if (!flush) return;
     const main = document.getElementById("stack-main");
-    if (main) {
-      if (history.length > 0) {
-        if (main) {
-          main.style.transform = "translateX(100%)";
-          main.style.transition = "transform 0.2s ease-in-out";
-        }
-      }
-    } else {
-      console.warn("Main element not found.");
+    if (!main) {
+      console.warn("[useStackLinkBack] Main element not found.");
+      setFlush(false);
+      return;
+    }
+
+    if (history.length > 0) {
+      main.style.transform = "translateX(100%)";
+      main.style.transition = "transform 0.2s ease-in-out";
     }
     const timeoutId = setTimeout(() => {
       setFlush(false);
       router.back();
+      pop();
     }, 200);
 
     return () => {
-      pop();
       clearTimeout(timeoutId);
     };
   }, [flush, history.length, pop, router]);
