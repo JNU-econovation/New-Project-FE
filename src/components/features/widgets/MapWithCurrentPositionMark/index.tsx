@@ -59,7 +59,11 @@ export default function MapWithCurrentPositionMark({
   });
 
   const logBridge = useLogBridge();
-  useDrawPath(map, path as [number, number][]);
+  useDrawPath({
+    map,
+    path: path as [number, number][],
+    enable: !!path,
+  });
 
   useSetCircle({
     map,
