@@ -31,11 +31,12 @@ const useSetCircle = ({
   enable = true,
 }: UseSetCircleProps) => {
   const { radius, fillColor, fillOpacity, strokeColor } = option;
+
   useEffect(() => {
     if (!map) return;
     if (!enable) return;
 
-    new naver.maps.Circle({
+    const circle = new naver.maps.Circle({
       map: map,
       center: new naver.maps.LatLng(latitude, longitude),
       radius: radius ? radius : zoom ? zoom * 10 : 10,
@@ -43,6 +44,10 @@ const useSetCircle = ({
       fillOpacity,
       strokeColor,
     });
+
+    return () => {
+      circle.setMap(null);
+    };
   }, [
     latitude,
     longitude,
