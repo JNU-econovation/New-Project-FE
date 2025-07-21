@@ -10,7 +10,7 @@ interface BasesDetailQueryProps {
 
 const useBasesDetailQuery = ({ mountainId }: BasesDetailQueryProps) => {
   return useSuspenseQuery({
-    queryKey: [BASES_DETAIL_API_PATH, mountainId],
+    queryKey: [BASES_DETAIL_API_PATH(mountainId)],
     queryFn: () => getBasesDetailApi(mountainId),
   });
 };
