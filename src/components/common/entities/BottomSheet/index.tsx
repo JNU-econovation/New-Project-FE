@@ -209,7 +209,6 @@ export default memo(function BottomSheet({
         ref={bottomSheetContent}
         className="px-4"
         style={{
-          height: isReady ? `${contentHeight}px` : "auto",
           transition: isPressed ? "none" : "height 0.25s ease-out",
         }}
       >
