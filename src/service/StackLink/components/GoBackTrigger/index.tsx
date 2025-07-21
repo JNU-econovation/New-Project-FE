@@ -87,10 +87,7 @@ export default function GoBackTrigger() {
       {portalElement &&
         !isNavigating &&
         createPortal(
-          <div
-            id={goBackTriggerElementId}
-            className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50"
-          />,
+          <div className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50" />,
 
           portalElement
         )}
