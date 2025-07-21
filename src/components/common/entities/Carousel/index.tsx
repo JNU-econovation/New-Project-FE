@@ -9,6 +9,7 @@ interface CarouselProps {
 }
 
 //TODO: 캐러샐 ui를 사용하는 곳에서 변경 가능하게 수정 필요
+//TODO: 캐러샐에서 컴포넌트를 배열로 받게 되면 key값 이슈가 발생할 수 있음. 수정 필요
 export default function Carousel({ items }: CarouselProps) {
   const [prevX, setPrevX] = useState(0);
   const [x, setX] = useState(0);

@@ -1,31 +1,34 @@
+/* eslint-disable react/jsx-key */
 "use client";
 
 import BottomSheet from "@entities/BottomSheet";
 import Carousel from "@entities/Carousel";
-import CourseBaseTab from "@entities/CourseBaseTab";
+import BaseSelector from "@pages/map/BaseSelector";
 import CourseImageInfoSection from "@pages/map/CourseImageInfoSection";
 import CourseWeatherClothesInfoSection from "@pages/map/CourseWeatherClothesInfoSection";
 import Spacing from "@shared/layout/Spacing";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
 
 export default function CourseDetailBottomSheetSection() {
-  const courseList = ["증심사", "중머리재", "원효분소"];
-
   return (
     <section>
       <BottomSheet>
-        <CourseBaseTab courseList={courseList} />
+        {/* TODO: 해당 div는 이미 query가 존재하는 경우 bottomsheet의 height를 잘못 계산하는 경우가 존재하여 생상혀였습니다. 추후 변경 예정 */}
+        <div className="min-h-6">
+          <BaseSelector />
+        </div>
         <Spacing size={2} />
+        {/* TODO: 추후 정보를 가져올 수 있는 방안이 생기면 수정 */}
         <CourseMetaDataUi difficulty="쉬움" distance={123} time={23} />
         <Spacing size={2} />
 
         <Carousel
           items={[
-            <CourseWeatherClothesInfoSection key={1} />,
-            <CourseImageInfoSection key={2} />,
+            <CourseWeatherClothesInfoSection />,
+            <CourseImageInfoSection />,
           ]}
         />
-        <Spacing size={1} />
+        <Spacing size={2} />
       </BottomSheet>
     </section>
   );
