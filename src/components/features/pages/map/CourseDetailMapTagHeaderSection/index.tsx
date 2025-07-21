@@ -36,8 +36,10 @@ export default function CourseDetailMapTagHeaderSection() {
                 isSelected={id === selectedTagId}
                 onClickHandler={() => {
                   router.replace(
-                    ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId) +
-                      `?tag=${id}`
+                    ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
+                      tag: id,
+                      baseId: searchParams.get("baseId") ?? "",
+                    })
                   );
                 }}
               />
