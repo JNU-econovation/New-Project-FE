@@ -1,12 +1,10 @@
 "use client";
 
-import useBasesDetailQuery from "@/hooks/feature/query/useBasesDetailQuery";
+import useBasesDetailQuery from "@hooks/feature/query/useBasesDetailQuery";
 import { Suspense } from "@suspensive/react";
-import {
-  useParams,
-  useSearchParams,
-} from "next/dist/client/components/navigation";
+
 import Image from "next/image";
+import { useParams, useSearchParams } from "next/navigation";
 
 export default Suspense.with(
   {
