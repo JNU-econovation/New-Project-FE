@@ -3,7 +3,7 @@ import { cn } from "@/utils/cn";
 import { cva } from "class-variance-authority";
 
 export const DifficultyTagVariants = cva(
-  "rounded-xl border-gray-200 border px-4 text-yellow-500 text-sm",
+  "rounded-xl border-gray-200 border px-3 text-yellow-500 text-sm shrink-0",
   {
     variants: {
       difficulty: {
