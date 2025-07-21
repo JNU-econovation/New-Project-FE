@@ -41,7 +41,7 @@ export default Suspense.with(
       return <div className="p-4">기본 정보가 없습니다.</div>;
     }
 
-    const { weather, recommendedOutfit } = baseDetail;
+    const { weather, recommendedOutfit, temperature } = baseDetail;
 
     return (
       // height값이 고정되어있습니다! 주의해주세요!
@@ -52,7 +52,7 @@ export default Suspense.with(
           <SunnyIcon alt="맑은 날씨" />
           <div>
             <p className="text-3xl font-extralight">
-              {"18"}
+              {temperature}
               <span className="text-2xl">&deg;C</span>
             </p>
             <p className="text-sm font-bold">{weather}</p>
