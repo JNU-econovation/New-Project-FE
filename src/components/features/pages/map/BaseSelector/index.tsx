@@ -33,7 +33,7 @@ export default Suspense.with(
     }, [baseDetails]);
 
     useEffect(() => {
-      if (!searchParams.get("baseId")) {
+      if (!searchParams.get("baseId") && baseDetails.length > 0) {
         router.replace(
           ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
             tag: searchParams.get("tag") ?? MAP.BASE.id,
