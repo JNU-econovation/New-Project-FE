@@ -2,7 +2,7 @@
 
 import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import { useDrawPath } from "@/hooks/feature/map/useDrawPath";
-import useSetCircle from "@/hooks/feature/map/useSetCurrentPosition";
+import useSetCircle from "@/hooks/feature/map/useSetCircle";
 import type { Markers } from "@/types/map";
 import useGetCurrentPositionBridge, {
   Position,
