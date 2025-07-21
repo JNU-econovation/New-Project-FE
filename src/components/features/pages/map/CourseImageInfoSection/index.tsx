@@ -22,8 +22,11 @@ export default Suspense.with(
     const { data } = useBasesDetailQuery({ mountainId });
 
     const selectedBaseId =
-      searchParams.get("baseId") || data.baseDetails[0].baseId;
+      searchParams.get("baseId") || data.baseDetails[0]?.baseId;
     const { baseDetails } = data;
+    if (!selectedBaseId) {
+      return <div className="p-4">기본 정보가 없습니다.</div>;
+    }
 
     const baseDetail = baseDetails.find(
       ({ baseId }) => `${baseId}` === `${selectedBaseId}`
