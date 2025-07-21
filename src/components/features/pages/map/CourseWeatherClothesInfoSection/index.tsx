@@ -1,4 +1,4 @@
-"ues client";
+"use client";
 
 import useBasesDetailQuery from "@/hooks/feature/query/useBasesDetailQuery";
 import ClothesIcon from "@icons/ClothesIcon";
