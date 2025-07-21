@@ -53,7 +53,7 @@ export default Suspense.with(
         options={options}
         value={selectorValue}
         onSelect={(baseId) => {
-          router.push(
+          router.replace(
             ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
               tag: searchParams.get("tag") ?? MAP.BASE.id,
               baseId,
