@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 import Spacing from "@shared/layout/Spacing";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SelectorProps {
   options: {
@@ -16,6 +16,10 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
   const [selectedOptionValue, setSelectedOptionValue] = useState<string | null>(
     value || null
   );
+
+  useEffect(() => {
+    setSelectedOptionValue(value || null);
+  }, [value]);
 
   return (
     <div
@@ -35,6 +39,15 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
           }
           setOptionsOpen(false);
         }}
+        role="combobox"
+        aria-expanded={optionsOpen}
+        aria-haspopup="listbox"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            setOptionsOpen(!optionsOpen);
+          }
+        }}
       >
         {options.find(({ value }) => `${value}` === `${selectedOptionValue}`)
           ?.text ?? "Select an option"}
@@ -45,7 +58,7 @@ export default function Selector({ options, onSelect, value }: SelectorProps) {
         {optionsOpen &&
           options.map(({ text, value }, index) => (
             <div
-              key={index}
+              key={`${text}-${index}`}
               className={cn("p-1 cursor-pointer text-center", {
                 "bg-gray-30": `${value}` === `${selectedOptionValue}`,
                 visible: optionsOpen,
