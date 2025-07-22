@@ -5,7 +5,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
   devIndicators: false,
   images: {
-    remotePatterns: [new URL(`${process.env.IMAGE_REMOTE_URL}`)],
+    remotePatterns: process.env.IMAGE_REMOTE_URL
+      ? [new URL(process.env.IMAGE_REMOTE_URL)]
+      : [],
   },
 };
 
