@@ -12,12 +12,13 @@ interface PositionBottomProps extends PropsWithChildren {
 export default function PositionBottom({
   children,
   bottom = DEFAULT_BOTTOM_SPACE,
+  zIndex = 10,
   padding = 0,
 }: PositionBottomProps) {
   return (
     <div
       className={cn("absolute left-0 w-full")}
-      style={{ bottom, zIndex: 1, padding: `${padding * 0.25}rem` }}
+      style={{ bottom, zIndex, padding: `${padding * 0.25}rem` }}
     >
       {children}
     </div>
