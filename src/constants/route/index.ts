@@ -2,6 +2,8 @@ const ROUTE = {
   MAIN: "/",
   LOGIN: "/login",
   SOCIAL_LOGIN_LOADING: "/social-login-loading",
+
+  // mountain & course
   MOUNTAIN: "/mountain",
   MOUNTAIN_COURSE: (mountainId: string) => `/mountain/${mountainId}/course`,
   MOUNTAIN_COURSE_DETAIL: (
@@ -22,6 +24,12 @@ const ROUTE = {
     mountainId: string;
     sort?: string;
   }) => `/course/${mountainId}?sort=${sort}`,
+
+  // travel
+  TRAVEL: ({ tag = "" }: { tag?: string }) =>
+    `/travel${tag ? `?tag=${tag}` : ""}`,
+
+  //my page
   MY_PAGE: "/my-page",
   MY_INFO: "/my-page/my-info",
   HIKING_LOG: "/my-page/hiking-log",
