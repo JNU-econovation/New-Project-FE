@@ -2,6 +2,7 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
+COPY .env .env
 RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml ./
 
