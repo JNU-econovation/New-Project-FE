@@ -51,6 +51,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-        
 
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" > .env
+          echo "NEXT_PUBLIC_NAVER_KEY=${{ secrets.NEXT_PUBLIC_NAVER_KEY }}" >> .env
+          echo "NEXT_PUBLIC_NAVER_SECRET=${{ secrets.NEXT_PUBLIC_NAVER_SECRET }}" >>
+
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
