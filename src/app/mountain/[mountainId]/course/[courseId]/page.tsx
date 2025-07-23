@@ -1,10 +1,9 @@
-import MapWithHeaderSection from "@/components/features/widgets/map/MapWithHeaderSection";
 import MapHeaderNavbar from "@entities/MapHeaderNavbar";
 import CourseDetailBottomSheetSection from "@pages/mountain/CourseDetailBottomSheetSection";
-// import CourseDetailMapSection from "@pages/mountain/CourseDetailMapSection";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
+import MapWithHeaderSection from "@widgets/map/MapWithHeaderSection";
 import TravelStartButton from "@widgets/route/TravelStartButton";
 
 export default function CourseDetailPage() {
@@ -28,7 +27,6 @@ export default function CourseDetailPage() {
         </div>
       </PositionBottom>
       <MapWithHeaderSection />
-      {/* <CourseDetailMapSection /> */}
     </div>
   );
 }
