@@ -1,5 +1,5 @@
 import { useModalContext } from "@/service/modal";
-import LogoutModal from "@widgets/LogoutModal";
+import LogoutModal from "@widgets/authenticate/LogoutModal";
 
 const useLogoutModal = () => {
   const { addModalAsync } = useModalContext();
