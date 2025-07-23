@@ -1,5 +1,5 @@
-import LogoutAlertModal from "@/components/features/widgets/LogoutAlertModal";
 import { useModalContext } from "@/service/modal";
+import LogoutAlertModal from "@widgets/authenticate/LogoutAlertModal";
 
 const useLogoutAlertModal = () => {
   const { addModalAsync } = useModalContext();
