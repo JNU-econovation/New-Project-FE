@@ -6,10 +6,6 @@ node_modules
 dist
 out
 
-# (env들은 필요할 수도?)
-.env
-.env.*
-
 .DS_Store
 .vscode
 .idea
