@@ -8,6 +8,7 @@ const useSendToken = () => {
 
   const accessToken = searchParams.get("accessToken");
   const refreshToken = searchParams.get("refreshToken");
+  const expiredTime = searchParams.get("expiredTime");
 
   useEffect(() => {
     if (!accessToken && !refreshToken) return;
@@ -19,10 +20,11 @@ const useSendToken = () => {
         body: {
           accessToken,
           refreshToken,
+          expiredTime,
         },
       },
     });
-  }, [accessToken, refreshToken, request]);
+  }, [accessToken, expiredTime, refreshToken, request]);
 };
 
 export default useSendToken;
