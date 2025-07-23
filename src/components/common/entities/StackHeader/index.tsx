@@ -1,4 +1,4 @@
-import BackButton from "@widgets/BackButton";
+import BackButton from "@widgets/route/BackButton";
 
 interface StackHeaderProps {
   title?: string;

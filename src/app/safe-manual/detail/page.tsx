@@ -1,6 +1,6 @@
 import StackHeader from "@entities/StackHeader";
 import Spacing from "@shared/layout/Spacing";
-import SafeManualTab from "@widgets/SafeManualTab";
+import SafeManualTab from "@widgets/etc/SafeManualTab";
 import { Suspense } from "react";
 
 export default function SafeManualDetailPage() {

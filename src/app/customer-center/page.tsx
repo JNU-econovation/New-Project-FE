@@ -1,4 +1,4 @@
-import CustomerCenterTab from "@widgets/CustomerCenterTab";
+import CustomerCenterTab from "@widgets/etc/CustomerCenterTab";
 import { Suspense } from "react";
 
 export default function CustomerCenterPage() {

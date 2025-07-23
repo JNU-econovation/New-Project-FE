@@ -4,7 +4,7 @@ import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import Spacing from "@shared/layout/Spacing";
 import BlackRightArrowIcon from "@shared/ui/BlackRightArrowIcon";
 import Text from "@shared/ui/Text";
-import MyProfileImage from "@widgets/MyProfileImage";
+import MyProfileImage from "@widgets/etc/MyProfileImage";
 
 export default function MyInfoSection() {
   const goToMyInfo = useRouteBridge({
