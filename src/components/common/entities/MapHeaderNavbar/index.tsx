@@ -1,18 +1,14 @@
 "use client";
 
 import MAP from "@/constants/map";
-import ROUTE from "@/constants/route";
+import { updateSearchParams } from "@/utils/url";
 import MapHeaderTag from "@shared/ui/MapHeaderTag";
-import BackButton from "@widgets/BackButton";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import BackButton from "@/components/features/widgets/route/BackButton";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-export default function CourseDetailMapTagHeaderSection() {
+export default function MapHeaderNavbar() {
   const searchParams = useSearchParams();
-  const { mountainId, courseId } = useParams<{
-    mountainId: string;
-    courseId: string;
-  }>();
   const router = useRouter();
   const selectedTagId = searchParams.get("tag") || MAP.BASE.facilityName;
 
@@ -36,9 +32,10 @@ export default function CourseDetailMapTagHeaderSection() {
                 isSelected={id === selectedTagId}
                 onClickHandler={() => {
                   router.replace(
-                    ROUTE.MOUNTAIN_COURSE_DETAIL(mountainId, courseId, {
-                      tag: id,
-                      baseId: searchParams.get("baseId") ?? "",
+                    updateSearchParams({
+                      href: window.location.href,
+                      searchParamName: "tag",
+                      paramValue: id,
                     })
                   );
                 }}

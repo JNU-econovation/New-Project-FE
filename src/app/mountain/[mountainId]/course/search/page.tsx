@@ -1,7 +1,7 @@
-import CourseDetailMapSection from "@pages/map/CourseDetailMapSection";
+import CourseDetailMapSection from "@pages/mountain/CourseDetailMapSection";
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
-import BackButton from "@widgets/BackButton";
+import BackButton from "@widgets/route/BackButton";
 
 export default function CourseSearchPage() {
   return (

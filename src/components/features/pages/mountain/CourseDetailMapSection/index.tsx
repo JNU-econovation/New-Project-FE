@@ -11,7 +11,7 @@ import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
 const MapWithCurrentPositionMark = dynamic(
-  () => import("@widgets/MapWithCurrentPositionMark"),
+  () => import("@/components/features/widgets/map/MapWithCurrentPositionMark"),
   { ssr: false }
 );
 

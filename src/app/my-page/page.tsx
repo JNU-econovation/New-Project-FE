@@ -1,8 +1,8 @@
-import Spacing from "@shared/layout/Spacing";
 import CustomerCenterSection from "@pages/my-page/CustomerCenterSection";
 import EnvironmentSection from "@pages/my-page/EnvironmentSection";
 import MyInfoSection from "@pages/my-page/MyInfoSection";
-import LogoutButton from "@widgets/LogoutButton";
+import Spacing from "@shared/layout/Spacing";
+import LogoutButton from "@widgets/authenticate/LogoutButton";
 
 export default function MyPage() {
   return (
