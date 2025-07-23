@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn";
 import useCoursesOfMountainQuery from "@hooks/feature/query/useCoursesOfMountainQuery";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
-import CourseListWithBookmarkMutate from "@widgets/CourseListWithBookmarkMutate";
+import CourseListWithBookmarkMutate from "@widgets/course/CourseListWithBookmarkMutate";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 import MAP from "@/constants/map";
