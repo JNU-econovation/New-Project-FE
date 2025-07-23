@@ -1,10 +1,11 @@
-import CourseDetailBottomSheetSection from "@pages/map/CourseDetailBottomSheetSection";
-import CourseDetailMapSection from "@pages/map/CourseDetailMapSection";
-import CourseDetailMapTagHeaderSection from "@pages/map/CourseDetailMapTagHeaderSection";
+import MapWithHeaderSection from "@/components/features/widgets/map/MapWithHeaderSection";
+import MapHeaderNavbar from "@entities/MapHeaderNavbar";
+import CourseDetailBottomSheetSection from "@pages/mountain/CourseDetailBottomSheetSection";
+// import CourseDetailMapSection from "@pages/mountain/CourseDetailMapSection";
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
-import TravelStartButton from "@widgets/TravelStartButton";
+import TravelStartButton from "@widgets/route/TravelStartButton";
 
 export default function CourseDetailPage() {
   return (
@@ -12,7 +13,7 @@ export default function CourseDetailPage() {
       <div className="px-6 z-10 fixed w-full">
         <Spacing size={8} />
         <Suspense>
-          <CourseDetailMapTagHeaderSection />
+          <MapHeaderNavbar />
         </Suspense>
       </div>
       <PositionBottom bottom={88}>
@@ -26,7 +27,8 @@ export default function CourseDetailPage() {
           <TravelStartButton />
         </div>
       </PositionBottom>
-      <CourseDetailMapSection />
+      <MapWithHeaderSection />
+      {/* <CourseDetailMapSection /> */}
     </div>
   );
 }
