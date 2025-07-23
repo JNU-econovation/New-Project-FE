@@ -40,7 +40,6 @@ authenticatedApi.interceptors.response.use(
     return response.data;
   },
   async (error) => {
-    alert(error.message);
     return Promise.reject(error);
   }
 );

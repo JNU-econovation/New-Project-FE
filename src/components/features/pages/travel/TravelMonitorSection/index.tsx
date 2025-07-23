@@ -1,8 +1,24 @@
 "use client";
 
+import useShowToastBridge from "@hooks/feature/bridge/useShowToastBridge";
 import Spacing from "@shared/layout/Spacing";
+import { useEffect } from "react";
 
 export default function TravelMonitorSection() {
+  const showToast = useShowToastBridge();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      showToast({
+        type: "error",
+        text1: "올바른 위치에서 다시 시도해주세요!",
+        text2: "현재 위치에서는 사용할 수 없는 기능입니다.",
+      });
+    }, 3000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [showToast]);
   return (
     <section className="bg-white rounded-xl z-50 px-4">
       <div className="flex justify-center items-center gap-6 -translate-y-1/2">
@@ -20,10 +36,10 @@ export default function TravelMonitorSection() {
       <Spacing size={4} />
 
       <div className="bg-green-20 rounded-xl p-4 flex justify-between items-center ">
-        <div className="flex gap-2">
+        <div className="flex gap-2 translate-y-2">
           <span>🏃‍♂️‍➡️</span>
           <div>
-            <p className="font-semibold text-base">1.89</p>
+            <p className="font-semibold text-base">0.00</p>
             <p className="text-sm text-end">km</p>
           </div>
         </div>
