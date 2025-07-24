@@ -21,25 +21,25 @@ const MapWithCurrentPositionMark = dynamic(
 // 만약 추가적인 기능이 필요하다면 해당 컴포넌트를 확장해서 사용하는 것을 추천합니다.
 // 추가가능 기능: path 표시, 마커 클릭시 상세 정보 표시 등
 
-interface MapWithHeaderSectionProps {
-  path?: [number, number][];
-}
+// interface MapWithHeaderSectionProps {
+//   path?: [number, number][];
+// }
 
 export default Suspense.with(
   {
     fallback: (
       <div className="w-full h-full relative flex justify-center items-center">
-        <div className="absolute inset-0 bg-main-green opacity-5 animate-ping w-full h-full" />
+        <div className="absolute inset-0 bg-main-green opacity-5 w-full h-full" />
         <Spinner size="md" />
       </div>
     ),
     name: "MapWithHeaderSection",
     clientOnly: true,
   },
-  ({ path }: MapWithHeaderSectionProps) => {
+  () => {
     const params = useParams<{
       mountainId: string;
-      courseId: string;
+      // courseId: string;
     }>();
     const searchParams = useSearchParams();
 
@@ -74,7 +74,6 @@ export default Suspense.with(
     return (
       <div className="absolute top-0 left-0 w-full h-full">
         <MapWithCurrentPositionMark
-          path={path ?? ([] as [number, number][])}
           markers={markers}
           currentPositionIcon={true}
           zoom={13}
