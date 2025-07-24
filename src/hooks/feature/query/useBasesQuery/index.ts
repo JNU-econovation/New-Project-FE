@@ -7,8 +7,8 @@ interface UseBaseQueryProps {
 
 const useBasesQuery = ({ mountainId }: UseBaseQueryProps) => {
   return useSuspenseQuery({
-    queryKey: [BASES_API_PATH(mountainId)],
-    queryFn: () => getBasesApi(mountainId),
+    queryKey: [BASES_API_PATH(mountainId ?? "1")],
+    queryFn: () => getBasesApi(mountainId ?? "1"),
     staleTime: 1000 * 60 * 5, // 5m
     gcTime: 1000 * 60 * 60, // 1h
   });
