@@ -25,9 +25,12 @@ authenticatedApi.interceptors.request.use(
 
     const token = localStorage.getItem("accessToken");
 
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
+    // if (!token) {
+    //   throw new Error("No access token found in local storage");
+    // }
+
+    if (token) config.headers["Authorization"] = `Bearer ${token}`;
+
     return config;
   },
   (error) => {

@@ -3,6 +3,7 @@
 import Spinner from "@/components/common/shared/ui/Spinner";
 import MAP from "@/constants/map";
 import useBasesQuery from "@/hooks/feature/query/useBasesQuery";
+import useCoursePathwayQuery from "@/hooks/feature/query/useCoursePathwayQuery";
 import useFacilitiesQuery from "@/hooks/feature/query/useFacilitiesQuery";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
@@ -16,15 +17,6 @@ const MapWithCurrentPositionMark = dynamic(
   { ssr: false }
 );
 
-// 대부분의 지도에서 사용하는 기능이 모두 있는 컴포넌트입니다.
-// 현재 위치 마크, 마커 표시
-// 만약 추가적인 기능이 필요하다면 해당 컴포넌트를 확장해서 사용하는 것을 추천합니다.
-// 추가가능 기능: path 표시, 마커 클릭시 상세 정보 표시 등
-
-interface MapWithHeaderSectionProps {
-  path?: [number, number][];
-}
-
 export default Suspense.with(
   {
     fallback: (
@@ -33,23 +25,24 @@ export default Suspense.with(
         <Spinner size="md" />
       </div>
     ),
-    name: "MapWithHeaderSection",
+    name: "MapWithHeaderAndPathSection",
     clientOnly: true,
   },
-  ({ path }: MapWithHeaderSectionProps) => {
+  () => {
     const params = useParams<{
       mountainId: string;
       courseId: string;
     }>();
     const searchParams = useSearchParams();
 
-    const { mountainId } = params;
+    const { mountainId, courseId } = params;
     const selectedTagId =
       (searchParams.get("tag") as keyof typeof MAP.BASE_AND_FACILITY) ||
       MAP.BASE.facilityName;
 
     const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
     const { data: basesData } = useBasesQuery({ mountainId });
+    const { data: pathway } = useCoursePathwayQuery({ courseId });
 
     const { facilities } = facilitiesData;
     const { bases } = basesData;
@@ -71,10 +64,18 @@ export default Suspense.with(
       );
     }, [facilities, bases, selectedTagId]);
 
+    const { pathways } = pathway;
+    // console.log(pathways);
+
+    const combinedPath = pathways.flatMap(({ coordinates }) => coordinates) as [
+      number,
+      number
+    ][];
+
     return (
       <div className="absolute top-0 left-0 w-full h-full">
         <MapWithCurrentPositionMark
-          path={path ?? ([] as [number, number][])}
+          path={combinedPath}
           markers={markers}
           currentPositionIcon={true}
           zoom={13}
