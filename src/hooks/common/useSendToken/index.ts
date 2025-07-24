@@ -1,3 +1,4 @@
+import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 import { useBridge } from "@/service/bridge";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
@@ -5,6 +6,8 @@ import { useEffect } from "react";
 const useSendToken = () => {
   const searchParams = useSearchParams();
   const { request } = useBridge();
+
+  const goBack = useRouteBackBridge();
 
   const accessToken = searchParams.get("accessToken");
   const refreshToken = searchParams.get("refreshToken");
@@ -24,7 +27,8 @@ const useSendToken = () => {
         },
       },
     });
-  }, [accessToken, expiredTime, refreshToken, request]);
+    goBack();
+  }, [accessToken, expiredTime, goBack, refreshToken, request]);
 };
 
 export default useSendToken;
