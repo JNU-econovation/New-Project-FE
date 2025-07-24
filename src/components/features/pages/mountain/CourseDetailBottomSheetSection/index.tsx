@@ -19,7 +19,7 @@ export default function CourseDetailBottomSheetSection() {
         </div>
         <Spacing size={2} />
         {/* TODO: 추후 정보를 가져올 수 있는 방안이 생기면 수정 */}
-        <CourseMetaDataUi difficulty="쉬움" distance={123} time={23} />
+        <CourseMetaDataUi difficulty="EASY" distance={123} time={23} />
         <Spacing size={2} />
 
         <Carousel
