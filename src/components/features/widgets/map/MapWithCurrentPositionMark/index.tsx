@@ -21,6 +21,20 @@ interface MapWWithCurrentPositionMarkProps {
   currentPositionIcon?: boolean;
   zoom?: number;
 }
+/**
+ * 
+ * 최근 위치를 점으로 보여주는 컴포넌트입니다. 
+ * 
+ * 대부분의 맵 사용시 해당 컴포넌트를 사용하면 됩니다. 
+ * 
+ * 가져오실 때 아래처럼 사용하세요
+ * ```tsx
+ * const MapWithCurrentPositionMark = dynamic(
+    () => import("@/components/features/widgets/map/MapWithCurrentPositionMark"),
+    { ssr: false }
+  );
+  ```
+ */
 
 export default function MapWithCurrentPositionMark({
   path,
@@ -50,7 +64,7 @@ export default function MapWithCurrentPositionMark({
 
   useEffect(() => {
     getCurrentPosition(onResponse);
-  }, [getCurrentPosition]);
+  }, []);
 
   const { mapId, map } = useNaverMap({
     latitude: currentPosition.latitude,

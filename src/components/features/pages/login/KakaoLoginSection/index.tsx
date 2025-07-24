@@ -3,11 +3,11 @@
 import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 import useShowToastBridge from "@/hooks/feature/bridge/useShowToastBridge";
 import useKakaoLoginQuery from "@/hooks/feature/query/useKakaoLoginQuery";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 export default function KakaoLoginSection() {
   const { data, isLoading, error } = useKakaoLoginQuery();
-  const route = useRouter();
+  // const route = useRouter();
   const goBack = useRouteBackBridge();
   const showToast = useShowToastBridge();
 
@@ -30,7 +30,8 @@ export default function KakaoLoginSection() {
 
   if (!isLoading && data && data.uri) {
     const { uri } = data;
-    route.replace(uri);
+    alert(uri);
+    window.location.href = uri;
     return null;
   }
 
