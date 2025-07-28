@@ -1,8 +1,12 @@
 import authenticatedApi from "@/api/_instances/authenticatedApi";
 import { CourseDifficulty } from "@/types/course";
 
-export const COURSES_OF_MOUNTAIN = (mountainId: string) =>
-  `api/v1/mountains/${mountainId}/courses`;
+export type CourseSortType = "length" | "difficulty";
+
+export const COURSES_OF_MOUNTAIN = (
+  mountainId: string,
+  { searchParams: { sortBy } }: { searchParams: { sortBy: CourseSortType } }
+) => `api/v1/mountains/${mountainId}/courses?sort=${sortBy}`;
 
 interface Course {
   id: string;
@@ -11,16 +15,26 @@ interface Course {
   duration: number;
   difficulty: CourseDifficulty;
   bookmark: boolean;
+  image: string;
 }
 
 interface GetCoursesOfMountainResponse {
   courses: Course[];
 }
 
-export const getCoursesOfMountainApi = async (mountainId: string) => {
+interface GetCoursesOfMountainApiParams {
+  mountainId: string;
+  sortBy: CourseSortType;
+}
+
+//TODO: sort by 적용하기
+export const getCoursesOfMountainApi = async ({
+  mountainId,
+  sortBy,
+}: GetCoursesOfMountainApiParams) => {
   const response = await authenticatedApi<GetCoursesOfMountainResponse>({
     method: "get",
-    url: COURSES_OF_MOUNTAIN(mountainId),
+    url: COURSES_OF_MOUNTAIN(mountainId, { searchParams: { sortBy } }),
   });
 
   return response.data;
