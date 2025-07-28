@@ -10,7 +10,7 @@ interface CourseListProps {
   length: number;
   difficulty: CourseDifficulty;
   stared: boolean;
-  src?: string;
+  imageSrc?: string;
   onSetStared?: () => void;
   onResetStared?: () => void;
 }
@@ -21,7 +21,7 @@ export default function CourseList({
   length,
   difficulty,
   stared,
-  src,
+  imageSrc,
   onSetStared,
   onResetStared,
 }: CourseListProps) {
@@ -35,9 +35,17 @@ export default function CourseList({
           difficulty={difficulty}
         />
       </div>
-      <div className="w-24 h-24 bg-slate-100 rounded-xl relative">
+      <div
+        className="w-24 h-24 bg-slate-100 rounded-xl relative"
+        style={{
+          backgroundImage: `url(${imageSrc ?? ""})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        role="img"
+      >
         {/* TODO: default image 적용하기*/}
-        <Image src={src ?? ""} width={96} height={96} alt="코스 이미지" />
+        {/* <Image src={imageSrc ?? ""} width={96} height={96} alt="코스 이미지" /> */}
         <div className="absolute top-2 right-2">
           {stared ? (
             <button
