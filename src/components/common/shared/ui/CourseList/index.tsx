@@ -2,6 +2,7 @@ import type { CourseDifficulty } from "@/types/course";
 import StarBlockIcon from "@icons/StarBlockIcon";
 import StarWeakIcon from "@icons/StarWeakIcon";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
+import Image from "next/image";
 
 interface CourseListProps {
   name: string;
@@ -9,6 +10,7 @@ interface CourseListProps {
   length: number;
   difficulty: CourseDifficulty;
   stared: boolean;
+  src?: string;
   onSetStared?: () => void;
   onResetStared?: () => void;
 }
@@ -19,6 +21,7 @@ export default function CourseList({
   length,
   difficulty,
   stared,
+  src,
   onSetStared,
   onResetStared,
 }: CourseListProps) {
@@ -33,13 +36,25 @@ export default function CourseList({
         />
       </div>
       <div className="w-24 h-24 bg-slate-100 rounded-xl relative">
+        {/* TODO: default image 적용하기*/}
+        <Image src={src ?? ""} width={96} height={96} alt="코스 이미지" />
         <div className="absolute top-2 right-2">
           {stared ? (
-            <button onClick={onResetStared}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onResetStared?.();
+              }}
+            >
               <StarBlockIcon alt="북마크된 코스" />
             </button>
           ) : (
-            <button onClick={onSetStared}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onSetStared?.();
+              }}
+            >
               <StarWeakIcon alt="북마크되지 않은 코스" />
             </button>
           )}
