@@ -52,13 +52,13 @@ export default function GoBackTrigger() {
         pop();
 
         setTimeout(() => {
-          router.back();
           setIsNavigating(false);
           main.style.transition = "none";
           main.style.transform = "translateX(0px)";
           setStartX(0);
           setCurrentX(0);
           setIsTouching(false);
+          router.back();
         }, 200);
 
         return;
