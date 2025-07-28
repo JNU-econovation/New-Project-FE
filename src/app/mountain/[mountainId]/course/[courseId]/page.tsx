@@ -4,7 +4,6 @@ import CourseDetailBottomSheetSection from "@pages/mountain/CourseDetailBottomSh
 import PositionBottom from "@shared/layout/PositionBottom";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
-// import MapWithHeaderSection from "@widgets/map/MapWithHeaderSection";
 import TravelStartButton from "@widgets/route/TravelStartButton";
 
 //

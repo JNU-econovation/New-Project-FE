@@ -2,7 +2,7 @@ import type { CourseDifficulty } from "@/types/course";
 import StarBlockIcon from "@icons/StarBlockIcon";
 import StarWeakIcon from "@icons/StarWeakIcon";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
-import Image from "next/image";
+import Image from "@shared/ui/Image";
 
 interface CourseListProps {
   name: string;
@@ -35,17 +35,8 @@ export default function CourseList({
           difficulty={difficulty}
         />
       </div>
-      <div
-        className="w-24 h-24 bg-slate-100 rounded-xl relative"
-        style={{
-          backgroundImage: `url(${imageSrc ?? ""})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        role="img"
-      >
-        {/* TODO: default image 적용하기*/}
-        {/* <Image src={imageSrc ?? ""} width={96} height={96} alt="코스 이미지" /> */}
+      <div className="w-24 h-24 bg-slate-100 rounded-xl relative overflow-hidden">
+        <Image src={imageSrc ?? ""} alt="코스 경로" width={96} height={96} />
         <div className="absolute top-2 right-2">
           {stared ? (
             <button
