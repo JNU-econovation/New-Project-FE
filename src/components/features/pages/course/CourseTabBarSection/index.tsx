@@ -14,9 +14,11 @@ import { StackLink } from "@/service/StackLink";
 import CourseTabBarSectionSkeleton from "./CourseTabBarSection.skeleton";
 
 const tabTitleList = [
-  { title: "내 맞춤형", sort: "my" },
-  { title: "인기순", sort: "popular" },
-  { title: "거리순", sort: "distance" },
+  // { title: "내 맞춤형", sort: "my" },
+  // { title: "인기순", sort: "popular" },
+  { title: "내 맞춤형", sort: "length" },
+  { title: "인기순", sort: "length" },
+  { title: "거리순", sort: "length" },
   { title: "난이도순", sort: "difficulty" },
 ] as const;
 
@@ -30,13 +32,18 @@ export default Suspense.with(
     const router = useRouter();
     const { mountainId } = useParams<{ mountainId: string }>();
     const searchParams = useSearchParams();
-    const sortBy = searchParams.get("sort");
+    const sortBy = searchParams.get("sort") as
+      | (typeof tabTitleList)[number]["sort"]
+      | null;
     // const routeCourseDetail = useRouteBridge({
     //   path: "course-detail",
     //   routeType: "push",
     // });
 
-    const { data: courseList } = useCoursesOfMountainQuery(mountainId);
+    const { data: courseList } = useCoursesOfMountainQuery({
+      mountainId,
+      sortBy: sortBy ?? "length",
+    });
 
     const { courses } = courseList;
 
