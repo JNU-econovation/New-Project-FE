@@ -1,3 +1,4 @@
+import useDeleteBookmarkMutation from "@/hooks/feature/query/useDeleteBookmarkMutation";
 import type { CourseDifficulty } from "@/types/course";
 import useBookmarkMutation from "@hooks/feature/query/useBookmarkMutation";
 import CourseList from "@shared/ui/CourseList";
@@ -21,9 +22,7 @@ export default function CourseListWithBookmarkMutate({
   ...props
 }: CourseListWithBookmarkMutateProps) {
   const { mutate: postBookmark } = useBookmarkMutation();
-  // const deleteBookmark = (courseId: string) => {
-  // console.log(courseId);
-  // };
+  const { mutate: deleteBookmark } = useDeleteBookmarkMutation();
 
   return (
     <CourseList
@@ -31,8 +30,7 @@ export default function CourseListWithBookmarkMutate({
       imageSrc={image ?? ""}
       stared={bookmark}
       onSetStared={() => postBookmark(id)}
-      // onResetStared={() => deleteBookmark(id)}
-      onResetStared={() => null}
+      onResetStared={() => deleteBookmark(id)}
     />
   );
 }
