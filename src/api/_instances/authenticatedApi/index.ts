@@ -19,6 +19,7 @@ const authenticatedApi = axios.create({
 
 authenticatedApi.interceptors.request.use(
   async (config) => {
+    // stackLink에서 미리 보여주는 페이지에서는 fallback만 보여주도록 하기 위한 코드
     if (isInStackFrame()) {
       await new Promise((resolve) => setTimeout(resolve, 99999));
     }
