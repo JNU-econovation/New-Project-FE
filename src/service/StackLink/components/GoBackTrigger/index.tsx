@@ -87,17 +87,18 @@ export default function GoBackTrigger() {
       {portalElement &&
         !isNavigating &&
         createPortal(
-          <div className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50" />,
-
+          <div className="fixed w-screen h-screen top-0 left-0 transform-gpu -z-50 select-none" />,
           portalElement
         )}
 
       {createPortal(
         <div
           id={goBackTriggerElementId}
-          className="fixed w-10 h-screen top-0 transform-gpu select-none z-[9999]"
+          className="fixed w-10 h-screen top-0 transform-gpu select-none z-[9999] -translate-x-1"
           role="button"
           onTouchStart={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
             const touchX = e.touches[0].clientX;
             setStartX(touchX);
             setCurrentX(touchX);
