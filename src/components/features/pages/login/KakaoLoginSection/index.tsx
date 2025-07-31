@@ -2,7 +2,7 @@
 
 import useRouteBackBridge from "@/hooks/feature/bridge/useRouteBackBridge";
 import useShowToastBridge from "@/hooks/feature/bridge/useShowToastBridge";
-import useKakaoLoginQuery from "@/hooks/feature/query/useKakaoLoginQuery";
+import useKakaoLoginQuery from "@/hooks/feature/query/query/useKakaoLoginQuery";
 // import { useRouter } from "next/navigation";
 
 export default function KakaoLoginSection() {

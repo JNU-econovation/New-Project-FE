@@ -1,6 +1,6 @@
 "use client";
 
-import useBasesDetailQuery from "@/hooks/feature/query/useBasesDetailQuery";
+import useBasesDetailQuery from "@hooks/feature/query/query/useBasesDetailQuery";
 import ClothesIcon from "@icons/ClothesIcon";
 import SunnyIcon from "@icons/SunnyIcon";
 import { Suspense } from "@suspensive/react";

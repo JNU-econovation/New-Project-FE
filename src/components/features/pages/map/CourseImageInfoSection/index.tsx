@@ -1,6 +1,6 @@
 "use client";
 
-import useBasesDetailQuery from "@hooks/feature/query/useBasesDetailQuery";
+import useBasesDetailQuery from "@hooks/feature/query/query/useBasesDetailQuery";
 import { Suspense } from "@suspensive/react";
 
 import Image from "next/image";
