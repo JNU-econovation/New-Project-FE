@@ -95,5 +95,5 @@ export default function MapWithCurrentPositionMark({
   // useSetMarker(map, currentPosition ?? defaultPosition);
   logBridge(currentPosition);
 
-  return <div id={mapId} className="h-screen w-screen" />;
+  return <div id={mapId} className="h-screen w-screen transform-gpu" />;
 }
