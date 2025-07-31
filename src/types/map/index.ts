@@ -20,5 +20,5 @@ export interface Markers {
   id: string;
   name: string;
   coordinate: Coordinate;
-  // facilityType: keyof typeof MAP.FACILITY_TYPES;
+  type: keyof typeof MAP.FACILITY_TYPES | typeof MAP.BASE.id;
 }
