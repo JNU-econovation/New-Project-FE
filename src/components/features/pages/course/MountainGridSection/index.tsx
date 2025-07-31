@@ -1,6 +1,7 @@
 "use client";
 
 import ROUTE from "@/constants/route";
+import useCoursesOfMountainPrefetch from "@/hooks/feature/query/prefetch/useCoursesOfMountainPrefetch";
 // import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import { StackLink } from "@/service/StackLink";
 import Spacing from "@shared/layout/Spacing";
@@ -16,6 +17,11 @@ export default function MountainGridSection() {
   //     },
   //   ],
   // });
+
+  useCoursesOfMountainPrefetch({
+    mountainId: "1",
+    sortBy: "length",
+  });
 
   return (
     <section className="flex grow gap-4">
