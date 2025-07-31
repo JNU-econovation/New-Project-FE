@@ -2,8 +2,7 @@
 
 import ROUTE from "@/constants/route";
 import { cn } from "@/utils/cn";
-// import useRouteBridge from "@hooks/feature/bridge/useRouteBridge";
-import useCoursesOfMountainQuery from "@hooks/feature/query/useCoursesOfMountainQuery";
+import useCoursesOfMountainQuery from "@hooks/feature/query/query/useCoursesOfMountainQuery";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import CourseListWithBookmarkMutate from "@widgets/course/CourseListWithBookmarkMutate";
@@ -11,13 +10,14 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 import MAP from "@/constants/map";
 import { StackLink } from "@/service/StackLink";
+import useBasesDetailPrefetch from "@hooks/feature/query/prefetch/useBasesDetailPrefetch";
+import useBasesPrefetch from "@hooks/feature/query/prefetch/useBasesPrefetch";
+import useFacilitiesPrefetch from "@hooks/feature/query/prefetch/useFacilitiesPrefetch";
 import CourseTabBarSectionSkeleton from "./CourseTabBarSection.skeleton";
 
 const tabTitleList = [
-  // { title: "내 맞춤형", sort: "my" },
-  // { title: "인기순", sort: "popular" },
-  { title: "내 맞춤형", sort: "length" },
-  { title: "인기순", sort: "length" },
+  { title: "내 맞춤형", sort: "my" },
+  { title: "인기순", sort: "popular" },
   { title: "거리순", sort: "length" },
   { title: "난이도순", sort: "difficulty" },
 ] as const;
@@ -35,6 +35,11 @@ export default Suspense.with(
     const sortBy = searchParams.get("sort") as
       | (typeof tabTitleList)[number]["sort"]
       | null;
+
+    useBasesPrefetch({ mountainId });
+    useBasesDetailPrefetch({ mountainId });
+    useFacilitiesPrefetch({ mountainId });
+
     // const routeCourseDetail = useRouteBridge({
     //   path: "course-detail",
     //   routeType: "push",
@@ -42,7 +47,10 @@ export default Suspense.with(
 
     const { data: courseList } = useCoursesOfMountainQuery({
       mountainId,
-      sortBy: sortBy ?? "length",
+      //TODO: 지금은 length, difficulty만 지원하지만, ui가 나오지 않아 우선적으로 다른 정렬 기준의 경우 length로 처리
+      // sortBy: sortBy ?? "length",
+      sortBy:
+        sortBy === "my" || sortBy === "popular" ? "length" : sortBy ?? "length",
     });
 
     const { courses } = courseList;
@@ -82,6 +90,7 @@ export default Suspense.with(
                 tag: MAP.BASE.id,
               })}
               key={id}
+              animation="none"
             >
               <div
                 key={`${id}-${index}`}

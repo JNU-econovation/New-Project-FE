@@ -1,5 +1,3 @@
-// import CourseDetailMapSection from "@/components/features/pages/mountain/CourseDetailMapSection";
-// import MapTadHeaderSection from "@pages/map/MapTadHeaderSection";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "react";
 import MapWithHeaderSection from "@/components/features/widgets/map/MapWithHeaderSection";
