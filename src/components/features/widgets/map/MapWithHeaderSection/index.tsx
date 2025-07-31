@@ -1,29 +1,24 @@
 "use client";
 
-import Spinner from "@/components/common/shared/ui/Spinner";
 import MAP from "@/constants/map";
-import useBasesQuery from "@/hooks/feature/query/useBasesQuery";
-import useFacilitiesQuery from "@/hooks/feature/query/useFacilitiesQuery";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
+import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
+import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
+import Spinner from "@shared/ui/Spinner";
 import { Suspense } from "@suspensive/react";
 import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
 const MapWithCurrentPositionMark = dynamic(
-  () => import("@/components/features/widgets/map/MapWithCurrentPositionMark"),
+  () => import("@widgets/map/MapWithCurrentPositionMark"),
   { ssr: false }
 );
 
 // 대부분의 지도에서 사용하는 기능이 모두 있는 컴포넌트입니다.
 // 현재 위치 마크, 마커 표시
-// 만약 추가적인 기능이 필요하다면 해당 컴포넌트를 확장해서 사용하는 것을 추천합니다.
-// 추가가능 기능: path 표시, 마커 클릭시 상세 정보 표시 등
-
-// interface MapWithHeaderSectionProps {
-//   path?: [number, number][];
-// }
+// 만약 경로와 함께 표시하고 싶다면 MapWithHeaderAndPathSection를 사용하세요.
 
 export default Suspense.with(
   {
@@ -60,13 +55,15 @@ export default Suspense.with(
           id: baseId,
           name: name,
           coordinate,
+          type: MAP.BASE.id,
         }));
       }
       return getFacilitiesByFacilityType(facilities, selectedTagId).map(
-        ({ coordinate, facilityId, facilityName }) => ({
+        ({ coordinate, facilityId, facilityName, facilityType }) => ({
           id: facilityId,
           name: facilityName,
           coordinate,
+          type: facilityType,
         })
       );
     }, [facilities, bases, selectedTagId]);

@@ -2,11 +2,11 @@
 
 import Spinner from "@/components/common/shared/ui/Spinner";
 import MAP from "@/constants/map";
-import useBasesQuery from "@/hooks/feature/query/useBasesQuery";
-import useCoursePathwayQuery from "@/hooks/feature/query/useCoursePathwayQuery";
-import useFacilitiesQuery from "@/hooks/feature/query/useFacilitiesQuery";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
+import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
+import useCoursePathwayQuery from "@hooks/feature/query/query/useCoursePathwayQuery";
+import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
 import { Suspense } from "@suspensive/react";
 import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
@@ -53,11 +53,13 @@ export default Suspense.with(
           id: baseId,
           name: name,
           coordinate,
+          type: MAP.BASE.id,
         }));
       }
       return getFacilitiesByFacilityType(facilities, selectedTagId).map(
-        ({ coordinate, facilityId, facilityName }) => ({
+        ({ coordinate, facilityId, facilityName, facilityType }) => ({
           id: facilityId,
+          type: facilityType,
           name: facilityName,
           coordinate,
         })

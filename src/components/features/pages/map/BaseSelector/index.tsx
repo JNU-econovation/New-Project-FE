@@ -1,7 +1,7 @@
 import MAP from "@/constants/map";
 import ROUTE from "@/constants/route";
 import Selector from "@entities/Selector";
-import useBasesDetailQuery from "@hooks/feature/query/useBasesDetailQuery";
+import useBasesDetailQuery from "@/hooks/feature/query/query/useBasesDetailQuery";
 import { Suspense } from "@suspensive/react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo } from "react";

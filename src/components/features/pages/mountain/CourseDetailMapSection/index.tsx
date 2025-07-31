@@ -1,10 +1,10 @@
 "use client";
 
 import MAP from "@/constants/map";
-import useBasesQuery from "@/hooks/feature/query/useBasesQuery";
-import useFacilitiesQuery from "@/hooks/feature/query/useFacilitiesQuery";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
+import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
+import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
 import { Suspense } from "@suspensive/react";
 import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
@@ -43,12 +43,14 @@ export default Suspense.with(
         return bases.map(({ baseId, coordinate, name }) => ({
           id: baseId,
           name: name,
+          type: MAP.BASE.id,
           coordinate,
         }));
       }
       return getFacilitiesByFacilityType(facilities, selectedTagId).map(
-        ({ coordinate, facilityId, facilityName }) => ({
+        ({ coordinate, facilityId, facilityName, facilityType }) => ({
           id: facilityId,
+          type: facilityType,
           name: facilityName,
           coordinate,
         })
