@@ -1,28 +1,11 @@
 "use client";
 
 import ROUTE from "@/constants/route";
-import useCoursesOfMountainPrefetch from "@/hooks/feature/query/prefetch/useCoursesOfMountainPrefetch";
-// import useRouteBridge from "@/hooks/feature/bridge/useRouteBridge";
 import { StackLink } from "@/service/StackLink";
 import Spacing from "@shared/layout/Spacing";
 import Text from "@shared/ui/Text";
 
 export default function MountainGridSection() {
-  // const routeToCoursePage = useRouteBridge({
-  //   path: "mountain-course",
-  //   routeType: "push",
-  //   params: [
-  //     {
-  //       mountainName: "무등산",
-  //     },
-  //   ],
-  // });
-
-  useCoursesOfMountainPrefetch({
-    mountainId: "1",
-    sortBy: "length",
-  });
-
   return (
     <section className="flex grow gap-4">
       <div className="flex flex-col w-full h-fit gap-4">
@@ -35,8 +18,6 @@ export default function MountainGridSection() {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
             }}
-            // role="button"
-            // onClick={routeToCoursePage}
           >
             <div className="absolute top-0 right-0 bg-black opacity-40 w-full h-full" />
             <div className="absolute top-6 right-4">
