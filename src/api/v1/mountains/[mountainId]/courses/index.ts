@@ -27,7 +27,6 @@ interface GetCoursesOfMountainApiParams {
   sortBy: CourseSortType;
 }
 
-//TODO: sort by 적용하기
 export const getCoursesOfMountainApi = async ({
   mountainId,
   sortBy,
