@@ -9,6 +9,8 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
 
   private R_WND: RWindow;
 
+  public static isAndroid = /Android/i.test(navigator.userAgent);
+
   constructor(
     rwnd: RWindow,
     {
@@ -34,7 +36,6 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
   public static sendWebviewMessage = (message: unknown) => {
     const stringifiedMessage = JSON.stringify(message);
     window.ReactNativeWebView?.postMessage(stringifiedMessage);
-    document.ReactNativeWebView?.postMessage(stringifiedMessage);
   };
 
   private createNewMessageObj = () => {
@@ -52,23 +53,31 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
     if (!callback) return;
     this.R_WND.addListener(this._id, callback);
 
-    const messageHandler = (
-      event: MessageEvent<WebviewBridgeMessage<Body>>
-    ) => {
-      event.stopPropagation();
+    const messageHandler = (event: Event) => {
+      const messageEvent = event as MessageEvent<WebviewBridgeMessage<Body>>;
+      messageEvent.stopPropagation();
+
       const resMessage =
-        typeof event.data === "string"
-          ? (JSON.parse(event.data) as WebviewBridgeMessage<Body>)
-          : event.data;
+        typeof messageEvent.data === "string"
+          ? (JSON.parse(messageEvent.data) as WebviewBridgeMessage<Body>)
+          : messageEvent.data;
 
       if (resMessage.ack === this._id) {
         const listeners = this.R_WND.popCallbacksById(this._id);
         listeners.forEach((listener) => listener(resMessage));
-        window.removeEventListener("message", messageHandler);
+        if (Message.isAndroid) {
+          document.removeEventListener("message", messageHandler);
+        } else {
+          window.removeEventListener("message", messageHandler);
+        }
       }
     };
 
-    window.addEventListener("message", messageHandler);
+    if (Message.isAndroid) {
+      document.addEventListener("message", messageHandler as EventListener);
+    } else {
+      window.addEventListener("message", messageHandler);
+    }
   };
 }
 

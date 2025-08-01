@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import BRIDGE from "../../constants";
 import getBridge from "../../core";
 import type { WebviewBridgeMessage } from "../../types";
+import Message from "../../core/Message";
 
 interface BridgeProps<RequestMessage, ResponseMessage> {
   strictMode?: boolean;
@@ -52,7 +53,11 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
   // 웹뷰의 응답을 처리하는 로직. 앱으로부터 요청을 받았을 때 실행된다.
   useEffect(() => {
     if (!isReady) return;
-    const handleMessage = ({ data }: MessageEvent) => {
+
+    const handleMessage = (event: Event) => {
+      const messageEvent = event as MessageEvent;
+
+      const { data } = messageEvent;
       try {
         const {
           ack,
@@ -96,9 +101,15 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
       }
     };
 
-    window.addEventListener("message", handleMessage);
-
-    return () => window.removeEventListener("message", handleMessage);
+    // 요청에 대한 응답을 처리하는 로직
+    if (Message.isAndroid) {
+      document.addEventListener("message", handleMessage as EventListener);
+      return () =>
+        document.removeEventListener("message", handleMessage as EventListener);
+    } else {
+      window.addEventListener("message", handleMessage);
+      return () => window.removeEventListener("message", handleMessage);
+    }
   }, [Bridge, isReady, onRequest, requestValidator, strictMode]);
 
   // 웹뷰 핸드쉐이크를 위한 로직
