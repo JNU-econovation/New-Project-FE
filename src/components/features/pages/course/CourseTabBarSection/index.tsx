@@ -1,18 +1,14 @@
 "use client";
 
+import MAP from "@/constants/map";
 import ROUTE from "@/constants/route";
+import { StackLink } from "@/service/StackLink";
 import { cn } from "@/utils/cn";
 import useCoursesOfMountainQuery from "@hooks/feature/query/query/useCoursesOfMountainQuery";
 import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import CourseListWithBookmarkMutate from "@widgets/course/CourseListWithBookmarkMutate";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-
-import MAP from "@/constants/map";
-import { StackLink } from "@/service/StackLink";
-import useBasesDetailPrefetch from "@hooks/feature/query/prefetch/useBasesDetailPrefetch";
-import useBasesPrefetch from "@hooks/feature/query/prefetch/useBasesPrefetch";
-import useFacilitiesPrefetch from "@hooks/feature/query/prefetch/useFacilitiesPrefetch";
 import CourseTabBarSectionSkeleton from "./CourseTabBarSection.skeleton";
 
 const tabTitleList = [
@@ -35,15 +31,6 @@ export default Suspense.with(
     const sortBy = searchParams.get("sort") as
       | (typeof tabTitleList)[number]["sort"]
       | null;
-
-    useBasesPrefetch({ mountainId });
-    useBasesDetailPrefetch({ mountainId });
-    useFacilitiesPrefetch({ mountainId });
-
-    // const routeCourseDetail = useRouteBridge({
-    //   path: "course-detail",
-    //   routeType: "push",
-    // });
 
     const { data: courseList } = useCoursesOfMountainQuery({
       mountainId,
@@ -92,11 +79,7 @@ export default Suspense.with(
               key={id}
               animation="none"
             >
-              <div
-                key={`${id}-${index}`}
-                // onClick={routeCourseDetail}
-                role="button"
-              >
+              <div key={`${id}-${index}`} role="button">
                 <CourseListWithBookmarkMutate id={id} {...props} />
               </div>
             </StackLink>
