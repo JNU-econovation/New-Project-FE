@@ -39,6 +39,7 @@ const useDrawMarkers = ({ map, markers, enable }: UseDrawMarkersProps) => {
     if (!map || !markers || markers.length === 0 || !enable) return;
 
     markers.forEach(({ id, coordinate, name, type }) => {
+      // console.log(`Drawing marker: ${name} at ${coordinate}`);
       const marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(coordinate[1], coordinate[0]),
         map: map,

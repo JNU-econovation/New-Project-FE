@@ -1,9 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const useSetMarker = (
-  map: any,
-  { latitude, longitude }: { latitude: number; longitude: number }
-) => {
-  if (!map) return;
+
+interface SetMarkerProps {
+  map: any;
+  position: {
+    latitude: number;
+    longitude: number;
+  };
+  enable?: boolean;
+}
+
+const useSetMarker = ({
+  map,
+  position: { latitude, longitude },
+  enable = true,
+}: SetMarkerProps) => {
+  if (!map || !enable) return;
 
   // const icon = {
   //   url: "./free-icon-record-9261360.png",
