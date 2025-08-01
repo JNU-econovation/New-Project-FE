@@ -9,11 +9,7 @@ interface UseDrawPathProps {
 }
 
 // 경로 표시 : [위도, 경도] 의 배열
-export const useDrawPath = ({
-  map,
-  path,
-  enable = false,
-}: UseDrawPathProps) => {
+const useDrawPath = ({ map, path, enable = false }: UseDrawPathProps) => {
   useEffect(() => {
     (async () => {
       if (!enable) return;
@@ -29,5 +25,7 @@ export const useDrawPath = ({
         strokeLineJoin: "round",
       });
     })();
-  }, [map]);
+  }, [enable, map, path]);
 };
+
+export default useDrawPath;

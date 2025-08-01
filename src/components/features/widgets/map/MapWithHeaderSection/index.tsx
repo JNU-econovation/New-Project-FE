@@ -1,20 +1,16 @@
 "use client";
 
+import Map from "@/components/common/entities/Map";
 import MAP from "@/constants/map";
+import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
 import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
 import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
 import Spinner from "@shared/ui/Spinner";
 import { Suspense } from "@suspensive/react";
-import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-
-const MapWithCurrentPositionMark = dynamic(
-  () => import("@widgets/map/MapWithCurrentPositionMark"),
-  { ssr: false }
-);
 
 // 대부분의 지도에서 사용하는 기능이 모두 있는 컴포넌트입니다.
 // 현재 위치 마크, 마커 표시
@@ -70,11 +66,16 @@ export default Suspense.with(
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">
-        <MapWithCurrentPositionMark
-          markers={markers}
-          currentPositionIcon={true}
-          zoom={13}
-        />
+        <Map currentPositionIcon={true} zoom={13}>
+          {({ map }) => {
+            useDrawMarkers({
+              map,
+              markers: markers ?? [],
+              enable: (markers ?? []).length > 0,
+            });
+            return null;
+          }}
+        </Map>
       </div>
     );
   }

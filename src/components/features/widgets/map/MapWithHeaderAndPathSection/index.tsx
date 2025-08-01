@@ -1,21 +1,17 @@
 "use client";
 
-import Spinner from "@/components/common/shared/ui/Spinner";
+import Map from "@/components/common/entities/Map";
 import MAP from "@/constants/map";
+import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
 import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
 import useCoursePathwayQuery from "@hooks/feature/query/query/useCoursePathwayQuery";
 import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
+import Spinner from "@shared/ui/Spinner";
 import { Suspense } from "@suspensive/react";
-import dynamic from "next/dynamic";
 import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-
-const MapWithCurrentPositionMark = dynamic(
-  () => import("@/components/features/widgets/map/MapWithCurrentPositionMark"),
-  { ssr: false }
-);
 
 export default Suspense.with(
   {
@@ -67,7 +63,6 @@ export default Suspense.with(
     }, [facilities, bases, selectedTagId]);
 
     const { pathways } = pathway;
-    // console.log(pathways);
 
     const combinedPath = pathways.flatMap(({ coordinates }) => coordinates) as [
       number,
@@ -76,12 +71,16 @@ export default Suspense.with(
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">
-        <MapWithCurrentPositionMark
-          path={combinedPath}
-          markers={markers}
-          currentPositionIcon={true}
-          zoom={13}
-        />
+        <Map path={combinedPath} currentPositionIcon={true} zoom={13}>
+          {({ map }) => {
+            useDrawMarkers({
+              map,
+              markers: markers ?? [],
+              enable: (markers ?? []).length > 0,
+            });
+            return null;
+          }}
+        </Map>
       </div>
     );
   }
