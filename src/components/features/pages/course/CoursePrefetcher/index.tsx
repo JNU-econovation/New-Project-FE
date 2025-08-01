@@ -9,14 +9,14 @@ export default function CoursePrefetcher() {
       hooks={[
         {
           prefetchHook: useCoursesOfMountainPrefetch,
-          params: {
+          args: {
             mountainId: "1",
             sortBy: "length",
           },
         },
         {
           prefetchHook: useCoursesOfMountainPrefetch,
-          params: {
+          args: {
             mountainId: "1",
             sortBy: "difficulty",
           },
