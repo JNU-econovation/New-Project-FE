@@ -1,7 +1,7 @@
 import type { CourseDifficulty } from "@/types/course";
 import useBookmarkMutation from "@hooks/feature/query/mutate/useBookmarkMutation";
 import useDeleteBookmarkMutation from "@hooks/feature/query/mutate/useDeleteBookmarkMutation";
-import useCoursePathwayPrefetch from "@hooks/feature/query/prefetch/useCoursePathwayPrefetch";
+import CoursePathwayPrefetcher from "@pages/course/CoursePathwayPrefetcher";
 import CourseList from "@shared/ui/CourseList";
 
 interface CourseListWithBookmarkMutateProps {
@@ -22,17 +22,19 @@ export default function CourseListWithBookmarkMutate({
   image,
   ...props
 }: CourseListWithBookmarkMutateProps) {
-  useCoursePathwayPrefetch({ courseId: id });
   const { mutate: postBookmark } = useBookmarkMutation();
   const { mutate: deleteBookmark } = useDeleteBookmarkMutation();
 
   return (
-    <CourseList
-      {...props}
-      imageSrc={image ?? ""}
-      stared={bookmark}
-      onSetStared={() => postBookmark(id)}
-      onResetStared={() => deleteBookmark(id)}
-    />
+    <>
+      <CourseList
+        {...props}
+        imageSrc={image ?? ""}
+        stared={bookmark}
+        onSetStared={() => postBookmark(id)}
+        onResetStared={() => deleteBookmark(id)}
+      />
+      <CoursePathwayPrefetcher courseId={id} />
+    </>
   );
 }
