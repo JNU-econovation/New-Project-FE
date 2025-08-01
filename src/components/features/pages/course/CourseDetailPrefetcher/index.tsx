@@ -12,9 +12,9 @@ export default function CourseDetailPrefetcher() {
   return (
     <Prefetcher
       hooks={[
-        { prefetchHook: useBasesPrefetch, params: { mountainId } },
-        { prefetchHook: useBasesDetailPrefetch, params: { mountainId } },
-        { prefetchHook: useFacilitiesPrefetch, params: { mountainId } },
+        { prefetchHook: useBasesPrefetch, args: { mountainId } },
+        { prefetchHook: useBasesDetailPrefetch, args: { mountainId } },
+        { prefetchHook: useFacilitiesPrefetch, args: { mountainId } },
       ]}
     />
   );
