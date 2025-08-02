@@ -2,7 +2,7 @@ import type { CourseDifficulty } from "@/types/course";
 import StarBlockIcon from "@icons/StarBlockIcon";
 import StarWeakIcon from "@icons/StarWeakIcon";
 import CourseMetaDataUi from "@shared/ui/CourseMetaDataUi";
-import Image from "@shared/ui/Image";
+import Image from "next/image";
 
 interface CourseListProps {
   name: string;
