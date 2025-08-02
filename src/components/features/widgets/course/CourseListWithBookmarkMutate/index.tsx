@@ -11,7 +11,7 @@ interface CourseListWithBookmarkMutateProps {
   length: number;
   difficulty: CourseDifficulty;
   bookmark: boolean;
-  image?: string;
+  image: string;
   onSetStared?: () => void;
   onResetStared?: () => void;
 }
@@ -29,7 +29,7 @@ export default function CourseListWithBookmarkMutate({
     <>
       <CourseList
         {...props}
-        imageSrc={image ?? ""}
+        imageSrc={image}
         stared={bookmark}
         onSetStared={() => postBookmark(id)}
         onResetStared={() => deleteBookmark(id)}
