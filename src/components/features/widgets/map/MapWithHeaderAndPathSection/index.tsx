@@ -1,10 +1,10 @@
 "use client";
 
-import Map from "@/components/common/entities/Map";
 import MAP from "@/constants/map";
 import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
+import MapView from "@entities/MapView";
 import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
 import useCoursePathwayQuery from "@hooks/feature/query/query/useCoursePathwayQuery";
 import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
@@ -71,7 +71,7 @@ export default Suspense.with(
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">
-        <Map path={combinedPath} currentPositionIcon={true} zoom={13}>
+        <MapView path={combinedPath} currentPositionIcon={true} zoom={13}>
           {({ map }) => {
             useDrawMarkers({
               map,
@@ -80,7 +80,7 @@ export default Suspense.with(
             });
             return null;
           }}
-        </Map>
+        </MapView>
       </div>
     );
   }
