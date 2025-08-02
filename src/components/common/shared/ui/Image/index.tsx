@@ -3,9 +3,11 @@ export default function Image({
   width,
   height,
   children,
+  ...props
 }: React.ImgHTMLAttributes<HTMLImageElement>) {
   return (
     <div
+      {...props}
       style={{
         backgroundImage: `url(${src})`,
         backgroundSize: "cover",
