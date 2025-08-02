@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function Error({
+export default function GlobalErrorPage({
   error,
   reset,
 }: {
@@ -23,7 +23,7 @@ export default function Error({
         onClick={() => reset()}
         className="mt-6 px-4 py-2 bg-main-green text-white rounded"
       >
-        뒤로가기
+        다시 시도하기
       </button>
       <p className="mt-2 text-sm text-gray-500">
         {error.message || "오류가 발생했습니다. 다시 시도해 주세요."}
