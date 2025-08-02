@@ -10,7 +10,7 @@ interface CourseListProps {
   length: number;
   difficulty: CourseDifficulty;
   stared: boolean;
-  imageSrc?: string;
+  imageSrc: string;
   onSetStared?: () => void;
   onResetStared?: () => void;
 }
@@ -36,7 +36,7 @@ export default function CourseList({
         />
       </div>
       <div className="w-24 h-24 bg-slate-100 rounded-xl relative overflow-hidden">
-        <Image src={imageSrc ?? ""} alt="코스 경로" width={96} height={96} />
+        <Image src={imageSrc} alt="코스 경로" width={96} height={96} />
         <div className="absolute top-2 right-2">
           {stared ? (
             <button
