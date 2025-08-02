@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
 const DEFAULT_POSITION = { latitude: 36.122769, longitude: 126.996822 };
 
-interface MapWWithCurrentPositionMarkProps {
+interface MapViewProps {
   defaultCurrentPointPosition?: { latitude: number; longitude: number };
   path?: [number, number][];
   marker?: { latitude: number; longitude: number };
@@ -25,18 +25,18 @@ interface MapWWithCurrentPositionMarkProps {
 /**
  * 대부분의 맵 사용시 해당 컴포넌트를 사용하면 됩니다.
  * 해당 컴포넌트는 entity 컴포넌트이므로, 이를 확장하여 widget 컴포넌트를 만들어 사용하세요
+ * 만약 map에 접근하는 다른 로직을 추가하고싶다면, FACC 패턴을 사용하여 map을 가져와 사용하세요
  */
 
-export default function Map({
+export default function MapView({
   path,
   defaultCurrentPointPosition = DEFAULT_POSITION,
   marker,
-  // markers, // 마커들을 표시할 떄 사용한다
   currentPositionIcon = true, // 최근 위치를 점으로 보여준다
   zoom = 18,
   initPosition,
   children,
-}: MapWWithCurrentPositionMarkProps) {
+}: MapViewProps) {
   // const { currentPosition: webCurrentPosition } = useGetCurrentPosition(); //for web
   const [currentPosition, setCurrentPosition] = useState<{
     latitude: number;
@@ -67,8 +67,8 @@ export default function Map({
 
   useDrawPath({
     map,
-    path: path as [number, number][],
-    enable: !!path,
+    path: path || [],
+    enable: !!path && path.length > 0,
   });
 
   useSetCircle({
