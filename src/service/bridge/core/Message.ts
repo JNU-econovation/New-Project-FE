@@ -9,7 +9,10 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
 
   private R_WND: RWindow;
 
-  public static isAndroid = /Android/i.test(navigator.userAgent);
+  public static checkIsAndroid = () => {
+    if (!window || !navigator) return false;
+    return /Android/i.test(navigator.userAgent);
+  };
 
   constructor(
     rwnd: RWindow,
@@ -65,19 +68,14 @@ class Message<Body> implements WebviewBridgeMessage<Body> {
       if (resMessage.ack === this._id) {
         const listeners = this.R_WND.popCallbacksById(this._id);
         listeners.forEach((listener) => listener(resMessage));
-        if (Message.isAndroid) {
-          document.removeEventListener("message", messageHandler);
-        } else {
-          window.removeEventListener("message", messageHandler);
-        }
+
+        document.removeEventListener("message", messageHandler);
+        window.removeEventListener("message", messageHandler);
       }
     };
 
-    if (Message.isAndroid) {
-      document.addEventListener("message", messageHandler as EventListener);
-    } else {
-      window.addEventListener("message", messageHandler);
-    }
+    document.addEventListener("message", messageHandler as EventListener);
+    window.addEventListener("message", messageHandler);
   };
 }
 
