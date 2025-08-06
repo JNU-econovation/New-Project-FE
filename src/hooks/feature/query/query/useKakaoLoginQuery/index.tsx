@@ -1,8 +1,8 @@
 import { getKakaoLoginApi, KAKAO_LOGIN_URI } from "@api/v1/oauth/kakao";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 const useKakaoLoginQuery = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: [KAKAO_LOGIN_URI],
     queryFn: getKakaoLoginApi,
   });
