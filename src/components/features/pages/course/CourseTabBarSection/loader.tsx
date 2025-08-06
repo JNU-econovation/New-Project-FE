@@ -1,6 +1,6 @@
 import Spacing from "@shared/layout/Spacing";
 
-export default function CourseTabBarSectionSkeleton() {
+export default function CourseTabBarSectionLoader() {
   return (
     <section className="flex flex-col flex-1 overflow-hidden">
       {/* Tab Bar Skeleton */}

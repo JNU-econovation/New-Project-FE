@@ -9,7 +9,9 @@ import Spacing from "@shared/layout/Spacing";
 import { Suspense } from "@suspensive/react";
 import CourseListWithBookmarkMutate from "@widgets/course/CourseListWithBookmarkMutate";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-import CourseTabBarSectionSkeleton from "./CourseTabBarSection.skeleton";
+
+//inner imports
+import CourseTabBarSectionLoader from "./loader";
 
 const tabTitleList = [
   { title: "내 맞춤형", sort: "my" },
@@ -22,7 +24,7 @@ export default Suspense.with(
   {
     name: "CourseTabSection",
     clientOnly: true,
-    fallback: <CourseTabBarSectionSkeleton />,
+    fallback: <CourseTabBarSectionLoader />,
   },
   function CourseTabSection() {
     const router = useRouter();
