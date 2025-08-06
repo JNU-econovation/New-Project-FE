@@ -102,7 +102,7 @@ export default function BridgeRequestListener<RequestType, ResponseType>({
     };
 
     // 요청에 대한 응답을 처리하는 로직
-    if (Message.isAndroid) {
+    if (Message.checkIsAndroid()) {
       document.addEventListener("message", handleMessage as EventListener);
       return () =>
         document.removeEventListener("message", handleMessage as EventListener);
