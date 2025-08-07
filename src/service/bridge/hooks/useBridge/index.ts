@@ -62,6 +62,7 @@ const useBridge = <ReqBody = unknown, ResBody = unknown>() => {
       }).send<ResBody>(({ body }) => {
         try {
           if (responseCallback && body) return responseCallback(body);
+          //TODO: 현재 에러가 콜백 실행에 대한 에러이므로, 실제로 브리지 과정에서 발생한 에러에 대한 처리 로직으로 수정 필요
         } catch (error) {
           if (onErrorCallback) onErrorCallback(error as Error);
         }

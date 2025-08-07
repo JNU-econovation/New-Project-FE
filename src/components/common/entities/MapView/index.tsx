@@ -3,7 +3,7 @@
 import useGetCurrentPositionBridge, {
   Position,
 } from "@hooks/feature/bridge/useGetCurrentPositionBridge";
-import useLogBridge from "@hooks/feature/bridge/useLogBridge";
+// import useLogBridge from "@hooks/feature/bridge/useLogBridge";
 import useDrawPath from "@hooks/feature/map/useDrawPath";
 import useNaverMap from "@hooks/feature/map/useNaverMap";
 import useSetCircle from "@hooks/feature/map/useSetCircle";
@@ -37,13 +37,14 @@ export default function MapView({
   initPosition,
   children,
 }: MapViewProps) {
-  // const { currentPosition: webCurrentPosition } = useGetCurrentPosition(); //for web
   const [currentPosition, setCurrentPosition] = useState<{
     latitude: number;
     longitude: number;
   }>(defaultCurrentPointPosition);
 
   const getCurrentPosition = useGetCurrentPositionBridge();
+
+  // alert(JSON.stringify(webCurrentPosition));
 
   const onResponse = ({ coords }: Position) => {
     const { latitude, longitude } = coords;
@@ -63,7 +64,7 @@ export default function MapView({
     zoom,
   });
 
-  const logBridge = useLogBridge();
+  // const logBridge = useLogBridge();
 
   useDrawPath({
     map,
@@ -90,7 +91,7 @@ export default function MapView({
     enable: marker !== undefined,
   });
 
-  logBridge(currentPosition);
+  // logBridge(currentPosition);
 
   return (
     <div id={mapId} className="h-screen w-screen transform-gpu">
