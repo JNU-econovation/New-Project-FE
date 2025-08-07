@@ -1,6 +1,7 @@
 "use client";
 
 import MAP from "@/constants/map";
+import MOUNTAIN from "@/constants/mountain";
 import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
@@ -71,7 +72,18 @@ export default Suspense.with(
 
     return (
       <div className="absolute top-0 left-0 w-full h-full">
-        <MapView path={combinedPath} currentPositionIcon={true} zoom={13}>
+        <MapView
+          path={combinedPath}
+          currentPositionIcon={true}
+          zoom={12}
+          initPosition={{
+            //TODO: 단정 대신 추론으로 사용하기
+            longitude:
+              MOUNTAIN[mountainId as keyof typeof MOUNTAIN].coordinate[0],
+            latitude:
+              MOUNTAIN[mountainId as keyof typeof MOUNTAIN].coordinate[1],
+          }}
+        >
           {({ map }) => {
             useDrawMarkers({
               map,
