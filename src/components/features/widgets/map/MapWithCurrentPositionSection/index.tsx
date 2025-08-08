@@ -7,10 +7,11 @@ import MapView from "@entities/MapView";
 import useDrawMarkers from "@hooks/feature/map/useDrawMarkers";
 import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
 import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
-import Spinner from "@shared/ui/Spinner";
 import { Suspense } from "@suspensive/react";
 import { useParams, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
+
+import MapWithCurrentPositionSectionLoader from "./loader";
 
 // 대부분의 지도에서 사용하는 기능이 모두 있는 컴포넌트입니다.
 // 현재 위치 마크, 마커 표시
@@ -18,13 +19,8 @@ import { useMemo } from "react";
 
 export default Suspense.with(
   {
-    fallback: (
-      <div className="w-full h-full relative flex justify-center items-center">
-        <div className="absolute inset-0 bg-main-green opacity-5 w-full h-full" />
-        <Spinner size="md" />
-      </div>
-    ),
-    name: "MapWithHeaderSection",
+    fallback: <MapWithCurrentPositionSectionLoader />,
+    name: "MapWithCurrentPositionSection",
     clientOnly: true,
   },
   () => {
