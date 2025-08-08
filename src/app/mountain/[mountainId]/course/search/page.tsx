@@ -1,6 +1,6 @@
 import Spacing from "@shared/layout/Spacing";
 import Button from "@shared/ui/Button";
-import MapWithHeaderSection from "@widgets/map/MapWithHeaderSection";
+import MapWithCurrentPositionSection from "@widgets/map/MapWithCurrentPositionSection";
 import BackButton from "@widgets/route/BackButton";
 
 export default function CourseSearchPage() {
@@ -34,7 +34,7 @@ export default function CourseSearchPage() {
       </div>
 
       {/* 지금은 기능이 없는 맵을 사용하지만, 추후에 기능을 추가하여 감싼 page 컴포넌트를 만들어서 사용 에정 */}
-      <MapWithHeaderSection />
+      <MapWithCurrentPositionSection />
     </div>
   );
 }

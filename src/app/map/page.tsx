@@ -1,6 +1,6 @@
 import MapHeaderNavbar from "@entities/MapHeaderNavbar";
 import Spacing from "@shared/layout/Spacing";
-import MapWithHeaderSection from "@widgets/map/MapWithHeaderSection";
+import MapWithCurrentPositionSection from "@widgets/map/MapWithCurrentPositionSection";
 
 export default function MapPage() {
   return (
@@ -9,7 +9,7 @@ export default function MapPage() {
         <Spacing size={8} />
         <MapHeaderNavbar />
       </div>
-      <MapWithHeaderSection />
+      <MapWithCurrentPositionSection />
     </div>
   );
 }
