@@ -1,20 +1,15 @@
 "use client";
 
-import useGetCurrentPositionBridge, {
-  Position,
-} from "@hooks/feature/bridge/useGetCurrentPositionBridge";
-// import useLogBridge from "@hooks/feature/bridge/useLogBridge";
+import useGetCurrentPosition from "@hooks/common/useGetCurrentPosition";
+import type { PolylineOptions } from "@hooks/feature/map/useDrawPath";
 import useDrawPath from "@hooks/feature/map/useDrawPath";
 import useNaverMap from "@hooks/feature/map/useNaverMap";
 import useSetCircle from "@hooks/feature/map/useSetCircle";
 import useSetMarker from "@hooks/feature/map/useSetMarker";
-import { useEffect, useState } from "react";
-
-const DEFAULT_POSITION = { latitude: 36.122769, longitude: 126.996822 };
 
 interface MapViewProps {
   defaultCurrentPointPosition?: { latitude: number; longitude: number };
-  path?: [number, number][];
+  paths?: PolylineOptions[];
   marker?: { latitude: number; longitude: number };
   // markers?: Markers[];
   currentPositionIcon?: boolean;
@@ -29,34 +24,17 @@ interface MapViewProps {
  */
 
 export default function MapView({
-  path,
-  defaultCurrentPointPosition = DEFAULT_POSITION,
+  paths,
+  defaultCurrentPointPosition,
   marker,
   currentPositionIcon = true, // 최근 위치를 점으로 보여준다
   zoom = 18,
   initPosition,
   children,
 }: MapViewProps) {
-  const [currentPosition, setCurrentPosition] = useState<{
-    latitude: number;
-    longitude: number;
-  }>(defaultCurrentPointPosition);
-
-  const getCurrentPosition = useGetCurrentPositionBridge();
-
-  // alert(JSON.stringify(webCurrentPosition));
-
-  const onResponse = ({ coords }: Position) => {
-    const { latitude, longitude } = coords;
-    setCurrentPosition({ latitude, longitude });
-    return { latitude, longitude };
-  };
-
-  useEffect(() => {
-    getCurrentPosition(onResponse);
-    // 무한 루프 방지를 위해 빈 배열을 의존성으로 설정합니다.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { currentPosition } = useGetCurrentPosition({
+    defaultCurrentPointPosition,
+  });
 
   const { mapId, map } = useNaverMap({
     latitude: initPosition?.latitude || currentPosition.latitude,
@@ -64,12 +42,10 @@ export default function MapView({
     zoom,
   });
 
-  // const logBridge = useLogBridge();
-
   useDrawPath({
     map,
-    path: path || [],
-    enable: !!path && path.length > 0,
+    paths: paths || [],
+    enable: !!paths && paths.length > 0,
   });
 
   useSetCircle({
@@ -90,8 +66,6 @@ export default function MapView({
     position: currentPosition ?? defaultCurrentPointPosition,
     enable: marker !== undefined,
   });
-
-  // logBridge(currentPosition);
 
   return (
     <div id={mapId} className="h-screen w-screen transform-gpu">

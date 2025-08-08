@@ -67,7 +67,8 @@ export default Suspense.with(
     return (
       <div className="absolute top-0 left-0 w-full h-full">
         <MapView
-          path={coursePath}
+          // path={coursePath}
+          paths={[{ path: coursePath }]}
           currentPositionIcon={true}
           zoom={12}
           initPosition={{
