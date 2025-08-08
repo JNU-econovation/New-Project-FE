@@ -2,12 +2,12 @@
 
 import MAP from "@/constants/map";
 import MOUNTAIN from "@/constants/mountain";
-import useDrawMarkers from "@/hooks/feature/map/useDrawMarkers";
 import type { Markers } from "@/types/map";
 import { getFacilitiesByFacilityType } from "@/utils/map";
 import MapView from "@entities/MapView";
+import useGetCoursePathByCourseId from "@hooks/feature/course/useGetCoursePath";
+import useDrawMarkers from "@hooks/feature/map/useDrawMarkers";
 import useBasesQuery from "@hooks/feature/query/query/useBasesQuery";
-import useCoursePathwayQuery from "@hooks/feature/query/query/useCoursePathwayQuery";
 import useFacilitiesQuery from "@hooks/feature/query/query/useFacilitiesQuery";
 import Spinner from "@shared/ui/Spinner";
 import { Suspense } from "@suspensive/react";
@@ -39,7 +39,8 @@ export default Suspense.with(
 
     const { data: facilitiesData } = useFacilitiesQuery({ mountainId });
     const { data: basesData } = useBasesQuery({ mountainId });
-    const { data: pathway } = useCoursePathwayQuery({ courseId });
+
+    const coursePath = useGetCoursePathByCourseId({ courseId });
 
     const { facilities } = facilitiesData;
     const { bases } = basesData;
@@ -63,17 +64,10 @@ export default Suspense.with(
       );
     }, [facilities, bases, selectedTagId]);
 
-    const { pathways } = pathway;
-
-    const combinedPath = pathways.flatMap(({ coordinates }) => coordinates) as [
-      number,
-      number
-    ][];
-
     return (
       <div className="absolute top-0 left-0 w-full h-full">
         <MapView
-          path={combinedPath}
+          path={coursePath}
           currentPositionIcon={true}
           zoom={12}
           initPosition={{
