@@ -1,24 +1,30 @@
 "use client";
 
-import useShowToastBridge from "@hooks/feature/bridge/useShowToastBridge";
 import Spacing from "@shared/layout/Spacing";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const msToTimeText = (milliseconds: number) => {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+};
 
 export default function TravelMonitorSection() {
-  const showToast = useShowToastBridge();
+  const ref = useRef({ startTime: Date.now() });
+  const [elapsedTime, setElapsedTime] = useState(0); // milliseconds
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      showToast({
-        type: "error",
-        text1: "올바른 위치에서 다시 시도해주세요!",
-        text2: "현재 위치에서는 사용할 수 없는 기능입니다.",
-      });
-    }, 3000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showToast]);
+    const interval = setInterval(() => {
+      setElapsedTime(Date.now() - ref.current.startTime);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="bg-white rounded-xl z-50 px-4">
       <div className="flex justify-center items-center gap-6 -translate-y-1/2">
@@ -30,7 +36,9 @@ export default function TravelMonitorSection() {
           <div className="bg-white w-5 h-5 rounded-xs" />
         </button>
       </div>
-      <p className="text-3xl font-semibold text-center">00:00:00</p>
+      <p className="text-3xl font-semibold text-center">
+        {msToTimeText(elapsedTime)}
+      </p>
       <span className="text-center text-gray-20">산행 시간</span>
 
       <Spacing size={4} />
