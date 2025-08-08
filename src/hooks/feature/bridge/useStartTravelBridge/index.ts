@@ -7,18 +7,22 @@ import { useCallback } from "react";
 
 const useStartTravelBridge = () => {
   const { request } = useBridge<
-    MessageEventRequestData,
+    MessageEventRequestData<{ courseId: string }>,
     MessageEventResponseData
   >();
 
-  return useCallback(() => {
-    request({
-      requestMessage: {
-        name: "start-travel",
-        method: "POST",
-      },
-    });
-  }, [request]);
+  return useCallback(
+    (courseId: string) => {
+      request({
+        requestMessage: {
+          name: "start-travel",
+          method: "POST",
+          body: { courseId },
+        },
+      });
+    },
+    [request]
+  );
 };
 
 export default useStartTravelBridge;
