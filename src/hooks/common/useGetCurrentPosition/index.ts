@@ -1,8 +1,8 @@
-import useGetCurrentPositionBridge from "@/hooks/feature/bridge/useGetCurrentPositionBridge";
-import type { Position } from "@/hooks/feature/bridge/useGetCurrentPositionBridge";
+import type { Position } from "@hooks/feature/bridge/useGetCurrentPositionBridge";
+import useGetCurrentPositionBridge from "@hooks/feature/bridge/useGetCurrentPositionBridge";
 import { useEffect, useState } from "react";
 
-const DEFAULT_POSITION = { latitude: 36.122769, longitude: 126.996822 };
+const DEFAULT_POSITION = { latitude: 35.122769, longitude: 126.996822 };
 
 interface UseGetCurrentPosition {
   defaultCurrentPointPosition?: { latitude: number; longitude: number };

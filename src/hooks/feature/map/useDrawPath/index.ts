@@ -1,31 +1,72 @@
-import { useEffect } from "react";
+import { Coordinate } from "@/types/map";
+import { useEffect, useRef } from "react";
 
-type LatLongPath = [number, number][];
+export interface PolylineOptions {
+  path: Coordinate[];
+  strokeWeight?: number;
+  strokeColor?: string;
+  strokeOpacity?: number;
+  strokeStyle?: naver.maps.StrokeStyleType;
+  strokeLineCap?: naver.maps.StrokeLineCapType;
+  strokeLineJoin?: naver.maps.StrokeLineJoinType;
+}
 
 interface UseDrawPathProps {
   map: any;
-  path: LatLongPath;
+  paths: PolylineOptions[];
   enable?: boolean;
 }
 
 // 경로 표시 : [위도, 경도] 의 배열
-const useDrawPath = ({ map, path, enable = false }: UseDrawPathProps) => {
+const useDrawPath = ({ map, paths, enable = false }: UseDrawPathProps) => {
+  const polylinesRef = useRef<naver.maps.Polyline[]>([]);
+
   useEffect(() => {
-    (async () => {
+    // 기존 폴리라인 제거
+    polylinesRef.current.forEach((polyline) => {
+      polyline.setMap(null);
+    });
+    polylinesRef.current = [];
+
+    const drawPolyline = ({
+      path,
+      strokeWeight = 4,
+      strokeColor = "#FF0000",
+      strokeOpacity = 0.6,
+      strokeStyle = "solid",
+      strokeLineCap = "round",
+      strokeLineJoin = "round",
+    }: PolylineOptions) => {
       if (!enable) return;
 
-      new naver.maps.Polyline({
+      const polyline = new naver.maps.Polyline({
         map,
         path,
-        strokeWeight: 5,
-        strokeColor: "#FF0000",
-        strokeOpacity: 0.8,
-        strokeStyle: "solid",
-        strokeLineCap: "round",
-        strokeLineJoin: "round",
+        strokeWeight,
+        strokeColor,
+        strokeOpacity,
+        strokeStyle,
+        strokeLineCap,
+        strokeLineJoin,
       });
-    })();
-  }, [enable, map, path]);
+
+      polylinesRef.current.push(polyline);
+    };
+
+    if (paths.length > 0) {
+      paths.forEach((options) => {
+        drawPolyline(options);
+      });
+    }
+  }, [enable, map, paths]);
+
+  useEffect(() => {
+    return () => {
+      polylinesRef.current.forEach((polyline) => {
+        polyline.setMap(null);
+      });
+    };
+  }, []);
 };
 
 export default useDrawPath;
