@@ -14,6 +14,8 @@ const msToTimeText = (milliseconds: number) => {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 };
 
+// 해당 코드는 더이상 사용되지 않습니다.
+// 앱에서 해당 작업을 모두 처리하고 있습니다.
 export default function TravelMonitorSection() {
   const ref = useRef({ startTime: Date.now() });
   const [elapsedTime, setElapsedTime] = useState(0); // milliseconds
