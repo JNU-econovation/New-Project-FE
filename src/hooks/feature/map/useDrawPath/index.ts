@@ -22,6 +22,10 @@ const useDrawPath = ({ map, paths, enable = false }: UseDrawPathProps) => {
   const polylinesRef = useRef<naver.maps.Polyline[]>([]);
 
   useEffect(() => {
+    if (!map || !enable) {
+      return;
+    }
+
     // 기존 폴리라인 제거
     polylinesRef.current.forEach((polyline) => {
       polyline.setMap(null);
