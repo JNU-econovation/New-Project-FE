@@ -54,7 +54,7 @@ export default function MapView({
     zoom,
     enable: currentPositionIcon,
     option: {
-      radius: zoom * 10,
+      radius: zoom,
       fillColor: "#FF0000",
       fillOpacity: 0.3,
       strokeColor: "#FF0000",
