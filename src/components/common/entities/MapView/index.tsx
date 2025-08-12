@@ -16,6 +16,7 @@ interface MapViewProps {
   zoom?: number;
   initPosition?: { latitude: number; longitude: number };
   children?: (props: { map: any }) => React.ReactNode;
+  getCurrentPositionInterval?: number;
 }
 /**
  * 대부분의 맵 사용시 해당 컴포넌트를 사용하면 됩니다.
@@ -31,9 +32,11 @@ export default function MapView({
   zoom = 18,
   initPosition,
   children,
+  getCurrentPositionInterval,
 }: MapViewProps) {
   const { currentPosition } = useGetCurrentPosition({
     defaultCurrentPointPosition,
+    interval: getCurrentPositionInterval,
   });
 
   const { mapId, map } = useNaverMap({

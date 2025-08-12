@@ -23,7 +23,12 @@ export default Suspense.with(
               <Spacing size={12} />
               <MapHeaderNavbar />
             </div>
-            <MapView currentPositionIcon={true} zoom={17} paths={paths}>
+            <MapView
+              currentPositionIcon={true}
+              zoom={17}
+              paths={paths}
+              getCurrentPositionInterval={200}
+            >
               {/* {({ map }) => {
             useDrawMarkers({
               map,
