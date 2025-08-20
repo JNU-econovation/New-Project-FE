@@ -1,4 +1,5 @@
-import axios, { AxiosResponse } from "axios";
+import { ErrorResponse } from "@/types/api";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 const publicApi = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}`?.replace(/\/$/, ""),
@@ -20,8 +21,14 @@ publicApi.interceptors.response.use(
   (response: AxiosResponse) => {
     return response.data;
   },
-  async (error) => {
-    return Promise.reject(error);
+  async (error: AxiosError<ErrorResponse>) => {
+    const apiError: ErrorResponse = {
+      status: "error",
+      errorCode: error.response?.data.errorCode || "UNKNOWN_ERROR",
+      message:
+        error.response?.data?.message || "알 수 없는 오류가 발생했습니다.",
+    };
+    return Promise.reject(apiError);
   }
 );
 
